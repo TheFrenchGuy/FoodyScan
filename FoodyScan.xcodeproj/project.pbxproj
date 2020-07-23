@@ -3,19 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C051BD629E556C57C392271 /* Pods_FoodyScanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C5A701C5207D1074B475E3 /* Pods_FoodyScanTests.framework */; };
+		405E9917AF7F8DB12BAA0531 /* Pods_FoodyScan_FoodyScanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA85FE47213B5F99CC2FF545 /* Pods_FoodyScan_FoodyScanUITests.framework */; };
 		60116BF324C99DE300DF9E09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF224C99DE300DF9E09 /* AppDelegate.swift */; };
 		60116BF524C99DE300DF9E09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF424C99DE300DF9E09 /* SceneDelegate.swift */; };
 		60116BF824C99DE300DF9E09 /* FoodyScan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF624C99DE300DF9E09 /* FoodyScan.xcdatamodeld */; };
 		60116BFA24C99DE300DF9E09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF924C99DE300DF9E09 /* ContentView.swift */; };
-		60116BFC24C99DE500DF9E09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60116BFB24C99DE500DF9E09 /* Assets.xcassets */; };
 		60116BFF24C99DE500DF9E09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60116BFE24C99DE500DF9E09 /* Preview Assets.xcassets */; };
 		60116C0224C99DE500DF9E09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60116C0024C99DE500DF9E09 /* LaunchScreen.storyboard */; };
 		60116C0D24C99DE500DF9E09 /* FoodyScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116C0C24C99DE500DF9E09 /* FoodyScanTests.swift */; };
 		60116C1824C99DE600DF9E09 /* FoodyScanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116C1724C99DE600DF9E09 /* FoodyScanUITests.swift */; };
+		60116C2624C99EF700DF9E09 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60116C2524C99EF700DF9E09 /* GoogleService-Info.plist */; };
+		60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116C2724C9A0BC00DF9E09 /* HomeScreenView.swift */; };
+		60116C2A24C9A32F00DF9E09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60116C2924C9A32F00DF9E09 /* Assets.xcassets */; };
+		E87F11E88F504D4859D4E2DD /* Pods_FoodyScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9033DD7D3E46DB96014E7A2A /* Pods_FoodyScan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,12 +41,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		060728A70B162DEC778F29DD /* Pods-FoodyScan-FoodyScanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan-FoodyScanUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		09C8190BD6E24BA136DFE24E /* Pods-FoodyScan-FoodyScanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan-FoodyScanUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests.release.xcconfig"; sourceTree = "<group>"; };
+		49C5A701C5207D1074B475E3 /* Pods_FoodyScanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodyScanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5681C2F323F2153B14DD313F /* Pods-FoodyScanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScanTests.release.xcconfig"; path = "Target Support Files/Pods-FoodyScanTests/Pods-FoodyScanTests.release.xcconfig"; sourceTree = "<group>"; };
 		60116BEF24C99DE300DF9E09 /* FoodyScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodyScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60116BF224C99DE300DF9E09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60116BF424C99DE300DF9E09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		60116BF724C99DE300DF9E09 /* FoodyScan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodyScan.xcdatamodel; sourceTree = "<group>"; };
 		60116BF924C99DE300DF9E09 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		60116BFB24C99DE500DF9E09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60116BFE24C99DE500DF9E09 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		60116C0124C99DE500DF9E09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60116C0324C99DE500DF9E09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +59,14 @@
 		60116C1324C99DE600DF9E09 /* FoodyScanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodyScanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60116C1724C99DE600DF9E09 /* FoodyScanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodyScanUITests.swift; sourceTree = "<group>"; };
 		60116C1924C99DE600DF9E09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60116C2524C99EF700DF9E09 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		60116C2724C9A0BC00DF9E09 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		60116C2924C9A32F00DF9E09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A58E9D8EC05A3DD002A3AC7 /* Pods-FoodyScanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScanTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodyScanTests/Pods-FoodyScanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9033DD7D3E46DB96014E7A2A /* Pods_FoodyScan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodyScan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7FFD4961E699F2F33C97446 /* Pods-FoodyScan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan.debug.xcconfig"; path = "Target Support Files/Pods-FoodyScan/Pods-FoodyScan.debug.xcconfig"; sourceTree = "<group>"; };
+		D69A2FEFD4978B6FD065F588 /* Pods-FoodyScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan.release.xcconfig"; path = "Target Support Files/Pods-FoodyScan/Pods-FoodyScan.release.xcconfig"; sourceTree = "<group>"; };
+		FA85FE47213B5F99CC2FF545 /* Pods_FoodyScan_FoodyScanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodyScan_FoodyScanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E87F11E88F504D4859D4E2DD /* Pods_FoodyScan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C051BD629E556C57C392271 /* Pods_FoodyScanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405E9917AF7F8DB12BAA0531 /* Pods_FoodyScan_FoodyScanUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +104,8 @@
 				60116C0B24C99DE500DF9E09 /* FoodyScanTests */,
 				60116C1624C99DE600DF9E09 /* FoodyScanUITests */,
 				60116BF024C99DE300DF9E09 /* Products */,
+				6D7894DDEAA28D10A3AB29F9 /* Pods */,
+				EAB9A4D931B9A46358FB2CA1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +122,16 @@
 		60116BF124C99DE300DF9E09 /* FoodyScan */ = {
 			isa = PBXGroup;
 			children = (
+				60116C2924C9A32F00DF9E09 /* Assets.xcassets */,
+				60116C2524C99EF700DF9E09 /* GoogleService-Info.plist */,
 				60116BF224C99DE300DF9E09 /* AppDelegate.swift */,
 				60116BF424C99DE300DF9E09 /* SceneDelegate.swift */,
 				60116BF924C99DE300DF9E09 /* ContentView.swift */,
-				60116BFB24C99DE500DF9E09 /* Assets.xcassets */,
 				60116C0024C99DE500DF9E09 /* LaunchScreen.storyboard */,
 				60116C0324C99DE500DF9E09 /* Info.plist */,
 				60116BF624C99DE300DF9E09 /* FoodyScan.xcdatamodeld */,
 				60116BFD24C99DE500DF9E09 /* Preview Content */,
+				60116C2724C9A0BC00DF9E09 /* HomeScreenView.swift */,
 			);
 			path = FoodyScan;
 			sourceTree = "<group>";
@@ -139,6 +162,29 @@
 			path = FoodyScanUITests;
 			sourceTree = "<group>";
 		};
+		6D7894DDEAA28D10A3AB29F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7FFD4961E699F2F33C97446 /* Pods-FoodyScan.debug.xcconfig */,
+				D69A2FEFD4978B6FD065F588 /* Pods-FoodyScan.release.xcconfig */,
+				060728A70B162DEC778F29DD /* Pods-FoodyScan-FoodyScanUITests.debug.xcconfig */,
+				09C8190BD6E24BA136DFE24E /* Pods-FoodyScan-FoodyScanUITests.release.xcconfig */,
+				8A58E9D8EC05A3DD002A3AC7 /* Pods-FoodyScanTests.debug.xcconfig */,
+				5681C2F323F2153B14DD313F /* Pods-FoodyScanTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EAB9A4D931B9A46358FB2CA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9033DD7D3E46DB96014E7A2A /* Pods_FoodyScan.framework */,
+				FA85FE47213B5F99CC2FF545 /* Pods_FoodyScan_FoodyScanUITests.framework */,
+				49C5A701C5207D1074B475E3 /* Pods_FoodyScanTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60116C1C24C99DE600DF9E09 /* Build configuration list for PBXNativeTarget "FoodyScan" */;
 			buildPhases = (
+				3EEDBFABE1A9B18EE053E9B6 /* [CP] Check Pods Manifest.lock */,
 				60116BEB24C99DE300DF9E09 /* Sources */,
 				60116BEC24C99DE300DF9E09 /* Frameworks */,
 				60116BED24C99DE300DF9E09 /* Resources */,
+				035304422D4DC7191C849CC8 /* [CP] Embed Pods Frameworks */,
+				79BB833701AD3A40C970FC77 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -163,6 +212,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60116C1F24C99DE600DF9E09 /* Build configuration list for PBXNativeTarget "FoodyScanTests" */;
 			buildPhases = (
+				28AC56E4E360044BA96811D0 /* [CP] Check Pods Manifest.lock */,
 				60116C0424C99DE500DF9E09 /* Sources */,
 				60116C0524C99DE500DF9E09 /* Frameworks */,
 				60116C0624C99DE500DF9E09 /* Resources */,
@@ -181,9 +231,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60116C2224C99DE600DF9E09 /* Build configuration list for PBXNativeTarget "FoodyScanUITests" */;
 			buildPhases = (
+				127B97DCF8BF042266ADA0CC /* [CP] Check Pods Manifest.lock */,
 				60116C0F24C99DE600DF9E09 /* Sources */,
 				60116C1024C99DE600DF9E09 /* Frameworks */,
 				60116C1124C99DE600DF9E09 /* Resources */,
+				FC7D3C0391529F3AC4865E65 /* [CP] Embed Pods Frameworks */,
+				98DD817133C54F842FA6EEC9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,8 +297,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				60116C0224C99DE500DF9E09 /* LaunchScreen.storyboard in Resources */,
+				60116C2624C99EF700DF9E09 /* GoogleService-Info.plist in Resources */,
+				60116C2A24C9A32F00DF9E09 /* Assets.xcassets in Resources */,
 				60116BFF24C99DE500DF9E09 /* Preview Assets.xcassets in Resources */,
-				60116BFC24C99DE500DF9E09 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +319,143 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		035304422D4DC7191C849CC8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		127B97DCF8BF042266ADA0CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FoodyScan-FoodyScanUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28AC56E4E360044BA96811D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FoodyScanTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3EEDBFABE1A9B18EE053E9B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FoodyScan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79BB833701AD3A40C970FC77 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98DD817133C54F842FA6EEC9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC7D3C0391529F3AC4865E65 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		60116BEB24C99DE300DF9E09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -272,6 +463,7 @@
 			files = (
 				60116BF824C99DE300DF9E09 /* FoodyScan.xcdatamodeld in Sources */,
 				60116BF324C99DE300DF9E09 /* AppDelegate.swift in Sources */,
+				60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */,
 				60116BFA24C99DE300DF9E09 /* ContentView.swift in Sources */,
 				60116BF524C99DE300DF9E09 /* SceneDelegate.swift in Sources */,
 			);
@@ -436,6 +628,7 @@
 		};
 		60116C1D24C99DE600DF9E09 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7FFD4961E699F2F33C97446 /* Pods-FoodyScan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -443,6 +636,7 @@
 				DEVELOPMENT_TEAM = P69D93MRT6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = FoodyScan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,6 +650,7 @@
 		};
 		60116C1E24C99DE600DF9E09 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D69A2FEFD4978B6FD065F588 /* Pods-FoodyScan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -463,6 +658,7 @@
 				DEVELOPMENT_TEAM = P69D93MRT6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = FoodyScan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -476,6 +672,7 @@
 		};
 		60116C2024C99DE600DF9E09 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A58E9D8EC05A3DD002A3AC7 /* Pods-FoodyScanTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -498,6 +695,7 @@
 		};
 		60116C2124C99DE600DF9E09 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5681C2F323F2153B14DD313F /* Pods-FoodyScanTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -520,6 +718,7 @@
 		};
 		60116C2324C99DE600DF9E09 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 060728A70B162DEC778F29DD /* Pods-FoodyScan-FoodyScanUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -540,6 +739,7 @@
 		};
 		60116C2424C99DE600DF9E09 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09C8190BD6E24BA136DFE24E /* Pods-FoodyScan-FoodyScanUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
