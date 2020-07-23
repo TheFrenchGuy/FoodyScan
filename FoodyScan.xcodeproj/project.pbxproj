@@ -20,6 +20,10 @@
 		60116C2624C99EF700DF9E09 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60116C2524C99EF700DF9E09 /* GoogleService-Info.plist */; };
 		60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116C2724C9A0BC00DF9E09 /* HomeScreenView.swift */; };
 		60116C2A24C9A32F00DF9E09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60116C2924C9A32F00DF9E09 /* Assets.xcassets */; };
+		60F5F11624CA31FD00835292 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11524CA31FD00835292 /* Login.swift */; };
+		60F5F11824CA334B00835292 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11724CA334B00835292 /* SignUp.swift */; };
+		60F5F11A24CA33B300835292 /* GoogleLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11924CA33B300835292 /* GoogleLoginView.swift */; };
+		60F5F11D24CA356000835292 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11C24CA356000835292 /* ErrorView.swift */; };
 		E87F11E88F504D4859D4E2DD /* Pods_FoodyScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9033DD7D3E46DB96014E7A2A /* Pods_FoodyScan.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +66,10 @@
 		60116C2524C99EF700DF9E09 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		60116C2724C9A0BC00DF9E09 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		60116C2924C9A32F00DF9E09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		60F5F11524CA31FD00835292 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		60F5F11724CA334B00835292 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		60F5F11924CA33B300835292 /* GoogleLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginView.swift; sourceTree = "<group>"; };
+		60F5F11C24CA356000835292 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		8A58E9D8EC05A3DD002A3AC7 /* Pods-FoodyScanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScanTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodyScanTests/Pods-FoodyScanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9033DD7D3E46DB96014E7A2A /* Pods_FoodyScan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodyScan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7FFD4961E699F2F33C97446 /* Pods-FoodyScan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan.debug.xcconfig"; path = "Target Support Files/Pods-FoodyScan/Pods-FoodyScan.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 		60116BF124C99DE300DF9E09 /* FoodyScan */ = {
 			isa = PBXGroup;
 			children = (
+				60F5F11B24CA34F600835292 /* Login  */,
 				60116C2924C9A32F00DF9E09 /* Assets.xcassets */,
 				60116C2524C99EF700DF9E09 /* GoogleService-Info.plist */,
 				60116BF224C99DE300DF9E09 /* AppDelegate.swift */,
@@ -160,6 +169,17 @@
 				60116C1924C99DE600DF9E09 /* Info.plist */,
 			);
 			path = FoodyScanUITests;
+			sourceTree = "<group>";
+		};
+		60F5F11B24CA34F600835292 /* Login  */ = {
+			isa = PBXGroup;
+			children = (
+				60F5F11C24CA356000835292 /* ErrorView.swift */,
+				60F5F11524CA31FD00835292 /* Login.swift */,
+				60F5F11724CA334B00835292 /* SignUp.swift */,
+				60F5F11924CA33B300835292 /* GoogleLoginView.swift */,
+			);
+			path = "Login ";
 			sourceTree = "<group>";
 		};
 		6D7894DDEAA28D10A3AB29F9 /* Pods */ = {
@@ -461,10 +481,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F5F11824CA334B00835292 /* SignUp.swift in Sources */,
+				60F5F11A24CA33B300835292 /* GoogleLoginView.swift in Sources */,
 				60116BF824C99DE300DF9E09 /* FoodyScan.xcdatamodeld in Sources */,
 				60116BF324C99DE300DF9E09 /* AppDelegate.swift in Sources */,
 				60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */,
+				60F5F11624CA31FD00835292 /* Login.swift in Sources */,
 				60116BFA24C99DE300DF9E09 /* ContentView.swift in Sources */,
+				60F5F11D24CA356000835292 /* ErrorView.swift in Sources */,
 				60116BF524C99DE300DF9E09 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
