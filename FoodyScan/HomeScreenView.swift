@@ -23,6 +23,7 @@ struct HomeScreenView: View {
             Button(action: {
                 
                 try! Auth.auth().signOut()
+                GIDSignIn.sharedInstance()?.signOut()
                 UserDefaults.standard.set(false, forKey: "status")
                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                 

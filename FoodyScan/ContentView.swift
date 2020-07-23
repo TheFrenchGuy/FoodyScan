@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
- import Firebase
+import Firebase
 import GoogleSignIn
  
  struct ContentView: View {
@@ -164,7 +164,7 @@ import GoogleSignIn
                          .padding(.top, 25)
                          
                         
-                        GoogleSignView().frame(width: 150, height: 55)
+                        GoogleLoginView().frame(width: 150, height: 55)
                      }
                      .padding(.horizontal, 25)
                     
@@ -200,7 +200,7 @@ import GoogleSignIn
          if self.email != "" && self.pass != ""{
              
              Auth.auth().signIn(withEmail: self.email, password: self.pass) { (res, err) in
-                 
+             
                  if err != nil{
                      
                      self.error = err!.localizedDescription
@@ -267,7 +267,6 @@ import GoogleSignIn
                      
                      VStack{
                          
-                         Image("logo")
                          
                          Text("Log in to your account")
                              .font(.title)
@@ -471,21 +470,44 @@ import GoogleSignIn
      }
  }
 
-struct GoogleSignView : UIViewRepresentable {
+struct GoogleLoginView: UIViewRepresentable {
     
-    func makeUIView(context: UIViewRepresentableContext<GoogleSignView>) -> GIDSignInButton {
-        
-        let button = GIDSignInButton()
-        button.colorScheme = .dark
+    func makeCoordinator() -> GoogleLoginView.Coordinator {
+        return GoogleLoginView.Coordinator()
+    }
+    
+    class Coordinator: NSObject, GIDSignInDelegate {
+        func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+          if let error = error {
+            print(error.localizedDescription)
+            return
+          }
+
+          guard let authentication = user.authentication else { return }
+          let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                            accessToken: authentication.accessToken)
+          Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+              print(error.localizedDescription)
+              return
+            }
+            print("signIn result: " + authResult!.user.email!)
+            UserDefaults.standard.set(true, forKey: "status")
+            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+            
+          }
+            
+        }
+    }
+    
+    func makeUIView(context: UIViewRepresentableContext<GoogleLoginView>) -> GIDSignInButton {
+        let view = GIDSignInButton()
+        GIDSignIn.sharedInstance().delegate = context.coordinator
         GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
-        return button
-        
+        return view
     }
     
-    func updateUIView(_ uiView: GIDSignInButton, context: UIViewRepresentableContext<GoogleSignView>) {
-        
-        
-    }
+    func updateUIView(_ uiView: GIDSignInButton, context: UIViewRepresentableContext<GoogleLoginView>) { }
 }
 
 
