@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		60116BF324C99DE300DF9E09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF224C99DE300DF9E09 /* AppDelegate.swift */; };
+		60116BF524C99DE300DF9E09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF424C99DE300DF9E09 /* SceneDelegate.swift */; };
+		60116BF824C99DE300DF9E09 /* FoodyScan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF624C99DE300DF9E09 /* FoodyScan.xcdatamodeld */; };
+		60116BFA24C99DE300DF9E09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF924C99DE300DF9E09 /* ContentView.swift */; };
+		60116BFC24C99DE500DF9E09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60116BFB24C99DE500DF9E09 /* Assets.xcassets */; };
+		60116BFF24C99DE500DF9E09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60116BFE24C99DE500DF9E09 /* Preview Assets.xcassets */; };
+		60116C0224C99DE500DF9E09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60116C0024C99DE500DF9E09 /* LaunchScreen.storyboard */; };
+		60116C0D24C99DE500DF9E09 /* FoodyScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116C0C24C99DE500DF9E09 /* FoodyScanTests.swift */; };
+		60116C1824C99DE600DF9E09 /* FoodyScanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116C1724C99DE600DF9E09 /* FoodyScanUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		60116C0924C99DE500DF9E09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60116BE724C99DE300DF9E09 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60116BEE24C99DE300DF9E09;
+			remoteInfo = FoodyScan;
+		};
+		60116C1424C99DE600DF9E09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60116BE724C99DE300DF9E09 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60116BEE24C99DE300DF9E09;
+			remoteInfo = FoodyScan;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		60116BEF24C99DE300DF9E09 /* FoodyScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodyScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60116BF224C99DE300DF9E09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		60116BF424C99DE300DF9E09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		60116BF724C99DE300DF9E09 /* FoodyScan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodyScan.xcdatamodel; sourceTree = "<group>"; };
+		60116BF924C99DE300DF9E09 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		60116BFB24C99DE500DF9E09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		60116BFE24C99DE500DF9E09 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		60116C0124C99DE500DF9E09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		60116C0324C99DE500DF9E09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60116C0824C99DE500DF9E09 /* FoodyScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodyScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60116C0C24C99DE500DF9E09 /* FoodyScanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodyScanTests.swift; sourceTree = "<group>"; };
+		60116C0E24C99DE500DF9E09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60116C1324C99DE600DF9E09 /* FoodyScanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodyScanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60116C1724C99DE600DF9E09 /* FoodyScanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodyScanUITests.swift; sourceTree = "<group>"; };
+		60116C1924C99DE600DF9E09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		60116BEC24C99DE300DF9E09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60116C0524C99DE500DF9E09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60116C1024C99DE600DF9E09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		60116BE624C99DE300DF9E09 = {
+			isa = PBXGroup;
+			children = (
+				60116BF124C99DE300DF9E09 /* FoodyScan */,
+				60116C0B24C99DE500DF9E09 /* FoodyScanTests */,
+				60116C1624C99DE600DF9E09 /* FoodyScanUITests */,
+				60116BF024C99DE300DF9E09 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		60116BF024C99DE300DF9E09 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60116BEF24C99DE300DF9E09 /* FoodyScan.app */,
+				60116C0824C99DE500DF9E09 /* FoodyScanTests.xctest */,
+				60116C1324C99DE600DF9E09 /* FoodyScanUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60116BF124C99DE300DF9E09 /* FoodyScan */ = {
+			isa = PBXGroup;
+			children = (
+				60116BF224C99DE300DF9E09 /* AppDelegate.swift */,
+				60116BF424C99DE300DF9E09 /* SceneDelegate.swift */,
+				60116BF924C99DE300DF9E09 /* ContentView.swift */,
+				60116BFB24C99DE500DF9E09 /* Assets.xcassets */,
+				60116C0024C99DE500DF9E09 /* LaunchScreen.storyboard */,
+				60116C0324C99DE500DF9E09 /* Info.plist */,
+				60116BF624C99DE300DF9E09 /* FoodyScan.xcdatamodeld */,
+				60116BFD24C99DE500DF9E09 /* Preview Content */,
+			);
+			path = FoodyScan;
+			sourceTree = "<group>";
+		};
+		60116BFD24C99DE500DF9E09 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				60116BFE24C99DE500DF9E09 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		60116C0B24C99DE500DF9E09 /* FoodyScanTests */ = {
+			isa = PBXGroup;
+			children = (
+				60116C0C24C99DE500DF9E09 /* FoodyScanTests.swift */,
+				60116C0E24C99DE500DF9E09 /* Info.plist */,
+			);
+			path = FoodyScanTests;
+			sourceTree = "<group>";
+		};
+		60116C1624C99DE600DF9E09 /* FoodyScanUITests */ = {
+			isa = PBXGroup;
+			children = (
+				60116C1724C99DE600DF9E09 /* FoodyScanUITests.swift */,
+				60116C1924C99DE600DF9E09 /* Info.plist */,
+			);
+			path = FoodyScanUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		60116BEE24C99DE300DF9E09 /* FoodyScan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60116C1C24C99DE600DF9E09 /* Build configuration list for PBXNativeTarget "FoodyScan" */;
+			buildPhases = (
+				60116BEB24C99DE300DF9E09 /* Sources */,
+				60116BEC24C99DE300DF9E09 /* Frameworks */,
+				60116BED24C99DE300DF9E09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FoodyScan;
+			productName = FoodyScan;
+			productReference = 60116BEF24C99DE300DF9E09 /* FoodyScan.app */;
+			productType = "com.apple.product-type.application";
+		};
+		60116C0724C99DE500DF9E09 /* FoodyScanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60116C1F24C99DE600DF9E09 /* Build configuration list for PBXNativeTarget "FoodyScanTests" */;
+			buildPhases = (
+				60116C0424C99DE500DF9E09 /* Sources */,
+				60116C0524C99DE500DF9E09 /* Frameworks */,
+				60116C0624C99DE500DF9E09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60116C0A24C99DE500DF9E09 /* PBXTargetDependency */,
+			);
+			name = FoodyScanTests;
+			productName = FoodyScanTests;
+			productReference = 60116C0824C99DE500DF9E09 /* FoodyScanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		60116C1224C99DE600DF9E09 /* FoodyScanUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60116C2224C99DE600DF9E09 /* Build configuration list for PBXNativeTarget "FoodyScanUITests" */;
+			buildPhases = (
+				60116C0F24C99DE600DF9E09 /* Sources */,
+				60116C1024C99DE600DF9E09 /* Frameworks */,
+				60116C1124C99DE600DF9E09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60116C1524C99DE600DF9E09 /* PBXTargetDependency */,
+			);
+			name = FoodyScanUITests;
+			productName = FoodyScanUITests;
+			productReference = 60116C1324C99DE600DF9E09 /* FoodyScanUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		60116BE724C99DE300DF9E09 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Noe De La Croix";
+				TargetAttributes = {
+					60116BEE24C99DE300DF9E09 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					60116C0724C99DE500DF9E09 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 60116BEE24C99DE300DF9E09;
+					};
+					60116C1224C99DE600DF9E09 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 60116BEE24C99DE300DF9E09;
+					};
+				};
+			};
+			buildConfigurationList = 60116BEA24C99DE300DF9E09 /* Build configuration list for PBXProject "FoodyScan" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 60116BE624C99DE300DF9E09;
+			productRefGroup = 60116BF024C99DE300DF9E09 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60116BEE24C99DE300DF9E09 /* FoodyScan */,
+				60116C0724C99DE500DF9E09 /* FoodyScanTests */,
+				60116C1224C99DE600DF9E09 /* FoodyScanUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		60116BED24C99DE300DF9E09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60116C0224C99DE500DF9E09 /* LaunchScreen.storyboard in Resources */,
+				60116BFF24C99DE500DF9E09 /* Preview Assets.xcassets in Resources */,
+				60116BFC24C99DE500DF9E09 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60116C0624C99DE500DF9E09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60116C1124C99DE600DF9E09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		60116BEB24C99DE300DF9E09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60116BF824C99DE300DF9E09 /* FoodyScan.xcdatamodeld in Sources */,
+				60116BF324C99DE300DF9E09 /* AppDelegate.swift in Sources */,
+				60116BFA24C99DE300DF9E09 /* ContentView.swift in Sources */,
+				60116BF524C99DE300DF9E09 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60116C0424C99DE500DF9E09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60116C0D24C99DE500DF9E09 /* FoodyScanTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60116C0F24C99DE600DF9E09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60116C1824C99DE600DF9E09 /* FoodyScanUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		60116C0A24C99DE500DF9E09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60116BEE24C99DE300DF9E09 /* FoodyScan */;
+			targetProxy = 60116C0924C99DE500DF9E09 /* PBXContainerItemProxy */;
+		};
+		60116C1524C99DE600DF9E09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60116BEE24C99DE300DF9E09 /* FoodyScan */;
+			targetProxy = 60116C1424C99DE600DF9E09 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		60116C0024C99DE500DF9E09 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60116C0124C99DE500DF9E09 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		60116C1A24C99DE600DF9E09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		60116C1B24C99DE600DF9E09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		60116C1D24C99DE600DF9E09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"FoodyScan/Preview Content\"";
+				DEVELOPMENT_TEAM = P69D93MRT6;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = FoodyScan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = noedelacroix.FoodyScan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		60116C1E24C99DE600DF9E09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"FoodyScan/Preview Content\"";
+				DEVELOPMENT_TEAM = P69D93MRT6;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = FoodyScan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = noedelacroix.FoodyScan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		60116C2024C99DE600DF9E09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P69D93MRT6;
+				INFOPLIST_FILE = FoodyScanTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = noedelacroix.FoodyScanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodyScan.app/FoodyScan";
+			};
+			name = Debug;
+		};
+		60116C2124C99DE600DF9E09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P69D93MRT6;
+				INFOPLIST_FILE = FoodyScanTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = noedelacroix.FoodyScanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodyScan.app/FoodyScan";
+			};
+			name = Release;
+		};
+		60116C2324C99DE600DF9E09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P69D93MRT6;
+				INFOPLIST_FILE = FoodyScanUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = noedelacroix.FoodyScanUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FoodyScan;
+			};
+			name = Debug;
+		};
+		60116C2424C99DE600DF9E09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P69D93MRT6;
+				INFOPLIST_FILE = FoodyScanUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = noedelacroix.FoodyScanUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FoodyScan;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60116BEA24C99DE300DF9E09 /* Build configuration list for PBXProject "FoodyScan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60116C1A24C99DE600DF9E09 /* Debug */,
+				60116C1B24C99DE600DF9E09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60116C1C24C99DE600DF9E09 /* Build configuration list for PBXNativeTarget "FoodyScan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60116C1D24C99DE600DF9E09 /* Debug */,
+				60116C1E24C99DE600DF9E09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60116C1F24C99DE600DF9E09 /* Build configuration list for PBXNativeTarget "FoodyScanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60116C2024C99DE600DF9E09 /* Debug */,
+				60116C2124C99DE600DF9E09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60116C2224C99DE600DF9E09 /* Build configuration list for PBXNativeTarget "FoodyScanUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60116C2324C99DE600DF9E09 /* Debug */,
+				60116C2424C99DE600DF9E09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		60116BF624C99DE300DF9E09 /* FoodyScan.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				60116BF724C99DE300DF9E09 /* FoodyScan.xcdatamodel */,
+			);
+			currentVersion = 60116BF724C99DE300DF9E09 /* FoodyScan.xcdatamodel */;
+			path = FoodyScan.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 60116BE724C99DE300DF9E09 /* Project object */;
+}
