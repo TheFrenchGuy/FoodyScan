@@ -13,19 +13,19 @@ import GoogleSignIn
 struct SignUp : View {
     
     @State var color = Color.black.opacity(0.7)
-    @State var email = ""
-    @State var pass = ""
-    @State var repass = ""
-    @State var visible = false
-    @State var revisible = false
+    @State var email = "" //Email of the new User
+    @State var pass = "" //Password of the new user
+    @State var repass = ""//Confirmation password of the new user
+    @State var visible = false //If the password is visible
+    @State var revisible = false // If confirmation password is visible
     @Binding var show : Bool
-    @State var alert = false
-    @State var error = ""
+    @State var alert = false //Whever an error is active
+    @State var error = "" //Error content
     
     var body: some View{
         
         ZStack{
-           Color.offWhite.edgesIgnoringSafeArea(.all)
+           Color.offWhite.edgesIgnoringSafeArea(.all) //In order to make the background color to be offWhite
             ZStack(alignment: .topLeading) {
                 
                 GeometryReader{_ in
@@ -39,7 +39,7 @@ struct SignUp : View {
                             .foregroundColor(self.color)
                             .padding(.top, 35)
                         
-                        TextField("Email", text: self.$email)
+                        TextField("Email", text: self.$email) //Email field
                         .autocapitalization(.none)
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color,lineWidth: 2))
@@ -62,18 +62,18 @@ struct SignUp : View {
                             }
                             
                             Button(action: {
-                                
+                                //If pressed it will changed between the password being visibile and hidden
                                 self.visible.toggle()
                                 
                             }) {
                                 
-                                Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
+                                Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill") //If visible is active the password can be seen so icon matches, vice versa
                                     .foregroundColor(self.color)
                             }
                             
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color,lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color,lineWidth: 2)) //When the user is onto the textField he will have feedback the he is currently inputting text into that textfield
                         .padding(.top, 25)
                         
                         HStack(spacing: 15){
@@ -93,12 +93,12 @@ struct SignUp : View {
                             }
                             
                             Button(action: {
-                                
+                                //If pressed it will changed between the password being visibile and hidden
                                 self.revisible.toggle()
                                 
                             }) {
                                 
-                                Image(systemName: self.revisible ? "eye.slash.fill" : "eye.fill")
+                                Image(systemName: self.revisible ? "eye.slash.fill" : "eye.fill")//If visible is active the password can be seen so icon matches, vice versa
                                     .foregroundColor(self.color)
                             }
                             
@@ -109,7 +109,7 @@ struct SignUp : View {
                         
                         Button(action: {
                             
-                            self.register()
+                            self.register() //Initiate the Register function
                         }) {
                             
                             Text("Register")
@@ -130,7 +130,7 @@ struct SignUp : View {
                 
                 Button(action: {
                     
-                    self.show.toggle()
+                    self.show.toggle() //Switches the show variable to true to go back to main login screen
                     
                 }) {
                     
@@ -143,43 +143,43 @@ struct SignUp : View {
             
             if self.alert{
                 
-                ErrorView(alert: self.$alert, error: self.$error)
+                ErrorView(alert: self.$alert, error: self.$error) //Prints error onto the screen
             }
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true) //Allows the user to go backward
     }
     
     func register(){
         
-        if self.email != ""{
+        if self.email != ""{ //If the user has filled the email textfield
             
-            if self.pass == self.repass{
+            if self.pass == self.repass{ //If the two password matches
                 
                 Auth.auth().createUser(withEmail: self.email, password: self.pass) { (res, err) in
-                    
-                    if err != nil{
+                    //Creates a user to the firebase cloud service
+                    if err != nil{ //If there is an error
                         
                         self.error = err!.localizedDescription
-                        self.alert.toggle()
+                        self.alert.toggle() //Prints the erro to the screen
                         return
                     }
                     
-                    print("success")
+                    print("success") //Debug only that the user has succesfully logged in
                     
-                    UserDefaults.standard.set(true, forKey: "status")
+                    UserDefaults.standard.set(true, forKey: "status") // So that the user wont have to re loggin at launch of the app again and forces him to home screen of the app
                     NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                 }
             }
             else{
                 
                 self.error = "Password mismatch"
-                self.alert.toggle()
+                self.alert.toggle() //Print the error
             }
         }
         else{
             
             self.error = "Please fill all the contents properly"
-            self.alert.toggle()
+            self.alert.toggle() //Print the error
         }
     }
 }

@@ -13,12 +13,12 @@ import GoogleSignIn
 struct Login : View {
     
     @State var color = Color.black.opacity(0.7)
-    @State var email = ""
-    @State var pass = ""
-    @State var visible = false
-    @Binding var show : Bool
-    @State var alert = false
-    @State var error = ""
+    @State var email = "" //email of the user
+    @State var pass = ""  //Password of the user
+    @State var visible = false //Whever the user can see the password he types
+    @Binding var show : Bool //Passed from the previous view
+    @State var alert = false //Passed to error view
+    @State var error = "" //Passed to error view
     
     var body: some View{
         
@@ -28,11 +28,11 @@ struct Login : View {
                
                
                 
-                GeometryReader{_ in
+                GeometryReader{_ in //defines content as a function of its own size and coordinate space.
                     
                     VStack{
                        
-                       Image("LogoLogin")
+                       Image("LogoLogin") //Finger Print Icon
                            .resizable()
                            .scaledToFit()
                            .frame(width: 130, height: 130)
@@ -44,7 +44,7 @@ struct Login : View {
                             .foregroundColor(self.color)
                             .padding(.top, 35)
                         
-                        TextField("Email", text: self.$email)
+                        TextField("Email", text: self.$email) //Input the email address
                         .autocapitalization(.none)
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color,lineWidth: 2))
@@ -59,30 +59,30 @@ struct Login : View {
                                 
                                 if self.visible{
                                     
-                                    TextField("Password", text: self.$pass)
+                                    TextField("Password", text: self.$pass) //Shows the password inputed clearly
                                     .autocapitalization(.none)
                                    
                                 }
                                 else{
                                     
-                                    SecureField("Password", text: self.$pass)
+                                    SecureField("Password", text: self.$pass) //Hides the password inputed
                                     .autocapitalization(.none)
                                 }
                             }
                             
                             Button(action: {
                                 
-                                self.visible.toggle()
+                                self.visible.toggle() //Flips between the visible state of the password
                                 
                             }) {
                                 
-                                Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill")
+                                Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill") //Changes the eye icon based on weather visibile is true or false to match password visible state
                                     .foregroundColor(self.color)
                             }
                             
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color,lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color,lineWidth: 2))//When input the border of the text from changes color based on the Main Color of the app
                         .padding(.top, 25)
                         
                         HStack{
@@ -91,7 +91,7 @@ struct Login : View {
                             
                             Button(action: {
                                 
-                                self.reset()
+                                self.reset() //Initiate the reset function
                                 
                             }) {
                                 
@@ -100,13 +100,13 @@ struct Login : View {
                                     .foregroundColor(Color("Color"))
                             }
                         }
-                        .buttonStyle(SimpleButtonStyle())
+                        .buttonStyle(SimpleButtonStyle()) //Refer to earlier comments in ContentView
                         .padding(.top, 10)
                        
                         
                         Button(action: {
                             
-                            self.verify()
+                            self.verify() //Initiate the verify function
                             
                         }) {
                             
@@ -135,7 +135,7 @@ struct Login : View {
            
                 Button(action: {
                     
-                    self.show.toggle()
+                    self.show.toggle() //Makes true the show variable which should change view
                     
                 }) {
                     
@@ -150,33 +150,33 @@ struct Login : View {
             
             if self.alert{
                 
-                ErrorView(alert: self.$alert, error: self.$error)
+                ErrorView(alert: self.$alert, error: self.$error) //Prints an alert if an error has been encounter while login with error
             }
         }
     }
     
     func verify(){
         
-        if self.email != "" && self.pass != ""{
+        if self.email != "" && self.pass != ""{ //If the email and password are not empty then
             
             Auth.auth().signIn(withEmail: self.email, password: self.pass) { (res, err) in
-            
+                //Sends a request to Firebase database to check the login with what is in the cloud
                 if err != nil{
                     
-                    self.error = err!.localizedDescription
+                    self.error = err!.localizedDescription //Will later print the error
                     self.alert.toggle()
                     return
                 }
                 
-                print("success")
-                UserDefaults.standard.set(true, forKey: "status")
+                print("success") //Debug Only
+                UserDefaults.standard.set(true, forKey: "status") //Sets the status to be true and stored in memory so next app launch the user wont have to login
                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
             }
         }
         else{
             
             self.error = "Please fill all the contents properly"
-            self.alert.toggle()
+            self.alert.toggle() //Causes the error view to trigger
         }
     }
     
@@ -184,7 +184,7 @@ struct Login : View {
         
         if self.email != ""{
             
-            Auth.auth().sendPasswordReset(withEmail: self.email) { (err) in
+            Auth.auth().sendPasswordReset(withEmail: self.email) { (err) in //Causes an email with password link to be sent to the user
                 
                 if err != nil{
                     
@@ -193,13 +193,13 @@ struct Login : View {
                     return
                 }
                 
-                self.error = "RESET"
+                self.error = "RESET" //Refers to the Error view
                 self.alert.toggle()
             }
         }
         else{
             
-            self.error = "Email Id is empty"
+            self.error = "Email Id is empty" // if the email is empty
             self.alert.toggle()
         }
     }

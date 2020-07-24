@@ -24,8 +24,8 @@ import GoogleSignIn
  
  struct Home : View {
      
-     @State var show = false
-     @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+     @State var show = false //will if true show the Login view
+     @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false //Wethever the user is logged in
      
      var body: some View{
              NavigationView{
@@ -40,7 +40,7 @@ import GoogleSignIn
                          ZStack{
                              
                              NavigationLink(destination: SignUp(show: self.$show), isActive: self.$show) {
-                                 
+                                 //Sends to SignUp view
                                  Text("")
                              }
                              .hidden()
@@ -65,8 +65,8 @@ import GoogleSignIn
          }
  }
  
-struct SimpleButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
+struct SimpleButtonStyle: ButtonStyle { // Used to make a neumorphic button
+    func makeBody(configuration: Self.Configuration) -> some View { //Can be applied to a button by .buttonstyle()
         configuration.label
         .padding(15)
         .background(
@@ -74,7 +74,7 @@ struct SimpleButtonStyle: ButtonStyle {
                 if configuration.isPressed {
                     Capsule()
                         .fill(Color.offWhite)
-                } else {
+                } else { // return either a flat circle if the button is pressed, or return our current shadowed circle
                     Capsule()
                         .fill(Color.offWhite)
                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
@@ -85,7 +85,7 @@ struct SimpleButtonStyle: ButtonStyle {
     }
 }
 
-extension Color {
+extension Color { //Create an extension color for the view in order to make the neumorphic design stand out more
     static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
 }
 
