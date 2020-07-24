@@ -24,19 +24,24 @@ import GoogleSignIn
  
  struct Home : View {
      
-     @State var show = false //will if true show the Login view
+     @State var show = false //will if true show the SignUp view
      @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false //Wethever the user is logged in
-     
+     @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user is logged in
+    
      var body: some View{
              NavigationView{
                  VStack{
                      
-                     if self.status{
-                         
-                         HomeScreenView()
-                     }
-                     else{
-                         
+                    if self.status{
+                        if self.setup { //So if already logged in the past then it will go straight to the main menu
+                            HomeScreenView()
+                        } else { //if it has not logged in before goes to the Daily Intake Calc
+                            DailyIntakeCalculatorView()
+                        }
+                    }
+                    
+                    else{
+                            
                          ZStack{
                              
                              NavigationLink(destination: SignUp(show: self.$show), isActive: self.$show) {
@@ -57,6 +62,11 @@ import GoogleSignIn
                      NotificationCenter.default.addObserver(forName: NSNotification.Name("status"), object: nil, queue: .main) { (_) in
                          
                          self.status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+                        
+                    NotificationCenter.default.addObserver(forName: NSNotification.Name("setup"), object: nil, queue: .main) { (_) in
+                                        
+                        self.setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false
+                        }
                     }
                 }
              }

@@ -158,7 +158,7 @@ struct Login : View {
     func verify(){
         
         if self.email != "" && self.pass != ""{ //If the email and password are not empty then
-            
+            UserDefaults.standard.set(self.email, forKey: "email")
             Auth.auth().signIn(withEmail: self.email, password: self.pass) { (res, err) in
                 //Sends a request to Firebase database to check the login with what is in the cloud
                 if err != nil{
@@ -171,6 +171,8 @@ struct Login : View {
                 print("success") //Debug Only
                 UserDefaults.standard.set(true, forKey: "status") //Sets the status to be true and stored in memory so next app launch the user wont have to login
                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                UserDefaults.standard.set(true, forKey: "setup") //The user has already previously logged in therefore he doesnt need to complete the DailyIntake Calculator
+                NotificationCenter.default.post(name: NSNotification.Name("setups2"), object: nil)
             }
         }
         else{

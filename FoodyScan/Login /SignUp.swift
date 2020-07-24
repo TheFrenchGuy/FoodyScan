@@ -13,6 +13,7 @@ import GoogleSignIn
 struct SignUp : View {
     
     @State var color = Color.black.opacity(0.7)
+    @State var username = "" //UserName of the user
     @State var email = "" //Email of the new User
     @State var pass = "" //Password of the new user
     @State var repass = ""//Confirmation password of the new user
@@ -38,6 +39,13 @@ struct SignUp : View {
                             .fontWeight(.bold)
                             .foregroundColor(self.color)
                             .padding(.top, 35)
+                        
+                        TextField("UserName", text: self.$username)
+                        .autocapitalization(.none)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color,lineWidth: 2))
+                        .padding(.top, 25)
+
                         
                         TextField("Email", text: self.$email) //Email field
                         .autocapitalization(.none)
@@ -122,7 +130,9 @@ struct SignUp : View {
                         .padding(.top, 25)
                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
                         .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
-                           
+                        
+                        
+                       
                         
                     }
                     .padding(.horizontal, 25)
@@ -152,7 +162,8 @@ struct SignUp : View {
     func register(){
         
         if self.email != ""{ //If the user has filled the email textfield
-            
+            UserDefaults.standard.set(self.username, forKey: "UserName")
+            UserDefaults.standard.set(self.email, forKey: "Email")
             if self.pass == self.repass{ //If the two password matches
                 
                 Auth.auth().createUser(withEmail: self.email, password: self.pass) { (res, err) in
@@ -168,6 +179,10 @@ struct SignUp : View {
                     
                     UserDefaults.standard.set(true, forKey: "status") // So that the user wont have to re loggin at launch of the app again and forces him to home screen of the app
                     NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                    
+                    UserDefaults.standard.set(false, forKey: "setup") // This means that the user is logging in the first time so he must complete the daily intake calculator
+                    NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil)
+                    
                 }
             }
             else{

@@ -35,6 +35,9 @@ struct GoogleLoginView: UIViewRepresentable { //Enables the user to login only w
             UserDefaults.standard.set(true, forKey: "status") //Allows the user to not have to log in back every time the app launches and forces the user to the main screen
             NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
             
+            
+            UserDefaults.standard.set(false, forKey: "setup") // This means that the user is logging in the first time so he must complete the daily intake calculator
+            NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil)
           }
             
         }
