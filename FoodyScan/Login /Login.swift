@@ -172,7 +172,7 @@ struct Login : View {
                 UserDefaults.standard.set(true, forKey: "status") //Sets the status to be true and stored in memory so next app launch the user wont have to login
                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                 UserDefaults.standard.set(true, forKey: "setup") //The user has already previously logged in therefore he doesnt need to complete the DailyIntake Calculator
-                NotificationCenter.default.post(name: NSNotification.Name("setups2"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil)
             }
         }
         else{

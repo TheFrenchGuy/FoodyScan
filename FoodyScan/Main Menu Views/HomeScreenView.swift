@@ -61,34 +61,40 @@ struct HomeScreenView: View {
 }
 
 struct MainView : View {
-    
+    @ObservedObject var userSettings = UserSettings()
     @Binding var showMenu: Bool
     var body: some View {
-        VStack{
-            Text(Auth.auth().currentUser?.email ?? "Welcome")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(Color.black.opacity(0.7))
+        ZStack {
+            Color.offWhite.edgesIgnoringSafeArea(.all)
             
-            Button(action: {
+            VStack{
                 
-                try! Auth.auth().signOut()
-                GIDSignIn.sharedInstance()?.signOut()
-                UserDefaults.standard.set(false, forKey: "status")
-                NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                Text(Auth.auth().currentUser?.email ?? "Welcome")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black.opacity(0.7))
                 
-            }) {
+                Text("\(userSettings.activitylevel)")
                 
-                Text("Log out")
-                    .foregroundColor(.white)
-                    .padding(.vertical)
-                    .frame(width: UIScreen.main.bounds.width - 50)
+                Button(action: {
+                    
+                    try! Auth.auth().signOut()
+                    GIDSignIn.sharedInstance()?.signOut()
+                    UserDefaults.standard.set(false, forKey: "status")
+                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                    
+                }) {
+                    
+                    Text("Log out")
+                        .foregroundColor(.white)
+                        .padding(.vertical)
+                        .frame(width: UIScreen.main.bounds.width - 50)
+                }
+                .background(Color("Color"))
+                .cornerRadius(10)
+                .padding(.top, 25)
             }
-            .background(Color("Color"))
-            .cornerRadius(10)
-            .padding(.top, 25)
         }
-
     }
 }
 
