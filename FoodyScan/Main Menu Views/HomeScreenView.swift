@@ -74,7 +74,7 @@ struct MainView : View {
                     .fontWeight(.bold)
                     .foregroundColor(Color.black.opacity(0.7))
                 
-                Text("\(userSettings.activitylevel)")
+                Text("You need to eat \(userSettings.dailyintakekcal,specifier: "%g") kcal a day")
                 
                 Button(action: {
                     

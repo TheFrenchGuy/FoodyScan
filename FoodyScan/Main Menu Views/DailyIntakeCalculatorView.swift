@@ -14,6 +14,7 @@ struct DailyIntakeCalculatorView: View {
     @State var show = false //Whever to show or not the birthdate view
     @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
     @State var filledout = false // Whever the form is filled out
+    @State var status = UserDefaults.standard.value(forKey: "birthdate") as? Date ?? Date()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -24,30 +25,16 @@ struct DailyIntakeCalculatorView: View {
     var body: some View {
         ZStack {
             Color.offWhite.edgesIgnoringSafeArea(.all) //Used to change background color
-            
-            if self.show {
-                BirthView(show: self.$show)//Show the birthdate view so doesnt get on top screen
-            } else {
-            
+        
             VStack(alignment: .leading) {
                 GenderPicker()
                     .padding(.vertical, 20)
                 
-                
-                Button(action: {
-                    self.show.toggle() //Loads the birthdate view
-                    
-                    }) {
-                        HStack(alignment: .center, spacing: 20) {
-                            Text("Select date of birth")
-                            .fontWeight(.semibold)
-                            .lineLimit(1)
-                        Image(systemName: "arrow.right")
-                            .font(.system(size: 20))
-                        }.foregroundColor(Color("Color"))
-                    }
-                    .buttonStyle(SimpleButtonStyle())
-                    .padding(.horizontal, 80)
+                DatePicker(selection: $userSettings.birthdate, in: ...Date(), displayedComponents: .date) {
+                               Text("Select your birthdate") //Allows the user to select their birthdate
+                           }.labelsHidden()
+
+                           Text("Your birthdate is \(userSettings.birthdate, formatter: dateFormatter)") //
                     
                 HeightWeightView()
                 
@@ -58,7 +45,9 @@ struct DailyIntakeCalculatorView: View {
                         print("success setup") //Debug Only
                         UserDefaults.standard.set(true, forKey: "setup") //The user has already previously logged in therefore he doesnt need to complete the DailyIntake Calculator
                         NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil)
-                        
+                    
+                    self.userSettings.dailyintakekcal = self.CaloriesIntake(birthdate: self.userSettings.birthdate, gender: self.userSettings.gender, weight: self.userSettings.weight, height: self.userSettings.height, Activitylevel: self.userSettings.activitylevel) //So once the user clicks to finish setup his daily intake calculator can be calculated
+                    
                     }) {
                     
                     if self.filledout == false {
@@ -86,9 +75,117 @@ struct DailyIntakeCalculatorView: View {
                         }
                     }.disabled(self.filledout == false)
                 }
+//            }
+        }
+        .onAppear {
+             
+             NotificationCenter.default.addObserver(forName: NSNotification.Name("birthdate"), object: nil, queue: .main) { (_) in
+                 
+                 self.status = UserDefaults.standard.value(forKey: "birthdate") as? Date ?? Date()
             }
         }
     }
+    
+    func CaloriesIntake (birthdate: Date, gender: String, weight: Double, height: Double, Activitylevel: Int)  -> Double { //Allow the computer to calculate the number of calories the user should eat refers to https://www.thecalculator.co/health/Calorie-Calculator-125.html
+        let currentdate = Date()
+         var age:Int{ return Int((DateInterval(start: birthdate, end: currentdate).duration) / 31557600)} //Calculate the time differenc between birthdate and today date and print the amount of years lived
+        print(age) //Debug Only
+        print(Activitylevel) //Debug Only
+        if gender == "Female" {
+            let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) - 161 //Based on the Mifflin-St Jeor equation used for the estimation of the BMR
+            print(BMR)
+            //Depending on the activity level more or less calories are needed to be eaten a day
+            if Activitylevel == 1 {
+                let coef = 1.20000
+                let cal = BMR * coef
+                return cal
+            }
+            if Activitylevel == 2 {
+                let coef = 1.3751
+                let cal = BMR * coef
+                return cal
+            }
+            if Activitylevel == 3 {
+                let coef = 1.41870
+                let cal = BMR * coef
+                return cal
+            }
+            if Activitylevel == 4 {
+                let coef = 1.46251
+                let cal = BMR * coef
+                return cal
+            }
+            
+            if Activitylevel == 5 {
+                let coef = 1.5500
+                let cal = BMR * coef
+                return cal
+            }
+            
+            if Activitylevel == 6 {
+                let coef = 1.6376
+                let cal = BMR * coef
+                return cal
+            }
+            
+            else {
+                let coef = 1.9100
+                let cal = BMR * coef
+                return cal
+            }
+            
+            
+            
+        }
+        
+        if gender == "Male" {
+            let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) + 5
+            
+           switch Activitylevel {
+               case 1 :
+                   return BMR * 1.2000
+               case 2:
+                   return BMR * 1.3751
+               case 3 :
+                   return BMR * 1.41870
+               case 4 :
+                   return BMR * 1.46251
+               case 5:
+                   return BMR * 1.5500
+               case 6 :
+                   return BMR * 1.6376
+               case 7 :
+                   return BMR * 1.9100
+               default:
+                   return BMR
+           }
+        }
+        
+        else {
+            let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) + 5
+            
+            switch Activitylevel {
+                case 1 :
+                    return BMR * 1.2000
+                case 2:
+                    return BMR * 1.3751
+                case 3 :
+                    return BMR * 1.41870
+                case 4 :
+                    return BMR * 1.46251
+                case 5:
+                    return BMR * 1.5500
+                case 6 :
+                    return BMR * 1.6376
+                case 7 :
+                    return BMR * 1.9100
+                default:
+                    return BMR
+            }
+        }
+    }
+    
+    
 }
 
 struct GenderPicker: View {
@@ -115,124 +212,6 @@ struct GenderPicker: View {
             .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
             .animation(.spring()) //Animation to make it smoother
         }
-    }
-    func DailyIntakeAlgo() {
-        // Variable needed for calcualtion
-        // These variable will be collected by the UI later
-        var age: Int = 10 //years
-        var gender: String = "female" // gender
-        var weight: Double = 40 //kg
-        var height: Int = 150 //cm
-        var Activitylevel: Int = 1 //Listed below
-
-        // Activitylevel 1 = No or little exercise
-        // Activity level 2 = Easy exercise (2-3 times/ week)
-        // Activty level 3  = Moderate exercise  (4 times / week)
-        // Activity level 4  = Active exercise (5 times/ week)
-        // Activity level 5 = Very active exercise (5 times intense / week)
-        // Activty level 6 = Day by day exercise
-        // Activty level 7 = Daily exercise and physical job
-
-
-        // Variable returned to the user
-        var dailykcal: Int
-
-
-        func CaloriesIntake (age: Int, gender: String, weight: Double, height: Int, Activitylevel: Int)  -> Double {
-            
-            if gender == "female" {
-                let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) - 161
-                
-                if Activitylevel == 1 {
-                    let coef = 1.20000
-                    let cal = BMR * coef
-                    return cal
-                }
-                if Activitylevel == 2 {
-                    let coef = 1.3751
-                    let cal = BMR * coef
-                    return cal
-                }
-                if Activitylevel == 3 {
-                    let coef = 1.41870
-                    let cal = BMR * coef
-                    return cal
-                }
-                if Activitylevel == 4 {
-                    let coef = 1.46251
-                    let cal = BMR * coef
-                    return cal
-                }
-                
-                if Activitylevel == 5 {
-                    let coef = 1.5500
-                    let cal = BMR * coef
-                    return cal
-                }
-                
-                if Activitylevel == 6 {
-                    let coef = 1.6376
-                    let cal = BMR * coef
-                    return cal
-                }
-                
-                else {
-                    let coef = 1.9100
-                    let cal = BMR * coef
-                    return cal
-                }
-                
-                
-                
-            }
-            
-            if gender == "male" {
-                let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) + 5
-                
-               switch Activitylevel {
-                   case 1 :
-                       return BMR * 1.2000
-                   case 2 :
-                       return BMR * 1.3751
-                   case 3 :
-                       return BMR * 1.41870
-                   case 4 :
-                       return BMR * 1.46251
-                   case 5 :
-                       return BMR * 1.5500
-                   case 6 :
-                       return BMR * 1.6376
-                   case 7 :
-                       return BMR * 1.9100
-                   default:
-                       return BMR
-               }
-            }
-            
-            else {
-                let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) + 5
-                
-                switch Activitylevel {
-                    case 1 :
-                        return BMR * 1.2000
-                    case 2 :
-                        return BMR * 1.3751
-                    case 3 :
-                        return BMR * 1.41870
-                    case 4 :
-                        return BMR * 1.46251
-                    case 5 :
-                        return BMR * 1.5500
-                    case 6 :
-                        return BMR * 1.6376
-                    case 7 :
-                        return BMR * 1.9100
-                    default:
-                        return BMR
-                }
-            }
-        }
-        
     }
 
 }
@@ -264,52 +243,6 @@ struct HeightWeightView: View {
     }
 }
 
-struct BirthView : View {
-    
-    @Binding var show:Bool //Whever the birthview should be on the screen
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter
-    } //Clean the birthdate to the user
-    //Var stores it has a whole for better calculations
-    
-    @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
-    
-    var body: some View {
-        VStack {
-            
-            Text("Select your date of birth below:")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .padding(.top, 30)
-                .padding(.bottom, 20)
-            
-            Text("This is neccessary in order to calculate your age")
-                .lineLimit(2)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.bottom, 20)
-            
-            
-            DatePicker(selection: $userSettings.birthdate, in: ...Date(), displayedComponents: .date) {
-                Text("Select your birthdate") //Allows the user to select their birthdate
-            }.labelsHidden()
-
-            Text("Your birthdate is \(userSettings.birthdate, formatter: dateFormatter)") //Feedback to the user what is their birthdate
-
-        
-            Button(action: {
-                self.show.toggle() //Returns to the main of the form
-            }) {
-                HStack {
-                    Image(systemName: "arrow.left")
-                    Text("Back")
-                }
-            .foregroundColor(Color("Color"))
-            }.buttonStyle(SimpleButtonStyle()) //Declared in Content view
-        }
-    }
-}
 struct DailyIntakeCalculatorView_Previews: PreviewProvider {
     static var previews: some View {
         DailyIntakeCalculatorView() //Debug only
@@ -321,13 +254,14 @@ struct DropDownActivity: View {
     @State var selected = "" // Which option is selected
     @Binding var filledout: Bool //Whever the form is filled out
     @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
+
     
     
     var body: some View{
         VStack(alignment: .center) {
             VStack() {
             HStack(){
-                Text( userSettings.activitylevel == "" ? "What your activity level? " : userSettings.activitylevel) //Default value to trigger the user
+                Text( selected == "" ? "What your activity level? " : selected) //Default value to trigger the user
                 .fontWeight(.bold)
                 .foregroundColor(.black)
                 .lineLimit(1)
@@ -344,7 +278,7 @@ struct DropDownActivity: View {
                 print("1")
                 self.expand.toggle() //Expands the dropdown menu
                 self.filledout = true //confirms that the form has been succesfully fieldout
-                self.userSettings.activitylevel = "No or little exercise/sedentary" //Stores to device storage the activity level
+                self.userSettings.activitylevel = 1 //Stores to device storage the activity level
             }) {
                 Text("No or little exercise/sedentary")
                 .padding()
@@ -357,11 +291,11 @@ struct DropDownActivity: View {
                 print("2")
                 self.expand.toggle()  //Expands the dropdown menu
                 self.filledout = true //confirms that the form has been succesfully fieldout
-                self.userSettings.activitylevel = "Easy exercise (2-3 times/week)" //Stores to device storage the activity level
+                self.userSettings.activitylevel = 2 //Stores to device storage the activity level
             }) {
                 Text("Easy exercise (2-3 times/week)")
                 .padding()
-                if userSettings.activitylevel == "Easy exercise (2-3 times/week)" {
+                if selected == "Easy exercise (2-3 times/week)" {
                     Image(systemName: "checkmark")
                 }
             }.foregroundColor(.black)
@@ -370,11 +304,11 @@ struct DropDownActivity: View {
                 print("3")
                 self.expand.toggle() //Expands the dropdown menu
                 self.filledout = true //confirms that the form has been succesfully fieldout
-                self.userSettings.activitylevel = "Moderate exercise (4 times/week)" //Stores to device storage the activity level
+                self.userSettings.activitylevel = 3 //Stores to device storage the activity level
             }) {
                 Text("Moderate exercise (4 times/week)")
                 .padding()
-                if userSettings.activitylevel == "Moderate exercise (4 times/week)" {
+                if selected == "Moderate exercise (4 times/week)" {
                     Image(systemName: "checkmark")
                 }
             }.foregroundColor(.black)
@@ -383,11 +317,11 @@ struct DropDownActivity: View {
                 print("4")
                 self.expand.toggle() //Expands the dropdown menu
                 self.filledout = true //confirms that the form has been succesfully fieldout
-                self.userSettings.activitylevel = "Daily exercise and physical job" //Stores to device storage the activity level
+                self.userSettings.activitylevel = 7 //Stores to device storage the activity level
             }) {
                 Text("Daily exercise and physical job")
                 .padding()
-                if userSettings.activitylevel == "Daily exercise and physical job" {
+                if selected == "Daily exercise and physical job" {
                     Image(systemName: "checkmark")
                 }
             }.foregroundColor(.black)
