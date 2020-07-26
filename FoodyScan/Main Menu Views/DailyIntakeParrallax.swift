@@ -11,10 +11,8 @@ import SwiftUI
 struct DailyIntakeParrallax: View {
     
     @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user has setup the account links back to the sign up screej
-    
     var body: some View {
         ZStack {
-            
             if self.setup { //If the user has succesfully logged in then the screen goes to the home screen
                 HomeScreenView()
                     .padding(.top, 50)
@@ -79,10 +77,9 @@ struct DailyIntakeParrallax: View {
                 
                     .frame(width: 350)
                 
+                    }
                 }
-                
             }
-        }
                 .edgesIgnoringSafeArea(.top)
                 .onAppear {
                     NotificationCenter.default.addObserver(forName: NSNotification.Name("setup"), object: nil, queue: .main) { (_) in

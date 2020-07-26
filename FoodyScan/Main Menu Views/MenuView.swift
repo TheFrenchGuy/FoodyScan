@@ -10,18 +10,18 @@ import SwiftUI
 import Firebase
 
 struct MenuView: View {
+    @State private var showQrView = false
     var username = UserDefaults.standard.string(forKey: "UserName") ?? "Error"
     var email =  UserDefaults.standard.string(forKey: "email") ?? "Error"
     var body: some View {
         VStack(alignment: .leading) {
-            
             HStack {
                 Text("Welcome \(username)")
                     .foregroundColor(.gray)
                     .font(.title)
             }.padding(.top , 150)
             HStack {
-                NavigationLink(destination: Text("QR Code view")){
+                NavigationLink(destination: ScannerView(showSelf: $showQrView), isActive: $showQrView){
                 
                     Image(systemName: "barcode.viewfinder")
                         .foregroundColor(.gray)
@@ -75,6 +75,7 @@ struct MenuView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(red: 32/255, green: 32/255, blue: 32/255))
         .edgesIgnoringSafeArea(.all)
+            
     }
 }
 

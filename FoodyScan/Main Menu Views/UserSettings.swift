@@ -54,6 +54,7 @@ class UserSettings: ObservableObject { //Class used to store user settings
         self.activitylevel = UserDefaults.standard.object(forKey: "activitylevel") as? Int ?? 1
         self.birthdate = UserDefaults.standard.object(forKey: "birthdate") as? Date ?? Date()
         self.dailyintakekcal = UserDefaults.standard.object(forKey: "dailyintakekcal") as? Double ?? 1000.0
+        
     }
 }
 

@@ -19,6 +19,12 @@
 		60116C2624C99EF700DF9E09 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60116C2524C99EF700DF9E09 /* GoogleService-Info.plist */; };
 		60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116C2724C9A0BC00DF9E09 /* HomeScreenView.swift */; };
 		60116C2A24C9A32F00DF9E09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60116C2924C9A32F00DF9E09 /* Assets.xcassets */; };
+		60327ED324CE242E003D49F7 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60327ED224CE242E003D49F7 /* ScannerViewModel.swift */; };
+		60327ED524CE24A9003D49F7 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60327ED424CE24A9003D49F7 /* ScannerView.swift */; };
+		60327ED724CE25CE003D49F7 /* QrCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60327ED624CE25CE003D49F7 /* QrCodeCameraDelegate.swift */; };
+		60327ED924CE2606003D49F7 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60327ED824CE2606003D49F7 /* CameraPreview.swift */; };
+		60327EDB24CE2680003D49F7 /* QrCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60327EDA24CE2680003D49F7 /* QrCodeScannerView.swift */; };
+		60327EE124CE2922003D49F7 /* ProductInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60327EE024CE2922003D49F7 /* ProductInfoView.swift */; };
 		605ADB8324CCD4C800E4A200 /* DailyIntakeParrallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605ADB8224CCD4C800E4A200 /* DailyIntakeParrallax.swift */; };
 		605EB62124CD8E91005EA648 /* FoodyScan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 605EB61F24CD8E91005EA648 /* FoodyScan.xcdatamodeld */; };
 		6075E0BE24CB1FA300712730 /* DailyIntakeCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */; };
@@ -81,6 +87,12 @@
 		60116C2524C99EF700DF9E09 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		60116C2724C9A0BC00DF9E09 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		60116C2924C9A32F00DF9E09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		60327ED224CE242E003D49F7 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
+		60327ED424CE24A9003D49F7 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		60327ED624CE25CE003D49F7 /* QrCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeCameraDelegate.swift; sourceTree = "<group>"; };
+		60327ED824CE2606003D49F7 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		60327EDA24CE2680003D49F7 /* QrCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeScannerView.swift; sourceTree = "<group>"; };
+		60327EE024CE2922003D49F7 /* ProductInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoView.swift; sourceTree = "<group>"; };
 		605ADB8224CCD4C800E4A200 /* DailyIntakeParrallax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeParrallax.swift; sourceTree = "<group>"; };
 		605EB62024CD8E91005EA648 /* FoodyScan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodyScan.xcdatamodel; sourceTree = "<group>"; };
 		6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeCalculatorView.swift; sourceTree = "<group>"; };
@@ -150,6 +162,7 @@
 		60116BF124C99DE300DF9E09 /* FoodyScan */ = {
 			isa = PBXGroup;
 			children = (
+				60327ED124CE23E2003D49F7 /* QrCode Module */,
 				607E384A24CAF34F0073DDFD /* Main Menu Views */,
 				60F5F11B24CA34F600835292 /* Login  */,
 				60116C2924C9A32F00DF9E09 /* Assets.xcassets */,
@@ -189,6 +202,19 @@
 				60116C1924C99DE600DF9E09 /* Info.plist */,
 			);
 			path = FoodyScanUITests;
+			sourceTree = "<group>";
+		};
+		60327ED124CE23E2003D49F7 /* QrCode Module */ = {
+			isa = PBXGroup;
+			children = (
+				60327ED224CE242E003D49F7 /* ScannerViewModel.swift */,
+				60327ED424CE24A9003D49F7 /* ScannerView.swift */,
+				60327ED624CE25CE003D49F7 /* QrCodeCameraDelegate.swift */,
+				60327ED824CE2606003D49F7 /* CameraPreview.swift */,
+				60327EDA24CE2680003D49F7 /* QrCodeScannerView.swift */,
+				60327EE024CE2922003D49F7 /* ProductInfoView.swift */,
+			);
+			path = "QrCode Module";
 			sourceTree = "<group>";
 		};
 		607E384A24CAF34F0073DDFD /* Main Menu Views */ = {
@@ -518,10 +544,16 @@
 				60B5EC5A24CC407A008EFC70 /* UserSettings.swift in Sources */,
 				60F5F11824CA334B00835292 /* SignUp.swift in Sources */,
 				60F5F11A24CA33B300835292 /* GoogleLoginView.swift in Sources */,
+				60327EE124CE2922003D49F7 /* ProductInfoView.swift in Sources */,
 				60116BF324C99DE300DF9E09 /* AppDelegate.swift in Sources */,
 				60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */,
 				607E384924CAE0B30073DDFD /* MenuView.swift in Sources */,
+				60327ED724CE25CE003D49F7 /* QrCodeCameraDelegate.swift in Sources */,
+				60327ED324CE242E003D49F7 /* ScannerViewModel.swift in Sources */,
+				60327EDB24CE2680003D49F7 /* QrCodeScannerView.swift in Sources */,
 				6075E0BE24CB1FA300712730 /* DailyIntakeCalculatorView.swift in Sources */,
+				60327ED524CE24A9003D49F7 /* ScannerView.swift in Sources */,
+				60327ED924CE2606003D49F7 /* CameraPreview.swift in Sources */,
 				605ADB8324CCD4C800E4A200 /* DailyIntakeParrallax.swift in Sources */,
 				60F5F11624CA31FD00835292 /* Login.swift in Sources */,
 				60116BFA24C99DE300DF9E09 /* ContentView.swift in Sources */,
