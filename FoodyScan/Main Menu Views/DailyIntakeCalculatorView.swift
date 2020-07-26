@@ -11,20 +11,22 @@ import Firebase
 import GoogleSignIn
 
 struct DailyIntakeCalculatorView: View {
-    @State var show = false
-    @ObservedObject var userSettings = UserSettings()
-    @State var filledout = false
+    @State var show = false //Whever to show or not the birthdate view
+    @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
+    @State var filledout = false // Whever the form is filled out
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         return formatter
     }
+    
     var body: some View {
         ZStack {
-            Color.offWhite.edgesIgnoringSafeArea(.all)
+            Color.offWhite.edgesIgnoringSafeArea(.all) //Used to change background color
+            
             if self.show {
-                BirthView(show: self.$show)
+                BirthView(show: self.$show)//Show the birthdate view so doesnt get on top screen
             } else {
             
             VStack(alignment: .leading) {
@@ -33,45 +35,43 @@ struct DailyIntakeCalculatorView: View {
                 
                 
                 Button(action: {
-                    self.show.toggle()
+                    self.show.toggle() //Loads the birthdate view
                     
-                }) {
-                    HStack(alignment: .center, spacing: 20) {
-                        Text("Select date of birth")
-                        .fontWeight(.semibold)
-                        .lineLimit(1)
-                    Image(systemName: "arrow.right")
-                        .font(.system(size: 20))
-                    }.foregroundColor(Color("Color"))
-                        
+                    }) {
+                        HStack(alignment: .center, spacing: 20) {
+                            Text("Select date of birth")
+                            .fontWeight(.semibold)
+                            .lineLimit(1)
+                        Image(systemName: "arrow.right")
+                            .font(.system(size: 20))
+                        }.foregroundColor(Color("Color"))
+                    }
+                    .buttonStyle(SimpleButtonStyle())
+                    .padding(.horizontal, 80)
                     
-                }
-                .buttonStyle(SimpleButtonStyle())
-                .padding(.horizontal, 80)
-                
                 HeightWeightView()
                 
-                DropDownActivity(filledout: self.$filledout)
+                DropDownActivity(filledout: self.$filledout) //Passes if var to check if the form is filled out
                 
             
                 Button(action: {
-                    print("success setup") //Debug Only
-                    UserDefaults.standard.set(true, forKey: "setup") //The user has already previously logged in therefore he doesnt need to complete the DailyIntake Calculator
-                    NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil)
-                }) {
+                        print("success setup") //Debug Only
+                        UserDefaults.standard.set(true, forKey: "setup") //The user has already previously logged in therefore he doesnt need to complete the DailyIntake Calculator
+                        NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil)
+                    }) {
                     
                     if self.filledout == false {
-                        Text("Please fill out the whole form")
-                        .foregroundColor(.white)
+                        Text("Please fill out the whole form") // If the user has not filled out all of the fields
+                            .foregroundColor(.white)
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 50)
                             .background(Color.red)
                             .cornerRadius(10)
-                        .padding(.top, 25)
-                        .padding(.horizontal, 30)
+                            .padding(.top, 25)
+                            .padding(.horizontal, 30)
                     } else {
                         HStack {
-                            Text("Continue")
+                            Text("Continue") //Changes the form to the Home Screen
                             Image(systemName: "arrow.right")
                                 
                             }
@@ -80,10 +80,10 @@ struct DailyIntakeCalculatorView: View {
                             .frame(width: UIScreen.main.bounds.width - 50)
                             .background(Color("Color"))
                             .cornerRadius(10)
-                        .padding(.top, 25)
-                        .padding(.horizontal, 30)
+                            .padding(.top, 25)
+                            .padding(.horizontal, 30)
                         }
-                }.disabled(self.filledout == false)
+                    }.disabled(self.filledout == false)
                 }
             }
         }
@@ -91,7 +91,7 @@ struct DailyIntakeCalculatorView: View {
 }
 
 struct GenderPicker: View {
-    @ObservedObject var userSettings = UserSettings()
+    @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
     var body: some View {
         VStack {
             HStack() {
@@ -102,32 +102,32 @@ struct GenderPicker: View {
             }
             Picker(selection: $userSettings.gender, label: Text("Gender")) {
                 ForEach(userSettings.genders, id: \.self) { gender in
-                    Text(gender)
+                    Text(gender) //Allows the user to choose between 3 genders
                 }
             }
                 
-            .pickerStyle(SegmentedPickerStyle())
+            .pickerStyle(SegmentedPickerStyle()) //So that the picker is all horizontal
             .padding()
             .background(Color.offWhite)
             .cornerRadius(10)
-            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
+            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)// Shadows neccesary to make a neumophism design
             .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
-                .animation(.spring())
+            .animation(.spring()) //Animation to make it smoother
         }
     }
 }
 
 struct HeightWeightView: View {
-    @ObservedObject var userSettings = UserSettings()
+    @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
     
     var body: some View {
         VStack {
             VStack {
                 Text("Please select your height")
                     .bold()
-                Slider(value: $userSettings.height, in: 120...220, step: 0.5)
-                    .accentColor(Color("Color"))
-                Text("You are \(userSettings.height, specifier: "%g") cm")
+                Slider(value: $userSettings.height, in: 120...220, step: 0.5) //Ranged between 120cm and 220cm with an increase of 0.5cm
+                    .accentColor(Color("Color")) //So that the slider matches the main color of the app
+                Text("You are \(userSettings.height, specifier: "%g") cm") //Feedback to the user their height
             }
             
             .padding()
@@ -135,9 +135,9 @@ struct HeightWeightView: View {
             VStack {
                 Text("Please select your weight")
                     .bold()
-                Slider(value: $userSettings.weight, in: 40...150, step: 0.5)
-                    .accentColor(Color("Color"))
-                Text("You weight \(userSettings.weight, specifier: "%g") kg")
+                Slider(value: $userSettings.weight, in: 40...150, step: 0.5) //Ranged between 40kg and 150kg with a step of 0.5kg
+                    .accentColor(Color("Color")) //So that the slider matches the main color of the app
+                Text("You weight \(userSettings.weight, specifier: "%g") kg") //Feedback of the user their weight
             }
             .padding()
         }
@@ -146,14 +146,15 @@ struct HeightWeightView: View {
 
 struct BirthView : View {
     
-    @Binding var show:Bool
+    @Binding var show:Bool //Whever the birthview should be on the screen
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         return formatter
-    }
+    } //Clean the birthdate to the user
+    //Var stores it has a whole for better calculations
     
-    @ObservedObject var userSettings = UserSettings()
+    @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
     
     var body: some View {
         VStack {
@@ -171,46 +172,46 @@ struct BirthView : View {
             
             
             DatePicker(selection: $userSettings.birthdate, in: ...Date(), displayedComponents: .date) {
-                Text("Select your birthdate")
+                Text("Select your birthdate") //Allows the user to select their birthdate
             }.labelsHidden()
 
-            Text("Your birthdate is \(userSettings.birthdate, formatter: dateFormatter)")
+            Text("Your birthdate is \(userSettings.birthdate, formatter: dateFormatter)") //Feedback to the user what is their birthdate
 
         
             Button(action: {
-                self.show.toggle()
+                self.show.toggle() //Returns to the main of the form
             }) {
                 HStack {
                     Image(systemName: "arrow.left")
                     Text("Back")
                 }
             .foregroundColor(Color("Color"))
-            }.buttonStyle(SimpleButtonStyle())
+            }.buttonStyle(SimpleButtonStyle()) //Declared in Content view
         }
     }
 }
 struct DailyIntakeCalculatorView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyIntakeCalculatorView()
+        DailyIntakeCalculatorView() //Debug only
     }
 }
 
 struct DropDownActivity: View {
-    @State var expand = false
-    @State var selected = ""
-    @Binding var filledout: Bool
-    @ObservedObject var userSettings = UserSettings()
+    @State var expand = false //whever the dropdown menu is all shown
+    @State var selected = "" // Which option is selected
+    @Binding var filledout: Bool //Whever the form is filled out
+    @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
     
     
     var body: some View{
         VStack(alignment: .center) {
             VStack() {
             HStack(){
-                Text( userSettings.activitylevel == "" ? "What your activity level? " : userSettings.activitylevel)
+                Text( userSettings.activitylevel == "" ? "What your activity level? " : userSettings.activitylevel) //Default value to trigger the user
                 .fontWeight(.bold)
                 .foregroundColor(.black)
                 .lineLimit(1)
-            Image(systemName: expand ? "chevron.up" : "chevron.down")
+            Image(systemName: expand ? "chevron.up" : "chevron.down") //Changes the images based if tapped or not
                 .resizable()
                 .frame(width: 13, height: 6)
                 .foregroundColor(.black)
@@ -221,9 +222,9 @@ struct DropDownActivity: View {
         if expand {
             Button(action: {
                 print("1")
-                self.expand.toggle()
-                self.filledout = true
-                self.userSettings.activitylevel = "No or little exercise/sedentary"
+                self.expand.toggle() //Expands the dropdown menu
+                self.filledout = true //confirms that the form has been succesfully fieldout
+                self.userSettings.activitylevel = "No or little exercise/sedentary" //Stores to device storage the activity level
             }) {
                 Text("No or little exercise/sedentary")
                 .padding()
@@ -234,9 +235,9 @@ struct DropDownActivity: View {
             
             Button(action: {
                 print("2")
-                self.expand.toggle()
-                self.filledout = true
-                self.userSettings.activitylevel = "Easy exercise (2-3 times/week)"
+                self.expand.toggle()  //Expands the dropdown menu
+                self.filledout = true //confirms that the form has been succesfully fieldout
+                self.userSettings.activitylevel = "Easy exercise (2-3 times/week)" //Stores to device storage the activity level
             }) {
                 Text("Easy exercise (2-3 times/week)")
                 .padding()
@@ -247,9 +248,9 @@ struct DropDownActivity: View {
             
             Button(action: {
                 print("3")
-                self.expand.toggle()
-                self.filledout = true
-                self.userSettings.activitylevel = "Moderate exercise (4 times/week)"
+                self.expand.toggle() //Expands the dropdown menu
+                self.filledout = true //confirms that the form has been succesfully fieldout
+                self.userSettings.activitylevel = "Moderate exercise (4 times/week)" //Stores to device storage the activity level
             }) {
                 Text("Moderate exercise (4 times/week)")
                 .padding()
@@ -260,9 +261,9 @@ struct DropDownActivity: View {
             
             Button(action: {
                 print("4")
-                self.expand.toggle()
-                self.filledout = true
-                self.userSettings.activitylevel = "Daily exercise and physical job"
+                self.expand.toggle() //Expands the dropdown menu
+                self.filledout = true //confirms that the form has been succesfully fieldout
+                self.userSettings.activitylevel = "Daily exercise and physical job" //Stores to device storage the activity level
             }) {
                 Text("Daily exercise and physical job")
                 .padding()
@@ -270,12 +271,6 @@ struct DropDownActivity: View {
                     Image(systemName: "checkmark")
                 }
             }.foregroundColor(.black)
-
-            
-            
-            
-            
-            
 
         }
             

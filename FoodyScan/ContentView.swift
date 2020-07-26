@@ -35,8 +35,8 @@ import GoogleSignIn
                     if self.status{
                         if self.setup { //So if already logged in the past then it will go straight to the main menu
                             HomeScreenView()
-                        } else { //if it has not logged in before goes to the Daily Intake Calc
-                            DailyIntakeParrallax()
+                        } else { //if it has not logged in before goes to the Daily Intake
+                            DailyIntakeParrallax() //Where the user will be able to continue with the setup of the account
                         }
                     }
                     

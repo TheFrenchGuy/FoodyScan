@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class UserSettings: ObservableObject {
+class UserSettings: ObservableObject { //Class used to store user settings
     @Published var height: Double {
         didSet {
             UserDefaults.standard.set(height, forKey: "height")
@@ -27,7 +27,7 @@ class UserSettings: ObservableObject {
         }
     }
     
-    public var genders = ["Male", "Female", "Other"]
+    public var genders = ["Male", "Female", "Other"] //Necessary for the picker in the daily intake calculator view
     
     @Published var activitylevel: String {
         didSet {
@@ -41,7 +41,7 @@ class UserSettings: ObservableObject {
         }
     }
     
-    init() {
+    init() { //Creates default values for the app and allows the class to be initialaised
         self.height = UserDefaults.standard.object(forKey: "height") as? Double ?? 1.0
         self.weight = UserDefaults.standard.object(forKey: "weight") as? Double ?? 1.0
         self.gender = UserDefaults.standard.object(forKey: "gender") as? String ?? "Other"

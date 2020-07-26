@@ -10,21 +10,21 @@ import SwiftUI
 
 struct DailyIntakeParrallax: View {
     
-    @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user has setup the account
+    @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user has setup the account links back to the sign up screej
     
     var body: some View {
         ZStack {
             
-            if self.setup {
+            if self.setup { //If the user has succesfully logged in then the screen goes to the home screen
                 HomeScreenView()
                     .padding(.top, 50)
             }
             else {
             Color.offWhite.edgesIgnoringSafeArea(.all)
-            ScrollView {
-                GeometryReader { geometry in
+            ScrollView { //Where the headline and the content text will be stored
+                GeometryReader { geometry in //reads out the dimensions of the scroll view and keep track of the current scroll view position
                     ZStack {
-                        if geometry.frame(in: .global).minY <= 0 {
+                        if geometry.frame(in: .global).minY <= 0 { //Needed for the parallax effect while scrolling downward so only if the minY of our GeometryReader is negative or zero .
                             Image("TopViewFood")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -34,8 +34,8 @@ struct DailyIntakeParrallax: View {
                         } else {
                             Image("TopViewFood")
                                 .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: geometry.size.width, height: geometry.size.height + geometry.frame(in: .global).minY)
+                                .aspectRatio(contentMode: .fill) //Necessary as we need to fill all of the top screen area more clean
+                                .frame(width: geometry.size.width, height: geometry.size.height + geometry.frame(in: .global).minY) //Makes the image stretchy when you scroll up
                                 .clipped()
                                 .offset(y: -geometry.frame(in: .global).minY)
                         }
@@ -88,7 +88,7 @@ struct DailyIntakeParrallax: View {
                     NotificationCenter.default.addObserver(forName: NSNotification.Name("setup"), object: nil, queue: .main) { (_) in
                                         
                         self.setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false
-                    }
+                    } //Necessary to montor if the UserDefault state of the variable has changed allowing the view to change to the main screen
                 }
     }
 }
