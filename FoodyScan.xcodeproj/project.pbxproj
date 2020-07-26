@@ -20,7 +20,7 @@
 		60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116C2724C9A0BC00DF9E09 /* HomeScreenView.swift */; };
 		60116C2A24C9A32F00DF9E09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60116C2924C9A32F00DF9E09 /* Assets.xcassets */; };
 		605ADB8324CCD4C800E4A200 /* DailyIntakeParrallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605ADB8224CCD4C800E4A200 /* DailyIntakeParrallax.swift */; };
-		6075E07424CAFC4100712730 /* FoodyScan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6075E07224CAFC4100712730 /* FoodyScan.xcdatamodeld */; };
+		605EB62124CD8E91005EA648 /* FoodyScan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 605EB61F24CD8E91005EA648 /* FoodyScan.xcdatamodeld */; };
 		6075E0BE24CB1FA300712730 /* DailyIntakeCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */; };
 		607E384924CAE0B30073DDFD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E384824CAE0B30073DDFD /* MenuView.swift */; };
 		60B5EC5A24CC407A008EFC70 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5EC5924CC407A008EFC70 /* UserSettings.swift */; };
@@ -48,6 +48,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		605EB61D24CD8D7B005EA648 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		060728A70B162DEC778F29DD /* Pods-FoodyScan-FoodyScanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan-FoodyScanUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		09C8190BD6E24BA136DFE24E /* Pods-FoodyScan-FoodyScanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan-FoodyScanUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +82,7 @@
 		60116C2724C9A0BC00DF9E09 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		60116C2924C9A32F00DF9E09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		605ADB8224CCD4C800E4A200 /* DailyIntakeParrallax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeParrallax.swift; sourceTree = "<group>"; };
-		6075E07324CAFC4100712730 /* FoodyScan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodyScan.xcdatamodel; sourceTree = "<group>"; };
+		605EB62024CD8E91005EA648 /* FoodyScan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodyScan.xcdatamodel; sourceTree = "<group>"; };
 		6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeCalculatorView.swift; sourceTree = "<group>"; };
 		607E384824CAE0B30073DDFD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		60B5EC5924CC407A008EFC70 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
@@ -147,7 +159,7 @@
 				60116BF924C99DE300DF9E09 /* ContentView.swift */,
 				60116C0024C99DE500DF9E09 /* LaunchScreen.storyboard */,
 				60116C0324C99DE500DF9E09 /* Info.plist */,
-				6075E07224CAFC4100712730 /* FoodyScan.xcdatamodeld */,
+				605EB61F24CD8E91005EA648 /* FoodyScan.xcdatamodeld */,
 				60116BFD24C99DE500DF9E09 /* Preview Content */,
 			);
 			path = FoodyScan;
@@ -238,6 +250,7 @@
 				60116BED24C99DE300DF9E09 /* Resources */,
 				035304422D4DC7191C849CC8 /* [CP] Embed Pods Frameworks */,
 				79BB833701AD3A40C970FC77 /* [CP] Copy Pods Resources */,
+				605EB61D24CD8D7B005EA648 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -501,7 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6075E07424CAFC4100712730 /* FoodyScan.xcdatamodeld in Sources */,
+				605EB62124CD8E91005EA648 /* FoodyScan.xcdatamodeld in Sources */,
 				60B5EC5A24CC407A008EFC70 /* UserSettings.swift in Sources */,
 				60F5F11824CA334B00835292 /* SignUp.swift in Sources */,
 				60F5F11A24CA33B300835292 /* GoogleLoginView.swift in Sources */,
@@ -848,14 +861,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		6075E07224CAFC4100712730 /* FoodyScan.xcdatamodeld */ = {
+		605EB61F24CD8E91005EA648 /* FoodyScan.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				6075E07324CAFC4100712730 /* FoodyScan.xcdatamodel */,
+				605EB62024CD8E91005EA648 /* FoodyScan.xcdatamodel */,
 			);
-			currentVersion = 6075E07324CAFC4100712730 /* FoodyScan.xcdatamodel */;
-			name = FoodyScan.xcdatamodeld;
-			path = ../../../../Desktop/FoodyScan.xcdatamodeld;
+			currentVersion = 605EB62024CD8E91005EA648 /* FoodyScan.xcdatamodel */;
+			path = FoodyScan.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

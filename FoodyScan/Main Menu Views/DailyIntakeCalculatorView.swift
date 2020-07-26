@@ -58,6 +58,7 @@ struct DailyIntakeCalculatorView: View {
                         print("success setup") //Debug Only
                         UserDefaults.standard.set(true, forKey: "setup") //The user has already previously logged in therefore he doesnt need to complete the DailyIntake Calculator
                         NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil)
+                        
                     }) {
                     
                     if self.filledout == false {
@@ -115,6 +116,125 @@ struct GenderPicker: View {
             .animation(.spring()) //Animation to make it smoother
         }
     }
+    func DailyIntakeAlgo() {
+        // Variable needed for calcualtion
+        // These variable will be collected by the UI later
+        var age: Int = 10 //years
+        var gender: String = "female" // gender
+        var weight: Double = 40 //kg
+        var height: Int = 150 //cm
+        var Activitylevel: Int = 1 //Listed below
+
+        // Activitylevel 1 = No or little exercise
+        // Activity level 2 = Easy exercise (2-3 times/ week)
+        // Activty level 3  = Moderate exercise  (4 times / week)
+        // Activity level 4  = Active exercise (5 times/ week)
+        // Activity level 5 = Very active exercise (5 times intense / week)
+        // Activty level 6 = Day by day exercise
+        // Activty level 7 = Daily exercise and physical job
+
+
+        // Variable returned to the user
+        var dailykcal: Int
+
+
+        func CaloriesIntake (age: Int, gender: String, weight: Double, height: Int, Activitylevel: Int)  -> Double {
+            
+            if gender == "female" {
+                let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) - 161
+                
+                if Activitylevel == 1 {
+                    let coef = 1.20000
+                    let cal = BMR * coef
+                    return cal
+                }
+                if Activitylevel == 2 {
+                    let coef = 1.3751
+                    let cal = BMR * coef
+                    return cal
+                }
+                if Activitylevel == 3 {
+                    let coef = 1.41870
+                    let cal = BMR * coef
+                    return cal
+                }
+                if Activitylevel == 4 {
+                    let coef = 1.46251
+                    let cal = BMR * coef
+                    return cal
+                }
+                
+                if Activitylevel == 5 {
+                    let coef = 1.5500
+                    let cal = BMR * coef
+                    return cal
+                }
+                
+                if Activitylevel == 6 {
+                    let coef = 1.6376
+                    let cal = BMR * coef
+                    return cal
+                }
+                
+                else {
+                    let coef = 1.9100
+                    let cal = BMR * coef
+                    return cal
+                }
+                
+                
+                
+            }
+            
+            if gender == "male" {
+                let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) + 5
+                
+               switch Activitylevel {
+                   case 1 :
+                       return BMR * 1.2000
+                   case 2 :
+                       return BMR * 1.3751
+                   case 3 :
+                       return BMR * 1.41870
+                   case 4 :
+                       return BMR * 1.46251
+                   case 5 :
+                       return BMR * 1.5500
+                   case 6 :
+                       return BMR * 1.6376
+                   case 7 :
+                       return BMR * 1.9100
+                   default:
+                       return BMR
+               }
+            }
+            
+            else {
+                let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) + 5
+                
+                switch Activitylevel {
+                    case 1 :
+                        return BMR * 1.2000
+                    case 2 :
+                        return BMR * 1.3751
+                    case 3 :
+                        return BMR * 1.41870
+                    case 4 :
+                        return BMR * 1.46251
+                    case 5 :
+                        return BMR * 1.5500
+                    case 6 :
+                        return BMR * 1.6376
+                    case 7 :
+                        return BMR * 1.9100
+                    default:
+                        return BMR
+                }
+            }
+        }
+        
+    }
+
 }
 
 struct HeightWeightView: View {
