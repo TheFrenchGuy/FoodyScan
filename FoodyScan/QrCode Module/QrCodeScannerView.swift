@@ -10,17 +10,19 @@ import SwiftUI
 import UIKit
 import AVFoundation
 
-struct QrCodeScannerView: UIViewRepresentable {
+struct QrCodeScannerView: UIViewRepresentable { // show the CameraPreview view in SwiftUI.
     
-    var supportedBarcodeTypes: [AVMetadataObject.ObjectType] = [.qr, .ean8, .ean13]
-    typealias UIViewType = CameraPreview
+    //translate the SwiftUI state and lifecycle events to UIKit
     
-    private let session = AVCaptureSession()
+    var supportedBarcodeTypes: [AVMetadataObject.ObjectType] = [.qr, .ean8, .ean13] //What barcode are supported, can be changed later depending on the user needs
+    typealias UIViewType = CameraPreview //Revers to the CameraPreview app to
+    
+    private let session = AVCaptureSession() // Create a CameraView and associate it with a AVCaptureSession.
     private let delegate = QrCodeCameraDelegate()
     private let metadataOutput = AVCaptureMetadataOutput()
     
     
-    func torchLight(isOn: Bool) -> QrCodeScannerView {
+    func torchLight(isOn: Bool) -> QrCodeScannerView { //The ability to control the torch light of the device.
         if let backCamera = AVCaptureDevice.default(for: AVMediaType.video) {
             if backCamera.hasTorch {
                 try? backCamera.lockForConfiguration()
@@ -50,7 +52,7 @@ struct QrCodeScannerView: UIViewRepresentable {
         return self
     }
     
-    func setupCamera(_ uiView: CameraPreview) {
+    func setupCamera(_ uiView: CameraPreview) {  //The ability to setup the scanning interval from the SwiftUI view as a modifier.
         if let backCamera = AVCaptureDevice.default(for: AVMediaType.video) {
             if let input = try? AVCaptureDeviceInput(device: backCamera) {
                 session.sessionPreset = .photo
@@ -80,6 +82,9 @@ struct QrCodeScannerView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<QrCodeScannerView>) -> QrCodeScannerView.UIViewType {
         let cameraView = CameraPreview(session: session)
         
+        
+        //The ability to set the mock data for use during simulation or UI Testing.
+
         #if targetEnvironment(simulator)
         cameraView.createSimulatorView(delegate: self.delegate)
         #else
@@ -93,7 +98,7 @@ struct QrCodeScannerView: UIViewRepresentable {
         uiView.session.stopRunning()
     }
     
-    private func checkCameraAuthorizationStatus(_ uiView: CameraPreview) {
+    private func checkCameraAuthorizationStatus(_ uiView: CameraPreview) { //The ability to request permission to use the camera
         let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
         if cameraAuthorizationStatus == .authorized {
             setupCamera(uiView)

@@ -21,7 +21,7 @@ struct MenuView: View {
                     .font(.title)
             }.padding(.top , 150)
             HStack {
-                NavigationLink(destination: ScannerView(showSelf: $showQrView), isActive: $showQrView){
+                NavigationLink(destination: ScannerView(showSelf: $showQrView), isActive: $showQrView){ //Goes to the QR scanning view
                 
                     Image(systemName: "barcode.viewfinder")
                         .foregroundColor(.gray)

@@ -33,9 +33,11 @@ struct DailyIntakeCalculatorView: View {
                 DatePicker(selection: $userSettings.birthdate, in: ...Date(), displayedComponents: .date) {
                                Text("Select your birthdate") //Allows the user to select their birthdate
                            }.labelsHidden()
+                            .padding(.horizontal, 30)
 
-                           Text("Your birthdate is \(userSettings.birthdate, formatter: dateFormatter)") //
-                    
+                           Text("Date of birth: \(userSettings.birthdate, formatter: dateFormatter)") //Feedback to the user
+                            .padding(.horizontal, 60)
+                            .lineLimit(1)
                 HeightWeightView()
                 
                 DropDownActivity(filledout: self.$filledout) //Passes if var to check if the form is filled out
@@ -279,6 +281,7 @@ struct DropDownActivity: View {
                 self.expand.toggle() //Expands the dropdown menu
                 self.filledout = true //confirms that the form has been succesfully fieldout
                 self.userSettings.activitylevel = 1 //Stores to device storage the activity level
+                self.selected = "No or little exercise/sedentary" //Feedback to the user
             }) {
                 Text("No or little exercise/sedentary")
                 .padding()
@@ -292,6 +295,7 @@ struct DropDownActivity: View {
                 self.expand.toggle()  //Expands the dropdown menu
                 self.filledout = true //confirms that the form has been succesfully fieldout
                 self.userSettings.activitylevel = 2 //Stores to device storage the activity level
+                self.selected = "Easy exercise (2-3 times/week)" //Feedback to the user
             }) {
                 Text("Easy exercise (2-3 times/week)")
                 .padding()
@@ -305,6 +309,7 @@ struct DropDownActivity: View {
                 self.expand.toggle() //Expands the dropdown menu
                 self.filledout = true //confirms that the form has been succesfully fieldout
                 self.userSettings.activitylevel = 3 //Stores to device storage the activity level
+                self.selected = "Moderate exercise (4 times/week)" //Feedback to the user
             }) {
                 Text("Moderate exercise (4 times/week)")
                 .padding()
@@ -318,6 +323,7 @@ struct DropDownActivity: View {
                 self.expand.toggle() //Expands the dropdown menu
                 self.filledout = true //confirms that the form has been succesfully fieldout
                 self.userSettings.activitylevel = 7 //Stores to device storage the activity level
+                self.selected = "Daily exercise and physical job"
             }) {
                 Text("Daily exercise and physical job")
                 .padding()

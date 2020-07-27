@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct ScannerView: View {
-    @ObservedObject var viewModel = ScannerViewModel()
-    @Binding var showSelf: Bool
+    @ObservedObject var viewModel = ScannerViewModel() //Refers to the scanner view model
+    @Binding var showSelf: Bool //Whever the product view is shown
     var body: some View {
-        ZStack {
+        ZStack { //Used a ZStack as the camera view will be in at the back so will take the entire screen
             
             if self.viewModel.lastQrCode != "" {
                 ProductInfoView(showSelf: $showSelf)

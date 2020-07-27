@@ -18,16 +18,18 @@ class CameraPreview: UIView {
     var session = AVCaptureSession()
     weak var delegate: QrCodeCameraDelegate?
     
-    init(session: AVCaptureSession) {
+    init(session: AVCaptureSession) { //Starts the camera live preview
         super.init(frame: .zero)
         self.session = session
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented") //Printed if there is an error during the camera preview
     }
     
-    func createSimulatorView(delegate: QrCodeCameraDelegate){
+    func createSimulatorView(delegate: QrCodeCameraDelegate){ //Only for the simulated devices won't show on user devices
+        
+        //Debug only
         self.delegate = delegate
         self.backgroundColor = UIColor.black
         label = UILabel(frame: self.bounds)
@@ -42,11 +44,11 @@ class CameraPreview: UIView {
         self.addGestureRecognizer(gesture)
     }
     
-    @objc func onClick(){
+    @objc func onClick(){ //Only for simulated devices debug only
         delegate?.onSimulateScanning()
     }
     
-    override func layoutSubviews() {
+    override func layoutSubviews() { //For the Ui in the rest of the screen
         super.layoutSubviews()
         #if targetEnvironment(simulator)
             label?.frame = self.bounds
