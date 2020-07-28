@@ -10,11 +10,15 @@ import SwiftUI
 
 struct DailyIntakeParrallax: View {
     
-    @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user has setup the account links back to the sign up screej
+    @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user has setup the account links back to the sign up screen
+    
+    @ObservedObject var userSettings = UserSettings()
+    
+    @State var done = false
     var body: some View {
         ZStack {
-            if self.setup { //If the user has succesfully logged in then the screen goes to the home screen
-                HomeScreenView()
+            if self.done == true { //Neccessary in order to store the data to memory also gives feedback to the user
+                DoneSetupView()
                     .padding(.top, 50)
             }
             else {
@@ -71,7 +75,7 @@ struct DailyIntakeParrallax: View {
                         .foregroundColor(.gray)
                         .padding(.horizontal, 20)
                         .padding(.top, 10)
-                    DailyIntakeCalculatorView()
+                    DailyIntakeCalculatorView(done: self.$done)
                         .padding(5)
                 }
                 
@@ -81,12 +85,7 @@ struct DailyIntakeParrallax: View {
                 }
             }
                 .edgesIgnoringSafeArea(.top)
-                .onAppear {
-                    NotificationCenter.default.addObserver(forName: NSNotification.Name("setup"), object: nil, queue: .main) { (_) in
-                                        
-                        self.setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false
-                    } //Necessary to montor if the UserDefault state of the variable has changed allowing the view to change to the main screen
-                }
+                
     }
 }
 

@@ -28,7 +28,7 @@ class QrCodeCameraDelegate: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     @objc func onSimulateScanning(){ //Simulator device use only so can test without real device
-        foundBarcode(mockData ?? "Simulated QR-code result.") //Data return to the ScannerViewModel
+        foundBarcode(mockData ?? "5032439100179") //Data return to the ScannerViewModel //Needed to test the simulator
     }
     
     func foundBarcode(_ stringValue: String) { //Get called once the barcode has been found

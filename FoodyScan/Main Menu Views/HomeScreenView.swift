@@ -66,7 +66,6 @@ struct MainView : View {
     var body: some View {
         ZStack {
             Color.offWhite.edgesIgnoringSafeArea(.all)
-            
             VStack{
                 
                 Text(Auth.auth().currentUser?.email ?? "Welcome")
@@ -94,8 +93,48 @@ struct MainView : View {
                 .cornerRadius(10)
                 .padding(.top, 25)
             }
+        }.onAppear {
+             
+             NotificationCenter.default.addObserver(forName: NSNotification.Name("birthdate"), object: nil, queue: .main) { (_) in
+                 
+                self.userSettings.birthdate = UserDefaults.standard.value(forKey: "birthdate") as? Date ?? Date()
+                
+                NotificationCenter.default.addObserver(forName: NSNotification.Name("dailyintakekcal"), object: nil, queue: .main) { (_) in
+                                
+                self.userSettings.dailyintakekcal = UserDefaults.standard.value(forKey: "dailyintakekcal") as? Double ?? 1000.0
+                    
+                }
+                    
+                    NotificationCenter.default.addObserver(forName: NSNotification.Name("height"), object: nil, queue: .main) { (_) in
+                                    
+                        self.userSettings.height = UserDefaults.standard.value(forKey: "height") as? Double ?? 1.0
+                    
+                    }
+                
+                NotificationCenter.default.addObserver(forName: NSNotification.Name("weight"), object: nil, queue: .main) { (_) in
+                                
+                    self.userSettings.weight = UserDefaults.standard.value(forKey: "weight") as? Double ?? 1.0
+                
+                }
+                
+                NotificationCenter.default.addObserver(forName: NSNotification.Name("gender"), object: nil, queue: .main) { (_) in
+                                
+                    self.userSettings.gender = UserDefaults.standard.value(forKey: "gender") as? String ?? "Other"
+                
+                }
+                
+                NotificationCenter.default.addObserver(forName: NSNotification.Name("activitylevel"), object: nil, queue: .main) { (_) in
+                                
+                    self.userSettings.activitylevel = UserDefaults.standard.value(forKey: "activitylevel") as? Int ?? 1
+                
+                }
+                
+            }
         }
+        
     }
+    
+    
 }
 
 struct HomeScreenView_Previews: PreviewProvider {

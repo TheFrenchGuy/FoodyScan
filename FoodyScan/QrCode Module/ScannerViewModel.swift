@@ -15,14 +15,14 @@ class ScannerViewModel: ObservableObject {
     
     @Published var torchIsOn: Bool = false   //Whever the torch is going to be on (button added onto the view)
     
-    @Published var lastQrCode: String {
+    @Published var lastQrCode: String{
         didSet {
             UserDefaults.standard.set(lastQrCode, forKey: "lastQrCode") //Stored onto device storage *facilitate moving views with the QR code*
         }
     }
     
     init() {
-         self.lastQrCode = UserDefaults.standard.object(forKey: "lastQrCode") as? String ?? "Not Scanned" //To initialiased the QR code to be saved and if there is an error then the field will be "not scanned"
+         self.lastQrCode = UserDefaults.standard.object(forKey: "lastQrCode") as? String ?? "737628064502" //To initialiased the QR code to be saved and if there is an error then the field will be "not scanned"
     }
     
     func onFoundQrCode(_ code: String) {

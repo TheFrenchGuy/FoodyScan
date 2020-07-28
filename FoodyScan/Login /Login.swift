@@ -100,7 +100,7 @@ struct Login : View {
                                     .foregroundColor(Color("Color"))
                             }
                         }
-                        .buttonStyle(SimpleButtonStyle()) //Refer to earlier comments in ContentView
+                            
                         .padding(.top, 10)
                        
                         

@@ -12,6 +12,7 @@ import GoogleSignIn
 
 struct DailyIntakeCalculatorView: View {
     @State var show = false //Whever to show or not the birthdate view
+    @Binding var done: Bool
     @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
     @State var filledout = false // Whever the form is filled out
     @State var status = UserDefaults.standard.value(forKey: "birthdate") as? Date ?? Date()
@@ -45,11 +46,7 @@ struct DailyIntakeCalculatorView: View {
             
                 Button(action: {
                         print("success setup") //Debug Only
-                        UserDefaults.standard.set(true, forKey: "setup") //The user has already previously logged in therefore he doesnt need to complete the DailyIntake Calculator
-                        NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil)
-                    
-                    self.userSettings.dailyintakekcal = self.CaloriesIntake(birthdate: self.userSettings.birthdate, gender: self.userSettings.gender, weight: self.userSettings.weight, height: self.userSettings.height, Activitylevel: self.userSettings.activitylevel) //So once the user clicks to finish setup his daily intake calculator can be calculated
-                    
+                        self.done = true
                     }) {
                     
                     if self.filledout == false {
@@ -78,112 +75,6 @@ struct DailyIntakeCalculatorView: View {
                     }.disabled(self.filledout == false)
                 }
 //            }
-        }
-        .onAppear {
-             
-             NotificationCenter.default.addObserver(forName: NSNotification.Name("birthdate"), object: nil, queue: .main) { (_) in
-                 
-                 self.status = UserDefaults.standard.value(forKey: "birthdate") as? Date ?? Date()
-            }
-        }
-    }
-    
-    func CaloriesIntake (birthdate: Date, gender: String, weight: Double, height: Double, Activitylevel: Int)  -> Double { //Allow the computer to calculate the number of calories the user should eat refers to https://www.thecalculator.co/health/Calorie-Calculator-125.html
-        let currentdate = Date()
-         var age:Int{ return Int((DateInterval(start: birthdate, end: currentdate).duration) / 31557600)} //Calculate the time differenc between birthdate and today date and print the amount of years lived
-        print(age) //Debug Only
-        print(Activitylevel) //Debug Only
-        if gender == "Female" {
-            let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) - 161 //Based on the Mifflin-St Jeor equation used for the estimation of the BMR
-            print(BMR)
-            //Depending on the activity level more or less calories are needed to be eaten a day
-            if Activitylevel == 1 {
-                let coef = 1.20000
-                let cal = BMR * coef
-                return cal
-            }
-            if Activitylevel == 2 {
-                let coef = 1.3751
-                let cal = BMR * coef
-                return cal
-            }
-            if Activitylevel == 3 {
-                let coef = 1.41870
-                let cal = BMR * coef
-                return cal
-            }
-            if Activitylevel == 4 {
-                let coef = 1.46251
-                let cal = BMR * coef
-                return cal
-            }
-            
-            if Activitylevel == 5 {
-                let coef = 1.5500
-                let cal = BMR * coef
-                return cal
-            }
-            
-            if Activitylevel == 6 {
-                let coef = 1.6376
-                let cal = BMR * coef
-                return cal
-            }
-            
-            else {
-                let coef = 1.9100
-                let cal = BMR * coef
-                return cal
-            }
-            
-            
-            
-        }
-        
-        if gender == "Male" {
-            let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) + 5
-            
-           switch Activitylevel {
-               case 1 :
-                   return BMR * 1.2000
-               case 2:
-                   return BMR * 1.3751
-               case 3 :
-                   return BMR * 1.41870
-               case 4 :
-                   return BMR * 1.46251
-               case 5:
-                   return BMR * 1.5500
-               case 6 :
-                   return BMR * 1.6376
-               case 7 :
-                   return BMR * 1.9100
-               default:
-                   return BMR
-           }
-        }
-        
-        else {
-            let BMR = 10 * weight + (6.25 * Double(height)) - (5 * Double(age)) + 5
-            
-            switch Activitylevel {
-                case 1 :
-                    return BMR * 1.2000
-                case 2:
-                    return BMR * 1.3751
-                case 3 :
-                    return BMR * 1.41870
-                case 4 :
-                    return BMR * 1.46251
-                case 5:
-                    return BMR * 1.5500
-                case 6 :
-                    return BMR * 1.6376
-                case 7 :
-                    return BMR * 1.9100
-                default:
-                    return BMR
-            }
         }
     }
     
@@ -247,7 +138,7 @@ struct HeightWeightView: View {
 
 struct DailyIntakeCalculatorView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyIntakeCalculatorView() //Debug only
+        DailyIntakeCalculatorView(done: .constant(false)) //Debug only
     }
 }
 

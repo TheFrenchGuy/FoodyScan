@@ -46,7 +46,7 @@ import GoogleSignIn
                              
                              NavigationLink(destination: SignUp(show: self.$show), isActive: self.$show) {
                                  //Sends to SignUp view
-                                 Text("")
+                                 EmptyView()
                              }
                              .hidden()
                              
@@ -69,31 +69,14 @@ import GoogleSignIn
                         }
                     }
                 }
+                .navigationViewStyle(StackNavigationViewStyle())
              }
-             .navigationViewStyle(StackNavigationViewStyle())
+             
              
          }
  }
  
-struct SimpleButtonStyle: ButtonStyle { // Used to make a neumorphic button
-    func makeBody(configuration: Self.Configuration) -> some View { //Can be applied to a button by .buttonstyle()
-        configuration.label
-        .padding(15)
-        .background(
-            Group {
-                if configuration.isPressed {
-                    Capsule()
-                        .fill(Color.offWhite)
-                } else { // return either a flat circle if the button is pressed, or return our current shadowed circle
-                    Capsule()
-                        .fill(Color.offWhite)
-                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                        .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
-                }
-            }
-        )
-    }
-}
+
 
 extension Color { //Create an extension color for the view in order to make the neumorphic design stand out more
     static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
