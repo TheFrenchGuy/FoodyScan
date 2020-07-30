@@ -7,6 +7,7 @@
 //
  
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProductInfoView: View {
     
@@ -17,7 +18,7 @@ struct ProductInfoView: View {
     var body: some View {
             VStack {
                 Text("\(self.QRviewModel.lastQrCode)")
-                    
+                AnimatedImage(url: URL(string: self.getData.image_front_small_url)).resizable().frame(width: 60, height: 60).clipShape(Circle()).shadow(radius: 20)
                 Button(action: {
                     self.showSelf = false
                     self.QRviewModel.lastQrCode = ""

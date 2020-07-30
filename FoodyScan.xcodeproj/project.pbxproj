@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,6 +31,7 @@
 		605EB62124CD8E91005EA648 /* FoodyScan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 605EB61F24CD8E91005EA648 /* FoodyScan.xcdatamodeld */; };
 		6075E0BE24CB1FA300712730 /* DailyIntakeCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */; };
 		607E384924CAE0B30073DDFD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E384824CAE0B30073DDFD /* MenuView.swift */; };
+		6088C75224D2C6640067DE48 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6088C75124D2C6640067DE48 /* SDWebImageSwiftUI */; };
 		60B5EC5A24CC407A008EFC70 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5EC5924CC407A008EFC70 /* UserSettings.swift */; };
 		60F5F11624CA31FD00835292 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11524CA31FD00835292 /* Login.swift */; };
 		60F5F11824CA334B00835292 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11724CA334B00835292 /* SignUp.swift */; };
@@ -119,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6088C75224D2C6640067DE48 /* SDWebImageSwiftUI in Frameworks */,
 				E87F11E88F504D4859D4E2DD /* Pods_FoodyScan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +293,9 @@
 			dependencies = (
 			);
 			name = FoodyScan;
+			packageProductDependencies = (
+				6088C75124D2C6640067DE48 /* SDWebImageSwiftUI */,
+			);
 			productName = FoodyScan;
 			productReference = 60116BEF24C99DE300DF9E09 /* FoodyScan.app */;
 			productType = "com.apple.product-type.application";
@@ -367,6 +372,9 @@
 				Base,
 			);
 			mainGroup = 60116BE624C99DE300DF9E09;
+			packageReferences = (
+				6088C75024D2C6640067DE48 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 60116BF024C99DE300DF9E09 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -905,6 +913,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6088C75024D2C6640067DE48 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6088C75124D2C6640067DE48 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6088C75024D2C6640067DE48 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		605EB61F24CD8E91005EA648 /* FoodyScan.xcdatamodeld */ = {

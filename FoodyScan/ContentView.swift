@@ -72,7 +72,7 @@ import GoogleSignIn
                 .navigationViewStyle(StackNavigationViewStyle())
              }
              .navigationViewStyle(StackNavigationViewStyle())
-            //Neccessary in order to display the app as a single view other wise it will not work properly when navigation link are used or a large display is used 
+            //Neccessary in order to display the app as a single view other wise it will not work properly when navigation link are used or a large display is used
              
          }
  }
