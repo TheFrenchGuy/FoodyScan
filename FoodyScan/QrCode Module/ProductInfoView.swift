@@ -25,7 +25,7 @@ struct ProductInfoView: View {
                     Text("Go home")
                 }
                 
-                Text(getData.name)
+                Text(getData.brands + " " + getData.name)
             }
             
     }
@@ -44,6 +44,7 @@ class JSONParserFood: ObservableObject {
     @Published var jsonData : WorldOpenFoodFacts! //State the dataset used
     @Published var name = ""
     @Published var image_front_small_url = ""
+    @Published var brands = ""
     //var url1 = "737628064502"  Debug purpouse to test information returned
     //var url2 = "5032439100179" Both of these are item codes with information used for debug only
     
@@ -63,7 +64,8 @@ class JSONParserFood: ObservableObject {
                 //Let the fetched data be stored under a variable to more easily pull out the data
                 //self.jsonData = fetch
                 DispatchQueue.main.async {
-                    self.name = fetch.product.generic_name ?? fetch.product.categories //gets the category outlined above
+                    self.name = fetch.product.product_name ?? fetch.product.product_name_fr
+                    self.brands = fetch.product.brands//gets the category outlined above
                     self.image_front_small_url = fetch.product.image_front_small_url // ''
                     print("Data has been fetched ") //Confirmation on the device side that the information has been fetched
                 }

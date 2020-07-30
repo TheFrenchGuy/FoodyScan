@@ -24,15 +24,34 @@ struct WorldOpenFoodFacts: Decodable{
 struct Product: Decodable, Hashable, Identifiable{ //Listed underneath is the multiple information we want to get from the product
     let id = UUID().uuidString //Item number which should be the same as the QR code scan
     let brand_owner_imported : String!
-    let generic_name : String! //The name of the product
+    let product_name: String!
+    let product_name_fr: String! //The name of the product
     let image_front_small_url : String! //The image of the product
     let categories : String! //What kind of product it is
+    let brands: String!
+    let nutriments: nutriments
+
     //More information can be added later on
     enum CodingKeys: String, CodingKey { //These are decalred so later they can be found using the JSON deserialiser
         case brand_owner_imported = "brand_owner_imported"
-        case generic_name = "generic_name"
+        case product_name = "product_name"
+        case product_name_fr = "product_name_fr"
         case image_front_small_url = "image_front_small_url"
         case categories = "categories"
+        case brands = "brands"
+        case nutriments
     }
     
+}
+
+struct nutriments: Decodable, Hashable {
+    let sugars_100g: Double!
+    let energy_100g: Int!
+    
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case sugars_100g = "sugars_100g"
+        case energy_100g = "energy_100g"
+    }
 }
