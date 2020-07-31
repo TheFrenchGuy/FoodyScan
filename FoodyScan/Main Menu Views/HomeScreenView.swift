@@ -13,7 +13,6 @@ import GoogleSignIn
 struct HomeScreenView: View {
     
    @State var showMenu = false
-   
    var body: some View {
     
        let drag = DragGesture()
@@ -42,7 +41,7 @@ struct HomeScreenView: View {
                }
                .gesture(drag)
            }
-           .navigationBarTitle("Main Menu", displayMode: .inline)
+           .navigationBarTitle(Text("Main Menu"), displayMode: .inline)
            .navigationBarItems(leading: (
                Button(action: {
                    withAnimation {

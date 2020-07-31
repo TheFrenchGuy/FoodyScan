@@ -11,8 +11,9 @@ import Firebase
 
 struct MenuView: View {
     @State private var showQrView = false
+    @Environment(\.managedObjectContext) var moc
     var username = UserDefaults.standard.string(forKey: "UserName") ?? "Error"
-    var email =  UserDefaults.standard.string(forKey: "email") ?? "Error"
+    var email =  UserDefaults.standard.string(forKey: "email") ?? "Error" 
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -34,7 +35,7 @@ struct MenuView: View {
             .padding(.top, 30)
             HStack {
                 
-                NavigationLink(destination: Text("Past Scans View")) {
+                NavigationLink(destination: PastScansView()) {
                     Image(systemName: "cart")
                         .foregroundColor(.gray)
                         .imageScale(.large)

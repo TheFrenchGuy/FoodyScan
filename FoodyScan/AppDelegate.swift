@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             
-            print(res!.user.email) //?? "No email")
+            print(res!.user.email ?? "No email")
             
         }
     }

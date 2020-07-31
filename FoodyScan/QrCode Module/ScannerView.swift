@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ScannerView: View {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = ScannerViewModel() //Refers to the scanner view model
     @Binding var showSelf: Bool //Whever the product view is shown
     var body: some View {
@@ -53,7 +54,16 @@ struct ScannerView: View {
             }
             
         }
-        
+    .navigationBarItems(leading:
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            HStack {
+                Image(systemName: "chevron.left")
+                Text("Main Menu")
+            }.foregroundColor(Color("Color"))
+    })
+    .navigationBarTitle(Text(""))
     }
     
 }

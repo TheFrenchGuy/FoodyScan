@@ -29,6 +29,7 @@ struct Product: Decodable, Hashable, Identifiable{ //Listed underneath is the mu
     let image_front_small_url : String! //The image of the product
     let categories : String! //What kind of product it is
     let brands: String!
+    let product_quantity: Int!
     let nutriments: nutriments
 
     //More information can be added later on
@@ -39,19 +40,30 @@ struct Product: Decodable, Hashable, Identifiable{ //Listed underneath is the mu
         case image_front_small_url = "image_front_small_url"
         case categories = "categories"
         case brands = "brands"
+        case product_quantity = "product_quantity"
         case nutriments
     }
     
 }
 
 struct nutriments: Decodable, Hashable {
-    let sugars_100g: Double!
-    let energy_100g: Int!
     
+    let sugars_100g: Double!
+    let energykcal_100g: Int!
+    let fat_100g: Double!
+    let fiber_100g: Double!
+    let proteins_100g: Double!
+    let salt_100g: Double!
+    let carbohydrates_100g: Double!
     
     enum CodingKeys: String, CodingKey {
         
         case sugars_100g = "sugars_100g"
-        case energy_100g = "energy_100g"
+        case energykcal_100g = "energy-kcal_100g"
+        case fat_100g = "fat_100g"
+        case fiber_100g = "fiber_100g"
+        case proteins_100g = "proteins_100g"
+        case salt_100g = "salt_100g"
+        case carbohydrates_100g = "carbohydrates_100g"
     }
 }
