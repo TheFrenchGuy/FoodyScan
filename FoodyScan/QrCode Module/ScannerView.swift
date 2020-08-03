@@ -54,16 +54,16 @@ struct ScannerView: View {
             }
             
         }
-    .navigationBarItems(leading:
+    .navigationBarItems(leading: //Made so the back button is the same color scheme as the app
         Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
+            self.presentationMode.wrappedValue.dismiss() // So that it returns to the previous view
+        }) { //UI at the top of the screen
             HStack {
                 Image(systemName: "chevron.left")
                 Text("Main Menu")
             }.foregroundColor(Color("Color"))
     })
-    .navigationBarTitle(Text(""))
+    .navigationBarTitle(Text("")) //No title for the view name
     }
     
 }

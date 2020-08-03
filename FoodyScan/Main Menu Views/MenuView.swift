@@ -11,7 +11,7 @@ import Firebase
 
 struct MenuView: View {
     @State private var showQrView = false
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.managedObjectContext) var productenv //Neccesary as sets the view from different hiearchay can also sync up with the coredata stack
     var username = UserDefaults.standard.string(forKey: "UserName") ?? "Error"
     var email =  UserDefaults.standard.string(forKey: "email") ?? "Error" 
     var body: some View {
@@ -22,7 +22,7 @@ struct MenuView: View {
                     .font(.title)
             }.padding(.top , 150)
             HStack {
-                NavigationLink(destination: ScannerView(showSelf: $showQrView), isActive: $showQrView){ //Goes to the QR scanning view
+                NavigationLink(destination: ScannerView(showSelf: $showQrView), isActive: $showQrView){ //Goes to the QR scanning view. Only shown when the showQRView is true.
                 
                     Image(systemName: "barcode.viewfinder")
                         .foregroundColor(.gray)
@@ -35,7 +35,7 @@ struct MenuView: View {
             .padding(.top, 30)
             HStack {
                 
-                NavigationLink(destination: PastScansView()) {
+                NavigationLink(destination: PastScansView().environment(\.managedObjectContext, self.productenv)) { //Selectes which env to take from for the Core Data has otherwise the app will crash when trying to fetch the past products scans.
                     Image(systemName: "cart")
                         .foregroundColor(.gray)
                         .imageScale(.large)
