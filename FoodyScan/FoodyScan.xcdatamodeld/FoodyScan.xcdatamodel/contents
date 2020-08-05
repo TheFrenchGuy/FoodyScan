@@ -12,7 +12,6 @@
         <attribute name="fiber_100g" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image_front_small_url" optional="YES" attributeType="String"/>
         <attribute name="product_name" optional="YES" attributeType="String"/>
-        <attribute name="product_quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="productID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="proteins_100g" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="salt_100g" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -21,6 +20,6 @@
         <attribute name="sugars_100g" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="ListProduct" positionX="-63" positionY="-18" width="128" height="313"/>
+        <element name="ListProduct" positionX="-63" positionY="-18" width="128" height="298"/>
     </elements>
 </model>

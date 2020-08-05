@@ -18,9 +18,8 @@ public class ListProduct:NSManagedObject, Identifiable {
     @NSManaged var product_name: String!
     @NSManaged var image_front_small_url: String!
     @NSManaged var categories: String!
-    @NSManaged var product_quantity: Int16 //Used Int16 because it has a max value of 65536, so should be more than enough
     @NSManaged var sugars_100g: Double
-    @NSManaged var energykcal_100g: Int16
+    @NSManaged var energykcal_100g: Int16 //Used Int16 because it has a max value of 65536, so should be more than enough
     @NSManaged var fat_100g: Double
     @NSManaged var fiber_100g: Double
     @NSManaged var proteins_100g: Double

@@ -220,8 +220,8 @@
 		6028C8B224D4CDB400836761 /* PastScan Module */ = {
 			isa = PBXGroup;
 			children = (
-				6028C8B524D4CDE900836761 /* PastScanModelList.swift */,
 				6028C8B724D4D0E600836761 /* PastScansView.swift */,
+				6028C8B524D4CDE900836761 /* PastScanModelList.swift */,
 			);
 			path = "PastScan Module";
 			sourceTree = "<group>";

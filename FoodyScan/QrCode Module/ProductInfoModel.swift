@@ -29,7 +29,7 @@ struct Product: Decodable, Hashable, Identifiable{ //Listed underneath is the mu
     let image_front_small_url : String! //The image of the product
     let categories : String! //What kind of product it is
     let brands: String!
-    let product_quantity: Int!
+   
     let nutriments: nutriments
 
     //More information can be added later on
@@ -40,7 +40,6 @@ struct Product: Decodable, Hashable, Identifiable{ //Listed underneath is the mu
         case image_front_small_url = "image_front_small_url"
         case categories = "categories"
         case brands = "brands"
-        case product_quantity = "product_quantity"
         case nutriments
     }
     

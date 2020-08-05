@@ -43,7 +43,7 @@ struct ScannerView: View {
                     }, label: {
                         Image(systemName: self.viewModel.torchIsOn ? "bolt.fill" : "bolt.slash.fill")
                             .imageScale(.large)
-                            .foregroundColor(self.viewModel.torchIsOn ? Color.yellow : Color.blue)
+                            .foregroundColor(self.viewModel.torchIsOn ? Color.yellow : Color("Color"))
                             .padding()
                     })
                 }
@@ -56,7 +56,8 @@ struct ScannerView: View {
         }
     .navigationBarItems(leading: //Made so the back button is the same color scheme as the app
         Button(action: {
-            self.presentationMode.wrappedValue.dismiss() // So that it returns to the previous view
+            self.presentationMode.wrappedValue.dismiss()
+            self.viewModel.lastQrCode = ""// So that it returns to the previous view
         }) { //UI at the top of the screen
             HStack {
                 Image(systemName: "chevron.left")

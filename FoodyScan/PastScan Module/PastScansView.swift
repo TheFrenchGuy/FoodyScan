@@ -31,11 +31,19 @@ struct PastScansView: View {
                         i in
                         VStack {
                             HStack {
-                                AnimatedImage(url: URL(string: i.image_front_small_url ?? "NoImage"))
+                                if i.image_front_small_url != "No image" {
+                                    AnimatedImage(url: URL(string: i.image_front_small_url))
                                     .resizable()
                                     .frame(width: 60, height: 60)
                                     .clipShape(Circle()).shadow(radius: 20)
                                     .padding(.trailing, 10)
+                                } else {
+                                    Image(systemName: "bag.fill")
+                                     .resizable()
+                                     .frame(width: 60, height: 70)
+                                    // .clipShape(Circle()).shadow(radius: 20)
+                                     .padding()
+                                }
                         
                                 VStack(alignment: .leading) {
                                     Text(i.product_name ?? "No Name")
@@ -85,11 +93,19 @@ struct PastScansView: View {
                         i in
                         VStack {
                             HStack {
-                                AnimatedImage(url: URL(string: i.image_front_small_url ?? "NoImage"))
+                                if i.image_front_small_url != "No image" {
+                                    AnimatedImage(url: URL(string: i.image_front_small_url))
                                     .resizable()
                                     .frame(width: 60, height: 60)
                                     .clipShape(Circle()).shadow(radius: 20)
                                     .padding(.trailing, 10)
+                                } else {
+                                    Image(systemName: "bag.fill")
+                                     .resizable()
+                                     .frame(width: 60, height: 70)
+                                    // .clipShape(Circle()).shadow(radius: 20)
+                                     .padding()
+                                }
                         
                                 VStack(alignment: .leading) {
                                     Text(i.product_name ?? "No Name")

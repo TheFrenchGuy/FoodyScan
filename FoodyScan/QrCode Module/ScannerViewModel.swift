@@ -22,7 +22,7 @@ class ScannerViewModel: ObservableObject {
     }
     
     init() {
-         self.lastQrCode = UserDefaults.standard.object(forKey: "lastQrCode") as? String ?? "5032439100179" //To initialiased the QR code to be saved and if there is an error then the field will be "not scanned"
+         self.lastQrCode = UserDefaults.standard.object(forKey: "lastQrCode") as? String ?? "3252210390014" //To initialiased the QR code to be saved and if there is an error then the field will be "not scanned"
     }
     
     func onFoundQrCode(_ code: String) {

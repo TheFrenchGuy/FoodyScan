@@ -14,7 +14,7 @@ struct QrCodeScannerView: UIViewRepresentable { // show the CameraPreview view i
     
     //translate the SwiftUI state and lifecycle events to UIKit
     
-    var supportedBarcodeTypes: [AVMetadataObject.ObjectType] = [.qr, .ean8, .ean13] //What barcode are supported, can be changed later depending on the user needs
+    var supportedBarcodeTypes: [AVMetadataObject.ObjectType] = [.qr, .ean8, .ean13, .upce, .code128] //What barcode are supported, can be changed later depending on the user needs
     typealias UIViewType = CameraPreview //Revers to the CameraPreview app to
     
     private let session = AVCaptureSession() // Create a CameraView and associate it with a AVCaptureSession.

@@ -18,7 +18,6 @@ struct ProductInfoView: View {
     @State var amounteaten = "" //Used laster for the calculation of the user
     @State var scanDate = Date()
     
-    
     //Variables used to make the UI Nicer
     @State var color = Color.black.opacity(0.5) //So when you time the amounteaten it changes color
     var format = "%g" //So that it doesnt not show any zeros after the decimal point
@@ -33,18 +32,26 @@ struct ProductInfoView: View {
                     
                     VStack {
                         HStack(alignment: .top, spacing: 10) {
+                            if self.getData.image_front_small_url != "No image" {
                             AnimatedImage(url: URL(string: self.getData.image_front_small_url)) //Gotten from the imported SDWebImageSwiftUI
                                 .resizable()
                                 .frame(width: 60, height: 60)
                                 .clipShape(Circle()).shadow(radius: 20)
                                 .padding()
-                            
+                            } else {
+                                Image(systemName: "bag.fill")
+                                .resizable()
+                                .frame(width: 60, height: 70)
+                               // .clipShape(Circle()).shadow(radius: 20)
+                                .padding()
+                            }
                             VStack(alignment: .leading, spacing: 10) {
                                 Text("\(getData.brands)")
                                     .bold()
                                 Text("\(getData.product_name)")
                                     .bold()
-                                Text("Product size: \(getData.product_quantity) grams")
+                                Text(getData.statusVerbose.capitalizingFirstLetter())
+                                   
                             }
                         }
                         .foregroundColor(.white)
@@ -79,7 +86,7 @@ struct ProductInfoView: View {
                                 Text("Salt: \(getData.salt_100g, specifier: self.format) grams")
                             }
                         }
-                        .foregroundColor(Color("Color").opacity(0.7))
+                        .foregroundColor(Color("Color"))
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 20)
                         }
@@ -89,7 +96,12 @@ struct ProductInfoView: View {
                     .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
                     .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
                     .padding(.top, 5)
-                    
+                        
+                    VStack {
+                        Text(getData.categories)
+                        .foregroundColor(Color("Color"))
+                    }
+                        
                     VStack {
                         
                         HStack {
@@ -145,7 +157,6 @@ struct ProductInfoView: View {
         i.product_name = self.getData.product_name
         i.image_front_small_url = self.getData.image_front_small_url
         i.categories = self.getData.categories
-        i.product_quantity = Int16(self.getData.product_quantity)
         i.sugars_100g = self.getData.sugars_100g
         i.energykcal_100g = Int16(self.getData.energykcal_100g)
         i.fat_100g = self.getData.fat_100g
@@ -155,8 +166,8 @@ struct ProductInfoView: View {
         i.carbohydrates_100g = self.getData.carbohydrates_100g
         i.amountEaten = Int16(self.amounteaten) ?? Int16(1)
         let amounteaten = Double(self.amounteaten)
-        i.sugarIn = ((amounteaten ?? 1.0) / Double(self.getData.product_quantity)) * self.getData.sugars_100g
-        i.energyInKcal = ((amounteaten ?? 1.0) / Double(self.getData.product_quantity)) * Double(self.getData.energykcal_100g)
+        i.sugarIn = ((amounteaten ?? 1.0) / 100 ) * self.getData.sugars_100g
+        i.energyInKcal = ((amounteaten ?? 1.0) / 100 ) * Double(self.getData.energykcal_100g)
         do {
             try self.managedObjectContext.save()
             print("Product Added to list")
@@ -191,6 +202,7 @@ class JSONParserFood: ObservableObject {
     @Published var proteins_100g = 0.0
     @Published var salt_100g = 0.0
     @Published var carbohydrates_100g = 0.0
+    @Published var statusVerbose = ""
     
     //var url1 = "737628064502"  Debug purpouse to test information returned
     //var url2 = "5032439100179" Both of these are item codes with information used for debug only
@@ -200,7 +212,8 @@ class JSONParserFood: ObservableObject {
     init(){
         let QRcode:String? = self.QRviewModel.lastQrCode //Redecleration to make the variable option refer to later documentation
         let session = URLSession(configuration: .default)
-        
+        print(QRcode as Any)
+        print(session.dataTask(with: URL(string: "https://world.openfoodfacts.org/api/v0/product/\(QRcode ?? "NotScanned")")!))
         session.dataTask(with: URL(string: "https://world.openfoodfacts.org/api/v0/product/\(QRcode ?? "NotScanned")")!) { (data, res, err) in
             
             //"NotScanned" neccessary when the user first init the scan as the view will be loaded without data which cause app to crash
@@ -211,12 +224,12 @@ class JSONParserFood: ObservableObject {
                 //Let the fetched data be stored under a variable to more easily pull out the data
                 //self.jsonData = fetch
                 DispatchQueue.main.async {
+                    self.statusVerbose = fetch.statusVerbose
                     self.product_name = fetch.product.product_name ?? fetch.product.product_name_fr
                     self.brands = fetch.product.brands//gets the category outlined above
                     self.image_front_small_url = fetch.product.image_front_small_url ?? "No image"
                     self.categories = fetch.product.categories
                     self.brand_owner_imported = fetch.product.brand_owner_imported ?? "Brand unknown"
-                    self.product_quantity = fetch.product.product_quantity //?? 1
                     self.sugars_100g = fetch.product.nutriments.sugars_100g ?? 1.0
                     self.energykcal_100g = fetch.product.nutriments.energykcal_100g //?? 1
                     self.fat_100g = fetch.product.nutriments.fat_100g ?? 1.0
@@ -225,11 +238,11 @@ class JSONParserFood: ObservableObject {
                     self.salt_100g = fetch.product.nutriments.salt_100g ?? 1.0
                     self.carbohydrates_100g = fetch.product.nutriments.carbohydrates_100g ?? 1.0
                     
-                    
+                    print(self.image_front_small_url)
                     print("Data has been fetched ") //Confirmation on the device side that the information has been fetched
                 }
             }catch{
-                print(error.localizedDescription) //In case the information is missing the error is printed for debug
+                print(error)//In case the information is missing the error is printed for debug
             }
                         
         }.resume() //Needed to initiation the data Task.
@@ -256,3 +269,14 @@ struct BlurView: UIViewRepresentable { //So that it gives a blur effect behind o
     }
 }
 
+
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
