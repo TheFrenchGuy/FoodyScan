@@ -46,7 +46,7 @@ struct MenuView: View {
             }
             .padding(.top, 30)
             HStack {
-                NavigationLink(destination: Text("Daily Intake View")) {
+                NavigationLink(destination: DailyIntakeView()) {
                     Image(systemName: "chart.bar")
                         .foregroundColor(.gray)
                         .imageScale(.large)

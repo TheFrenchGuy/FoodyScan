@@ -11,7 +11,7 @@ import SDWebImageSwiftUI //Added SDWebImage Package to the project in order to d
 import Combine // Just publisher requires to import Combine.\
 struct ProductInfoView: View {
     @Environment(\.managedObjectContext) var managedObjectContext //Neccessary in order to store the scanned products into CoreData Stcak
-    
+    @ObservedObject var userSettings = UserSettings()
     @ObservedObject var QRviewModel = ScannerViewModel() //Where the QRcode is gotten
     @Binding var showSelf:Bool //Whever or not to show the Scanner Views
     @ObservedObject var getData = JSONParserFood() //Where the data is fetched from so can be reference into the main view for user feedback
@@ -127,6 +127,7 @@ struct ProductInfoView: View {
                                 self.addlist() //Sves the data to the CoreData stack
                                 self.showSelf = false //Returns to the homeview
                                 self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
+                                self.userSettings.eatentoday += Double(self.amounteaten) ?? 1.0
                             }) {
                                 Text("Add to list")
                                 .fontWeight(.light)

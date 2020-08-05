@@ -14,7 +14,7 @@ struct PastScansView: View {
     @Environment(\.presentationMode) var presentationMode //Necessary in order to go back to the main menu as using custom color for the back button
     @Environment(\.managedObjectContext) var managedObjectContext //Necessary in order to fetch and save the coredata product stack
     @FetchRequest(fetchRequest: ListProduct.fetchAllItems()) var products: FetchedResults<ListProduct> //Fetches the coredate product stacks
-    
+    @ObservedObject var userSettings = UserSettings()
     @State var edit:Bool = false //whever the list is being edited
 
     var dateFormatter: DateFormatter { //Used in order to format the date so it is not too long for the screen
@@ -128,7 +128,9 @@ struct PastScansView: View {
                         .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
                         
                         .contextMenu { //When long pressing on the card of the food item a context menu pops up asking you if you'd like to delete the item
-                            Button(action :{ self.delete(i)}) { //runs the function delete with the product card selected
+                            Button(action :{
+                                self.delete(i)
+                            }) { //runs the function delete with the product card selected
                                 HStack {
                                     Image(systemName: "trash")  //So the users see it
                                     Text("Delete").foregroundColor(Color("Color"))
@@ -191,7 +193,7 @@ struct PastScansView: View {
     func delete(_ i:ListProduct) { //In order the delete the product card from the list
         
         managedObjectContext.delete(i) //delte the card selected
-        
+        self.userSettings.eatentoday -= Double(i.energyInKcal)
         do {
             try self.managedObjectContext.save() //saves it onto the coredata stacks
         } catch {
