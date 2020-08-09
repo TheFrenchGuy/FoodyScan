@@ -13,7 +13,7 @@ import GoogleSignIn
 struct SignUp : View {
     
     @State var color = Color.black.opacity(0.7)
-    @State var username = "" //UserName of the user
+ //   @State var username = "" //UserName of the user
     @State var email = "" //Email of the new User
     @State var pass = "" //Password of the new user
     @State var repass = ""//Confirmation password of the new user
@@ -40,11 +40,11 @@ struct SignUp : View {
                             .foregroundColor(self.color)
                             .padding(.top, 35)
                         
-                        TextField("UserName", text: self.$username)
-                        .autocapitalization(.none)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color,lineWidth: 2))
-                        .padding(.top, 25)
+//                        TextField("UserName", text: self.$username)
+//                        .autocapitalization(.none)
+//                        .padding()
+//                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color,lineWidth: 2))
+//                        .padding(.top, 25)
 
                         
                         TextField("Email", text: self.$email) //Email field
@@ -162,7 +162,7 @@ struct SignUp : View {
     func register(){
         
         if self.email != ""{ //If the user has filled the email textfield
-            UserDefaults.standard.set(self.username, forKey: "UserName")
+            //UserDefaults.standard.set(self.username, forKey: "UserName")
             UserDefaults.standard.set(self.email, forKey: "Email")
             if self.pass == self.repass{ //If the two password matches
                 

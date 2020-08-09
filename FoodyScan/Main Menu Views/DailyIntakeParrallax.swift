@@ -84,6 +84,7 @@ struct DailyIntakeParrallax: View {
                     }
                 }
             }
+                .navigationBarHidden(false)
                 .edgesIgnoringSafeArea(.top)
                 
     }

@@ -49,6 +49,7 @@ struct DoneSetupView: View { //Just to go give feedback to the user that the dat
                 }
             }
         }
+        .navigationBarHidden(false)
         .onAppear {
 
             NotificationCenter.default.addObserver(forName: NSNotification.Name("setup"), object: nil, queue: .main) { (_) in
@@ -165,7 +166,9 @@ struct DoneSetupView: View { //Just to go give feedback to the user that the dat
                     return BMR
             }
         }
+        
     }
+    
     
 }
 

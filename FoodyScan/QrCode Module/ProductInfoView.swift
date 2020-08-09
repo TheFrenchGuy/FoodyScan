@@ -118,6 +118,9 @@ struct ProductInfoView: View {
                         }.padding()
                             .background(RoundedRectangle(cornerRadius: 25).stroke(self.amounteaten != "" ? Color("Color") : self.color,lineWidth: 2)) //Changes the color when the user inputs into  the text field
                         .frame(width: UIScreen.main.bounds.width - 20)
+                            .onTapGesture {
+                                self.hideKeyboard()
+                        }
                     }.padding(10)
                         
                         
@@ -147,6 +150,9 @@ struct ProductInfoView: View {
             }
            
         }
+//        .onTapGesture {
+//                self.hideKeyboard()
+//        }
     }
     func addlist() { //Used to store the scan result into CoreData so can be later used for the pastScan views
         let i = ListProduct(context: self.managedObjectContext)
@@ -281,3 +287,12 @@ extension String {
         self = self.capitalizingFirstLetter()
     }
 }
+
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
