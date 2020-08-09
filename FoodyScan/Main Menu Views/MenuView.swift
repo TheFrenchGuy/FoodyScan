@@ -60,7 +60,7 @@ struct MenuView: View {
                 }
             }
             .padding(.top, 30)
-            Spacer(minLength: 300)
+            Spacer(minLength: 120)
             
             HStack {
                 

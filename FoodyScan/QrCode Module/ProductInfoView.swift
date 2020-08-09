@@ -10,6 +10,7 @@ import SwiftUI
 import SDWebImageSwiftUI //Added SDWebImage Package to the project in order to display the image from the JSON fetch to the UI
 import Combine // Just publisher requires to import Combine.\
 struct ProductInfoView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) var managedObjectContext //Neccessary in order to store the scanned products into CoreData Stcak
     @ObservedObject var userSettings = UserSettings()
     @ObservedObject var QRviewModel = ScannerViewModel() //Where the QRcode is gotten
@@ -25,7 +26,7 @@ struct ProductInfoView: View {
     
     var body: some View {
         ZStack {
-                Color.offWhite.edgesIgnoringSafeArea(.all)
+               Color("BackgroundColor").edgesIgnoringSafeArea(.all)
                 ZStack(alignment: .topLeading) {
                     
                     VStack {
@@ -54,16 +55,16 @@ struct ProductInfoView: View {
                                    
                             }
                         }
-                        .foregroundColor(.white)
+                        .foregroundColor(self.colorScheme == .light ? Color.colorDark: Color.colorLight) //Inverted the colors as it looked better that way on the green background
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 20)
                     
                     
                     }
                     .background(Color("Color"))
-                    .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                    .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                    .cornerRadius(12)
+                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
                     .padding(.top, 25)
                     
                     
@@ -87,14 +88,14 @@ struct ProductInfoView: View {
                             }
                         }
                         .foregroundColor(Color("Color"))
+                        
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 20)
                         }
                     .background(BlurView())
-                    //.background(Color("Color"))
-                    .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                    .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                    .cornerRadius(12)
+                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
                     .padding(.top, 5)
                         
                     VStack {
@@ -116,7 +117,7 @@ struct ProductInfoView: View {
                         }
                         Text("grams")
                         }.padding()
-                            .background(RoundedRectangle(cornerRadius: 25).stroke(self.amounteaten != "" ? Color("Color") : self.color,lineWidth: 2)) //Changes the color when the user inputs into  the text field
+                            .background(RoundedRectangle(cornerRadius: 25).stroke(self.amounteaten != "" ? Color("Color") : self.colorScheme == .light ? Color.colorLight: Color.colorDark,lineWidth: 2)) //Changes the color when the user inputs into  the text field
                         .frame(width: UIScreen.main.bounds.width - 20)
                             .onTapGesture {
                                 self.hideKeyboard()
@@ -130,7 +131,7 @@ struct ProductInfoView: View {
                                 self.addlist() //Sves the data to the CoreData stack
                                 self.showSelf = false //Returns to the homeview
                                 self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
-                                self.userSettings.eatentoday += Double(self.amounteaten) ?? 1.0
+                                self.userSettings.eatentoday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.energykcal_100g) )
                             }) {
                                 Text("Add to list")
                                 .fontWeight(.light)
@@ -145,7 +146,7 @@ struct ProductInfoView: View {
                                         .stroke(Color("Color"), lineWidth: 5)
                                 )
                             }
-                    }
+                        }.padding(.bottom, 20)
                 }
             }
            

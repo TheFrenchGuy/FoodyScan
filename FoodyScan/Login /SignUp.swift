@@ -11,9 +11,9 @@ import Firebase
 import GoogleSignIn
 
 struct SignUp : View {
-    
-    @State var color = Color.black.opacity(0.7)
- //   @State var username = "" //UserName of the user
+    @Environment(\.colorScheme) var colorScheme
+    @State var colorLight = Color.black.opacity(0.7)
+    @State var colorDark = Color.white.opacity(0.7)
     @State var email = "" //Email of the new User
     @State var pass = "" //Password of the new user
     @State var repass = ""//Confirmation password of the new user
@@ -26,7 +26,8 @@ struct SignUp : View {
     var body: some View{
         
         ZStack{
-           Color.offWhite.edgesIgnoringSafeArea(.all) //In order to make the background color to be offWhite
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+//In order to make the background color to be offWhite
             ZStack(alignment: .topLeading) {
                 
                 GeometryReader{_ in
@@ -37,7 +38,7 @@ struct SignUp : View {
                         Text("Sign Up")
                             .font(.title)
                             .fontWeight(.bold)
-                            .foregroundColor(self.color)
+                            .foregroundColor(self.colorScheme == .light ? self.colorLight: self.colorDark)
                             .padding(.top, 35)
                         
 //                        TextField("UserName", text: self.$username)
@@ -50,7 +51,7 @@ struct SignUp : View {
                         TextField("Email", text: self.$email) //Email field
                         .autocapitalization(.none)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color,lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.colorScheme == .light ? self.colorLight: self.colorDark,lineWidth: 2))
                         .padding(.top, 25)
                         
                         HStack(spacing: 15){
@@ -76,12 +77,12 @@ struct SignUp : View {
                             }) {
                                 
                                 Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill") //If visible is active the password can be seen so icon matches, vice versa
-                                    .foregroundColor(self.color)
+                                    .foregroundColor(self.colorScheme == .light ? self.colorLight: self.colorDark)
                             }
                             
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color,lineWidth: 2)) //When the user is onto the textField he will have feedback the he is currently inputting text into that textfield
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.colorScheme == .light ? self.colorLight: self.colorDark,lineWidth: 2)) //When the user is onto the textField he will have feedback the he is currently inputting text into that textfield
                         .padding(.top, 25)
                         
                         HStack(spacing: 15){
@@ -107,12 +108,12 @@ struct SignUp : View {
                             }) {
                                 
                                 Image(systemName: self.revisible ? "eye.slash.fill" : "eye.fill")//If visible is active the password can be seen so icon matches, vice versa
-                                    .foregroundColor(self.color)
+                                    .foregroundColor(self.colorScheme == .light ? self.colorLight: self.colorDark)
                             }
                             
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.repass != "" ? Color("Color") : self.color,lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.repass != "" ? Color("Color") : self.colorScheme == .light ? self.colorLight: self.colorDark,lineWidth: 2))
                         .padding(.top, 25)
                         
                         Button(action: {
@@ -126,10 +127,11 @@ struct SignUp : View {
                                 .frame(width: UIScreen.main.bounds.width - 50)
                         }
                         .background(Color("Color"))
-                        .cornerRadius(10)
+                        .cornerRadius(5.0)
+                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
                         .padding(.top, 25)
-                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                        .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                        
                         
                         
                        

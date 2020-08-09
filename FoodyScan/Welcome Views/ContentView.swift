@@ -38,7 +38,7 @@ import GoogleSignIn
                     }
                     else {
                         ZStack {
-                            Color.offWhite.edgesIgnoringSafeArea(.all)
+                            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
                             
                             VStack{
                             HStack(alignment: .center) {
@@ -66,8 +66,8 @@ import GoogleSignIn
                                     .frame(width: UIScreen.main.bounds.width - 50)
                                 }.background(Color("Color"))
                                 .cornerRadius(10)
-                                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                                .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                                .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
                                 .padding(.bottom, 25)
                             }.padding(.top, 30)
                         }
@@ -99,7 +99,9 @@ import GoogleSignIn
 
 
 extension Color { //Create an extension color for the view in order to make the neumorphic design stand out more
-    static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
+   static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
+   static let colorLight = Color.black.opacity(0.7)
+   static let colorDark = Color.white.opacity(0.7)
 }
 
 

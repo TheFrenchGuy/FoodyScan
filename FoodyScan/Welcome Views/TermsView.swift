@@ -11,7 +11,7 @@ import SwiftUI
 struct TermsView: View {
     var body: some View {
         ZStack {
-             Color.offWhite.edgesIgnoringSafeArea(.all)
+             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             
             VStack {
                 ScrollView {
@@ -24,8 +24,12 @@ struct TermsView: View {
                             .cornerRadius(12)
                         Text("Foody Scan")
                         .foregroundColor(Color("Color"))
-                            .font(.system(size: 24, weight: .heavy))
-                    }.padding(.bottom, 50)
+                        .font(.system(size: 24, weight: .heavy))
+                    }
+                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                    
+                    .padding(.bottom, 50)
                      .padding(.top, 50)
                         
                         VStack(alignment: .leading) {
@@ -95,16 +99,18 @@ struct TermsView: View {
             }
                 
                 ZStack {
-                    Color.black.opacity(0.7).edgesIgnoringSafeArea(.bottom)
-                    
+                    BlurView().edgesIgnoringSafeArea(.all)
                     VStack {
                         NavigationLink(destination: NameView()) {
                             Text("Continue")
                             .foregroundColor(.white)
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 50)
-                        }.background(Color("Color"))
-                        .cornerRadius(10)
+                        }
+                        .background(Color("Color"))
+                        .cornerRadius(5.0)
+                        .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
+                        .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
                         .padding(.bottom, 15)
                         
                         HStack {
@@ -120,7 +126,8 @@ struct TermsView: View {
                             }
                         }
                     }
-                }.frame(height: 110)
+                    }
+                .frame(height: 110)
             }
         .navigationBarTitle("")
         .navigationBarHidden(true)

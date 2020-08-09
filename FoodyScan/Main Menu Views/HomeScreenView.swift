@@ -26,8 +26,8 @@ struct HomeScreenView: View {
        
        
        return NavigationView {
-        
            GeometryReader { geometry in
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all) //Neccessary in order to fix a bug where the color scheme would slightly show in the background
                ZStack(alignment: .leading) {
                    MainView(showMenu: self.$showMenu)
                        .frame(width: geometry.size.width, height: geometry.size.height)
@@ -60,17 +60,18 @@ struct HomeScreenView: View {
 }
 
 struct MainView : View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var userSettings = UserSettings()
     @Binding var showMenu: Bool
     var body: some View {
         ZStack {
-            Color.offWhite.edgesIgnoringSafeArea(.all)
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             VStack{
                 
                 Text(Auth.auth().currentUser?.email ?? "Welcome")
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(Color.black.opacity(0.7))
+                    .foregroundColor(colorScheme == .light ? Color.colorLight: Color.colorDark)
                 
                 Text("You need to eat \(userSettings.dailyintakekcal,specifier: "%g") kcal a day")
                 

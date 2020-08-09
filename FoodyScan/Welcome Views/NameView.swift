@@ -13,7 +13,7 @@ struct NameView: View {
     @State var loginpage = false
     var body: some View {
         ZStack {
-            Color.offWhite.edgesIgnoringSafeArea(.all)
+             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             
             VStack {
             HStack(alignment: .center) {
@@ -33,41 +33,59 @@ struct NameView: View {
                     .font(.system(size: 36))
                     .font(.headline)
                     .bold()
+                    .padding(.trailing, 60)
+                }
+                VStack {
+                
                 TextField("Enter your name", text: self.$username)
                 .autocapitalization(.none)
                 .padding()
-                .background(Color("TextFieldColor"))
-                    .cornerRadius(5.0)
+                .background(Color("BackgroundColor"))
+                .cornerRadius(5.0)
                 .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
                 .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                    .frame(width: UIScreen.main.bounds.width - 20)
-                
+                .frame(width: UIScreen.main.bounds.width - 60)
                 Spacer()
                 }
                 
                 VStack(alignment: .center) {
                     NavigationLink(destination: LoginSignUpView(), isActive: $loginpage) {EmptyView()}
-                    
-                    Button(action: {
-                        self.saveUserName()
-                        self.loginpage.toggle()
-                    }) {
+                    if self.username == "" {
                         HStack {
-                            Text("Login")
+                            Text("Enter a username 🔥 ")
                             .foregroundColor(.white)
                             .padding(.vertical)
-                            Image(systemName: "chevron.right").foregroundColor(.white)
-                            .padding(.vertical)
                             }
-                        .frame(width: UIScreen.main.bounds.width - 40)
-                        .background(Color("Color"))
-                        .cornerRadius(10)
-                        .padding(.bottom, 15)
-                    }.disabled(self.username == "")
-                    
+                        .frame(width: UIScreen.main.bounds.width - 60)
+                        .background(Color.red)
+                        .cornerRadius(5.0)
+                        .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
+                        .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
+                        .padding(.bottom, 25)
+                    } else {
+                        Button(action: {
+                            self.saveUserName()
+                            self.loginpage.toggle()
+                        }) {
+                            HStack {
+                                Text("Login")
+                                .foregroundColor(.white)
+                                .padding(.vertical)
+                                Image(systemName: "chevron.right").foregroundColor(.white)
+                                .padding(.vertical)
+                                }
+                            .frame(width: UIScreen.main.bounds.width - 60)
+                            .background(Color("Color"))
+                            .cornerRadius(5.0)
+                            .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
+                            .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
+                            .padding(.bottom, 25)
+                        }.disabled(self.username == "")
+                    }
                 }.onTapGesture {
-                    self.saveUserName()
-                    
+                    if self.username != "" {
+                        self.saveUserName()
+                    }
                 }
             }
         }

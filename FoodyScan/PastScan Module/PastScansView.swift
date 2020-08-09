@@ -23,6 +23,11 @@ struct PastScansView: View {
         return formatter
     }
     
+    init() {
+        UITableView.appearance().backgroundColor = .clear // tableview background
+        UITableViewCell.appearance().backgroundColor = .clear // cell background
+    }
+    
     var body: some View {
         VStack {
             List {
@@ -124,8 +129,9 @@ struct PastScansView: View {
                         }
                         .background(Color("Color"))
                         .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                        .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+
                         
                         .contextMenu { //When long pressing on the card of the food item a context menu pops up asking you if you'd like to delete the item
                             Button(action :{
@@ -141,8 +147,7 @@ struct PastScansView: View {
                     
                     }
                 }
-                
-            }
+            }.background(Color("BackgroundColor"))
             .navigationBarItems(leading: //Made so the back button is the same color scheme as the app
                 HStack {
                     if self.edit { //If the list is being edited then the user cannot go back to the main screen

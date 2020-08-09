@@ -22,7 +22,7 @@ struct DailyIntakeParrallax: View {
                     .padding(.top, 50)
             }
             else {
-            Color.offWhite.edgesIgnoringSafeArea(.all)
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             ScrollView { //Where the headline and the content text will be stored
                 GeometryReader { geometry in //reads out the dimensions of the scroll view and keep track of the current scroll view position
                     ZStack {
@@ -43,8 +43,9 @@ struct DailyIntakeParrallax: View {
                         }
                     }
                 }
-                    .frame(height: 400)
+                    .frame(height: 350)
                 VStack(alignment: .leading) {
+                    
                     HStack() {
                         Image("LogoLogin")
                             .resizable()

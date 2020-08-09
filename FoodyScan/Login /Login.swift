@@ -11,8 +11,9 @@ import Firebase
 import GoogleSignIn
 
 struct Login : View {
-    
-    @State var color = Color.black.opacity(0.7)
+    @Environment(\.colorScheme) var colorScheme
+    @State var colorLight = Color.black.opacity(0.7)
+    @State var colorDark = Color.white.opacity(0.7)
     @State var email = "" //email of the user
     @State var pass = ""  //Password of the user
     @State var visible = false //Whever the user can see the password he types
@@ -23,7 +24,7 @@ struct Login : View {
     var body: some View{
         
         ZStack{
-           Color.offWhite.edgesIgnoringSafeArea(.all)
+           Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             ZStack(alignment: .topTrailing) {
                
                
@@ -37,17 +38,20 @@ struct Login : View {
                            .scaledToFit()
                            .frame(width: 130, height: 130)
                            .padding(.top, 30)
+                           
                        
                         Text("Log in to your account")
                             .font(.title)
                             .fontWeight(.bold)
-                            .foregroundColor(self.color)
+                            .foregroundColor(self.colorScheme == .light ? self.colorLight: self.colorDark )
+                            .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                            .shadow(color: Color("DarkShadow"), radius: 8, x: 8,y: 8)
                             .padding(.top, 35)
                         
                         TextField("Email", text: self.$email) //Input the email address
                         .autocapitalization(.none)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color,lineWidth: 2))
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.colorScheme == .light ? self.colorLight: self.colorDark,lineWidth: 2))
                         .padding(.top, 25)
                        
                        
@@ -77,12 +81,12 @@ struct Login : View {
                             }) {
                                 
                                 Image(systemName: self.visible ? "eye.slash.fill" : "eye.fill") //Changes the eye icon based on weather visibile is true or false to match password visible state
-                                    .foregroundColor(self.color)
+                                    .foregroundColor(self.colorScheme == .light ? self.colorLight: self.colorDark)
                             }
                             
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color,lineWidth: 2))//When input the border of the text from changes color based on the Main Color of the app
+                        .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.colorScheme == .light ? self.colorLight: self.colorDark,lineWidth: 2))//When input the border of the text from changes color based on the Main Color of the app
                         .padding(.top, 25)
                         
                         HStack{
@@ -98,6 +102,9 @@ struct Login : View {
                                 Text("Forgot password")
                                     .fontWeight(.bold)
                                     .foregroundColor(Color("Color"))
+                                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+
                             }
                         }
                             
@@ -117,13 +124,14 @@ struct Login : View {
                         }
                         .background(Color("Color"))
                         .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                        .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                        .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
+                        .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
+
                         .padding(.top, 25)
                         
                        GoogleLoginView().frame(width: 150, height: 55)
-                       .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                       .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                       .shadow(color: Color("LightShadow"), radius: 5, x: -5, y: -5)
+                       .shadow(color: Color("DarkShadow"), radius: 5, x: 5, y: 5)
                     }
                     .padding(.horizontal, 25)
                     
@@ -144,8 +152,8 @@ struct Login : View {
                         .foregroundColor(Color("Color"))
                 }
                 .padding()
-                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
             }
             
             if self.alert{
@@ -210,5 +218,11 @@ struct Login : View {
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
         Login(show: .constant(true))
+    }
+}
+
+struct Login_Previews2: PreviewProvider {
+    static var previews: some View {
+        Login(show: .constant(true)).colorScheme(.dark)
     }
 }

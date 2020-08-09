@@ -15,7 +15,7 @@ struct DoneSetupView: View { //Just to go give feedback to the user that the dat
     @ObservedObject var userSettings = UserSettings() // Where all of the user variables are stored 
     var body: some View {
         ZStack {
-            Color.offWhite.edgesIgnoringSafeArea(.all)
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             if self.setup { //The user has succesfully logged in then the screen goes to the home screen
                 HomeScreenView()
                 
@@ -37,12 +37,13 @@ struct DoneSetupView: View { //Just to go give feedback to the user that the dat
                         
                          Circle()
                          .fill(Color("Color"))
-                             .frame(width: UIScreen.main.bounds.width - 200)
-                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                         .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                         .frame(width: UIScreen.main.bounds.width - 200)
+                         .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                         .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+
                          
                          Image(systemName: "checkmark")
-                             .foregroundColor(.offWhite)
+                             .foregroundColor(Color("BackgroundColor"))
                              .font(.system(size: 54))
                          }
                     }

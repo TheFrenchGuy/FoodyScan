@@ -25,7 +25,7 @@ struct DailyIntakeCalculatorView: View {
     
     var body: some View {
         ZStack {
-            Color.offWhite.edgesIgnoringSafeArea(.all) //Used to change background color
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all) //Used to change background color
         
             VStack(alignment: .leading) {
                 GenderPicker()
@@ -99,10 +99,10 @@ struct GenderPicker: View {
                 
             .pickerStyle(SegmentedPickerStyle()) //So that the picker is all horizontal
             .padding()
-            .background(Color.offWhite)
+            .background(Color("BackgroundColor"))
             .cornerRadius(10)
-            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)// Shadows neccesary to make a neumophism design
-            .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+            .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+            .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
             .animation(.spring()) //Animation to make it smoother
         }
     }
@@ -143,6 +143,7 @@ struct DailyIntakeCalculatorView_Previews: PreviewProvider {
 }
 
 struct DropDownActivity: View {
+    @Environment(\.colorScheme) var colorScheme
     @State var expand = false //whever the dropdown menu is all shown
     @State var selected = "" // Which option is selected
     @Binding var filledout: Bool //Whever the form is filled out
@@ -156,12 +157,12 @@ struct DropDownActivity: View {
             HStack(){
                 Text( selected == "" ? "What your activity level? " : selected) //Default value to trigger the user
                 .fontWeight(.bold)
-                .foregroundColor(.black)
+                .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
                 .lineLimit(1)
             Image(systemName: expand ? "chevron.up" : "chevron.down") //Changes the images based if tapped or not
                 .resizable()
                 .frame(width: 13, height: 6)
-                .foregroundColor(.black)
+                .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
             }
             .onTapGesture {
             self.expand.toggle()
@@ -179,7 +180,7 @@ struct DropDownActivity: View {
                 if selected == "No or little exercise/sedentary" {
                     Image(systemName: "checkmark")
                 }
-            }.foregroundColor(.black)
+            }.foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
             
             Button(action: {
                 print("2")
@@ -193,7 +194,7 @@ struct DropDownActivity: View {
                 if selected == "Easy exercise (2-3 times/week)" {
                     Image(systemName: "checkmark")
                 }
-            }.foregroundColor(.black)
+            }.foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
             
             Button(action: {
                 print("3")
@@ -207,7 +208,7 @@ struct DropDownActivity: View {
                 if selected == "Moderate exercise (4 times/week)" {
                     Image(systemName: "checkmark")
                 }
-            }.foregroundColor(.black)
+            }.foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
             
             Button(action: {
                 print("4")
@@ -221,17 +222,18 @@ struct DropDownActivity: View {
                 if selected == "Daily exercise and physical job" {
                     Image(systemName: "checkmark")
                 }
-            }.foregroundColor(.black)
+            }.foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
 
         }
             
     }
     
     .padding()
-    .background(Color.offWhite)
+    .background(Color("BackgroundColor"))
     .cornerRadius(10)
-    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-    .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+
         .animation(.spring())
         .padding(.horizontal, 60)
         }
