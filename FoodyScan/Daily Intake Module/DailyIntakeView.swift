@@ -23,11 +23,12 @@ struct Pie: Identifiable {
     var id: Int
     var percent: CGFloat
     var name: String
-    var color: Color
+    var color: LinearGradient
 }
 
 
 struct PieView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var userSettings = UserSettings()
     @Environment(\.presentationMode) var presentationMode
     let lefttoeat = UserSettings().dailyintakekcal - UserSettings().eatentoday
@@ -35,12 +36,12 @@ struct PieView: View {
     let eatenpercentage = (UserSettings().eatentoday / UserSettings().dailyintakekcal) * 100
     
     var data:Array<Pie> { return  [
-        Pie(id: 0, percent: CGFloat(eatenpercentage), name: "Eaten", color: Color.yellow),
-        Pie(id: 1, percent: CGFloat(leftpercentage), name: "Left", color: Color("Color"))
+        Pie(id: 0, percent: CGFloat(eatenpercentage), name: "Eaten", color: LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing)),
+        Pie(id: 1, percent: CGFloat(leftpercentage), name: "Left", color: LinearGradient(gradient: Gradient(colors: [.gradientStart, .gradientEnd]), startPoint: .topLeading, endPoint: .bottomTrailing))
         ]}
     var body: some View {
         ZStack {
-            Color.offWhite.edgesIgnoringSafeArea(.all)
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack {
                 
@@ -66,7 +67,7 @@ struct PieView: View {
                                 
                                 Circle()
                                     .frame(height:300)
-                                    .foregroundColor(Color.offWhite)
+                                    .foregroundColor(Color("BackgroundColor"))
                             }
                         }
                         .frame(height: 360)
@@ -74,8 +75,8 @@ struct PieView: View {
                         
                         //since it is in circle shape so where going to clip it in circle
                         .clipShape(Circle())
-                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                        .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
                         // since radius is 180 so circle size will be 360...
                     }.padding(.top, 20)
                 

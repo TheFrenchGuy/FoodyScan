@@ -131,7 +131,7 @@ struct ProductInfoView: View {
                                 self.addlist() //Sves the data to the CoreData stack
                                 self.showSelf = false //Returns to the homeview
                                 self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
-                                self.userSettings.eatentoday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.energykcal_100g) )
+                                self.userSettings.eatentoday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.energykcal_100g) / 100)
                             }) {
                                 Text("Add to list")
                                 .fontWeight(.light)
