@@ -18,10 +18,12 @@ struct MenuView: View {
     var email =  UserDefaults.standard.string(forKey: "email") ?? "Error" 
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Text("Welcome \(username)")
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Welcome")
                     .foregroundColor(.gray)
                     .font(.title)
+                GradientText(title: username, size: 20, width: 70)
+                    .padding(.top, 12)
             }.padding(.top , 150)
             HStack {
                 NavigationLink(destination: ScannerView(showSelf: $showQrView), isActive: $showQrView){ //Goes to the QR scanning view. Only shown when the showQRView is true.

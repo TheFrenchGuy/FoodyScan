@@ -132,9 +132,11 @@ struct PieView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }) { //UI at the top of the screen
                 HStack {
-                    Image(systemName: "chevron.left")
-                    Text("Back")
-                }.foregroundColor(Color("Color"))
+                    GradientImage(image: "chevron.left", size: 18, width: 20)
+                        .padding(.top, 20)
+                    GradientText(title: "Back", size: 16, width: 180)
+                        .padding(.top, 10)
+                }
         })
         .navigationBarTitle(Text("Your Daily Intake"))
         

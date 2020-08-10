@@ -22,9 +22,7 @@ struct NameView: View {
                     .scaledToFit()
                     .frame(width: 60, height: 60)
                     .cornerRadius(12)
-                Text("Foody Scan")
-                .foregroundColor(Color("Color"))
-                    .font(.system(size: 24, weight: .heavy))
+                GradientText(title: "Foody Scan", size: 24, width: 165)
             }.padding(.bottom, 50)
              .padding(.top, 50)
             
@@ -57,7 +55,7 @@ struct NameView: View {
                             .padding(.vertical)
                             }
                         .frame(width: UIScreen.main.bounds.width - 60)
-                        .background(Color.red)
+                        .background(LinearGradient(gradient: Gradient(colors: [.gradientStart, .gradientEnd]), startPoint: .leading, endPoint: .trailing))
                         .cornerRadius(5.0)
                         .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
                         .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
@@ -75,7 +73,7 @@ struct NameView: View {
                                 .padding(.vertical)
                                 }
                             .frame(width: UIScreen.main.bounds.width - 60)
-                            .background(Color("Color"))
+                            .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
                             .cornerRadius(5.0)
                             .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
                             .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)

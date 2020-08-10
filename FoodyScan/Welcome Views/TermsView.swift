@@ -22,8 +22,8 @@ struct TermsView: View {
                             .scaledToFit()
                             .frame(width: 60, height: 60)
                             .cornerRadius(12)
-                        Text("Foody Scan")
-                        .foregroundColor(Color("Color"))
+                        GradientText(title: "Foody Scan", size: 24, width: 165)
+                        
                         .font(.system(size: 24, weight: .heavy))
                     }
                     .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
@@ -107,7 +107,7 @@ struct TermsView: View {
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 50)
                         }
-                        .background(Color("Color"))
+                        .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing))
                         .cornerRadius(5.0)
                         .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
                         .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)

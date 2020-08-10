@@ -61,9 +61,11 @@ struct ScannerView: View {
             self.viewModel.lastQrCode = ""// So that it returns to the previous view
         }) { //UI at the top of the screen
             HStack {
-                Image(systemName: "chevron.left")
-                Text("Main Menu")
-            }.foregroundColor(Color("Color"))
+                GradientImage(image: "chevron.left", size: 18, width: 20 )
+                    .padding(.top, 20)
+                GradientText(title: "Main Menu", size: 16, width: 180)
+                    .padding(.top, 10)
+            }
     })
     .navigationBarTitle(Text("")) //No title for the view name
     }

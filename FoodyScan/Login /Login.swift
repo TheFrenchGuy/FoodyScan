@@ -99,8 +99,7 @@ struct Login : View {
                                 
                             }) {
                                 
-                                Text("Forgot password")
-                                    .fontWeight(.bold)
+                                GradientText(title:"Forgot password", size: 17, width: 150 )
                                     .foregroundColor(Color("Color"))
                                     .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
                                     .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
@@ -122,7 +121,7 @@ struct Login : View {
                                 .padding(.vertical)
                                 .frame(width: UIScreen.main.bounds.width - 50)
                         }
-                        .background(Color("Color"))
+                        .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
                         .cornerRadius(10)
                         .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
                         .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
@@ -147,9 +146,7 @@ struct Login : View {
                     
                 }) {
                     
-                    Text("Register")
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("Color"))
+                    GradientText(title: "Register", size: 20, width: 90)
                 }
                 .padding()
                 .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)

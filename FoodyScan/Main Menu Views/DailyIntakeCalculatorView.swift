@@ -17,6 +17,7 @@ struct DailyIntakeCalculatorView: View {
     @State var filledout = false // Whever the form is filled out
     @State var status = UserDefaults.standard.value(forKey: "birthdate") as? Date ?? Date()
     
+   
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -54,7 +55,7 @@ struct DailyIntakeCalculatorView: View {
                             .foregroundColor(.white)
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 50)
-                            .background(Color.red)
+                            .background(LinearGradient(gradient: Gradient(colors: [.gradientStart, .gradientEnd]), startPoint: .leading, endPoint: .trailing))
                             .cornerRadius(10)
                             .padding(.top, 25)
                             .padding(.horizontal, 30)
@@ -67,7 +68,7 @@ struct DailyIntakeCalculatorView: View {
                             .foregroundColor(.white)
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 50)
-                            .background(Color("Color"))
+                            .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
                             .cornerRadius(10)
                             .padding(.top, 25)
                             .padding(.horizontal, 30)

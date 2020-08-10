@@ -41,15 +41,17 @@ import GoogleSignIn
                             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
                             
                             VStack{
-                            HStack(alignment: .center) {
+                                HStack(alignment: .center) {
                                 Image("FoodyScanLargeIcon")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                                     .cornerRadius(18)
-                                Text("Foody Scan")
-                                .foregroundColor(Color("Color"))
-                                    .font(.system(size: 28, weight: .heavy))
+                                    .padding()
+                                //Text("Foody Scan")
+                                  //  .foregroundColor(Color("Color"))
+                                    //    .font(.system(size: 28, weight: .heavy))
+                                    GradientText(title: "Foody Scan", size: 28, width: 165)
                             }
                                 VStack {
                                     Text("Welcome to FoodyScan")
@@ -64,7 +66,7 @@ import GoogleSignIn
                                     .foregroundColor(.white)
                                     .padding(.vertical)
                                     .frame(width: UIScreen.main.bounds.width - 50)
-                                }.background(Color("Color"))
+                                }.background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing))
                                 .cornerRadius(10)
                                 .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
                                 .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
@@ -95,7 +97,69 @@ import GoogleSignIn
              
          }
  }
- 
+
+struct GradientText: View {
+    let title: String
+    let size: Int
+    let width: Int
+    let colors = Gradient(colors: [.gradientEndDark, .gradientStartDark])
+    
+    var body: some View {
+        LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
+            .frame(width: CGFloat(self.width), height: 35)
+            .mask(Text("\(self.title)")
+                .font(.system(size: CGFloat(self.size), weight: .heavy))
+        )
+    }
+}
+
+
+struct GradientTextInv: View {
+    let title: String
+    let size: Int
+    let width: Int
+    let colors = Gradient(colors: [.gradientEnd, .gradientStart])
+    
+    var body: some View {
+        LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
+            .frame(width: CGFloat(self.width), height: 35)
+            .mask(Text("\(self.title)")
+                .font(.system(size: CGFloat(self.size), weight: .heavy))
+        )
+    }
+}
+struct GradientImage: View {
+    let image: String
+    let size: Int
+    let width: Int
+    let colors = Gradient(colors: [.gradientEndDark, .gradientStartDark])
+    
+    var body: some View {
+        LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
+            .frame(width: CGFloat(self.width), height: 60)
+            .mask(Image(systemName: self.image)
+                .font(.system(size: CGFloat(self.size), weight: .semibold))
+                .padding(.top, 10)
+        )
+    }
+}
+
+
+struct GradientImageInv: View {
+    let image: String
+    let size: Int
+    let width: Int
+    let colors = Gradient(colors: [.gradientEnd, .gradientStart])
+    
+    var body: some View {
+        LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
+            .frame(width: CGFloat(self.width), height: 60)
+            .mask(Image(systemName: self.image)
+                .font(.system(size: CGFloat(self.size), weight: .semibold))
+                .padding(.top, 10)
+        )
+    }
+}
 
 
 extension Color { //Create an extension color for the view in order to make the neumorphic design stand out more

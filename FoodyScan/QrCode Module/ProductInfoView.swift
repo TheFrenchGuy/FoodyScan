@@ -28,125 +28,192 @@ struct ProductInfoView: View {
         ZStack {
                Color("BackgroundColor").edgesIgnoringSafeArea(.all)
                 ZStack(alignment: .topLeading) {
-                    
-                    VStack {
-                    
-                    VStack {
-                        HStack(alignment: .top, spacing: 10) {
-                            if self.getData.image_front_small_url != "No image" {
-                            AnimatedImage(url: URL(string: self.getData.image_front_small_url)) //Gotten from the imported SDWebImageSwiftUI
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                                .clipShape(Circle()).shadow(radius: 20)
-                                .padding()
-                            } else {
-                                Image(systemName: "bag.fill")
-                                .resizable()
-                                .frame(width: 60, height: 70)
-                               // .clipShape(Circle()).shadow(radius: 20)
-                                .padding()
-                            }
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text("\(getData.brands)")
-                                    .bold()
-                                Text("\(getData.product_name)")
-                                    .bold()
-                                Text(getData.statusVerbose.capitalizingFirstLetter())
-                                   
-                            }
-                        }
-                        .foregroundColor(self.colorScheme == .light ? Color.colorDark: Color.colorLight) //Inverted the colors as it looked better that way on the green background
-                        .padding(.vertical)
-                        .frame(width: UIScreen.main.bounds.width - 20)
-                    
-                    
-                    }
-                    .background(Color("Color"))
-                    .cornerRadius(12)
-                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
-                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                    .padding(.top, 25)
-                    
-                    
-                    VStack {
-                        
-                        HStack {
-                            VStack {
-                                Text("For 100g: ")
-                                    .bold()
-                                Text("Sugar: \(getData.sugars_100g, specifier: self.format) grams")
-                                Text("Energy: \(getData.energykcal_100g) Kcal")
-                                Text("Carb: \(getData.carbohydrates_100g, specifier: self.format) grams")
-                             
-                            }
-                            Divider().frame(width: 20, height: 30)
-                            VStack {
-                                Text("Fat: \(getData.fat_100g, specifier: self.format) grams")
-                                Text("Fiber: \(getData.fiber_100g, specifier: self.format) grams")
-                                Text("Protein: \(getData.proteins_100g, specifier: self.format) grams")
-                                Text("Salt: \(getData.salt_100g, specifier: self.format) grams")
-                            }
-                        }
-                        .foregroundColor(Color("Color"))
-                        
-                        .padding(.vertical)
-                        .frame(width: UIScreen.main.bounds.width - 20)
-                        }
-                    .background(BlurView())
-                    .cornerRadius(12)
-                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
-                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                    .padding(.top, 5)
-                        
-                    VStack {
-                        Text(getData.categories)
-                        .foregroundColor(Color("Color"))
-                    }
-                        
-                    VStack {
-                        
-                        HStack {
-                        Image(systemName: "cube.box")
-                        TextField("Rough Amount Eaten", text: self.$amounteaten) //Input the rough amount eaten of the product
-                        .keyboardType(.numberPad)
-                            .onReceive(Just(amounteaten)) { newValue in //Filteres so only numbers can be inputed
-                                let filtered = newValue.filter { "0123456789".contains($0) } //It can only contains numbers
-                                if filtered != newValue {
-                                    self.amounteaten = filtered
-                                }
-                        }
-                        Text("grams")
-                        }.padding()
-                            .background(RoundedRectangle(cornerRadius: 25).stroke(self.amounteaten != "" ? Color("Color") : self.colorScheme == .light ? Color.colorLight: Color.colorDark,lineWidth: 2)) //Changes the color when the user inputs into  the text field
-                        .frame(width: UIScreen.main.bounds.width - 20)
-                            .onTapGesture {
-                                self.hideKeyboard()
-                        }
-                    }.padding(10)
-                        
-                        
-                      Spacer()
+                    ScrollView {
                         VStack {
-                            Button(action: {
-                                self.addlist() //Sves the data to the CoreData stack
-                                self.showSelf = false //Returns to the homeview
-                                self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
-                                self.userSettings.eatentoday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.energykcal_100g) / 100)
-                            }) {
-                                Text("Add to list")
-                                .fontWeight(.light)
-                                .padding()
-                                .frame(width: UIScreen.main.bounds.width - 80)
-                                .background(Color("Color"))
-                                .cornerRadius(40)
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 40)
-                                        .stroke(Color("Color"), lineWidth: 5)
-                                )
+                        
+                        VStack {
+                            HStack(alignment: .top, spacing: 10) {
+                                if self.getData.image_front_small_url != "No image" {
+                                AnimatedImage(url: URL(string: self.getData.image_front_small_url)) //Gotten from the imported SDWebImageSwiftUI
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle()).shadow(radius: 20)
+                                    .padding()
+                                } else {
+                                    Image(systemName: "bag.fill")
+                                    .resizable()
+                                    .frame(width: 60, height: 70)
+                                   // .clipShape(Circle()).shadow(radius: 20)
+                                    .padding()
+                                }
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text("\(getData.brands)")
+                                        .bold()
+                                    Text("\(getData.product_name)")
+                                        .bold()
+                                    Text(getData.statusVerbose.capitalizingFirstLetter())
+                                       
+                                }
                             }
-                        }.padding(.bottom, 20)
+                            .foregroundColor(self.colorScheme == .light ? Color.colorDark: Color.colorLight) //Inverted the colors as it looked better that way on the green background
+                            .padding(.vertical)
+                            .frame(width: UIScreen.main.bounds.width - 20)
+                        
+                        
+                        }
+                        .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(12)
+                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                        .padding(.top, 25)
+                        
+                        Spacer(minLength: 50)
+                        VStack {
+                            
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("For 100g: ")
+                                        .bold()
+                                    HStack(alignment: .center) {
+                                        Image("Sugar")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40, height: 40)
+                                        Text("Sugar: \(getData.sugars_100g, specifier: self.format) grams")
+                                    }
+                                    
+                                    HStack {
+                                        Image("Energy")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 40, height: 40)
+                                        Text("Energy: \(getData.energykcal_100g) Kcal")
+                                    }
+                                    
+                                    HStack {
+                                        Image("Carbohydrates")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 40, height: 40)
+                                    Text("Carb: \(getData.carbohydrates_100g, specifier: self.format) grams")
+                                    }
+                                 
+                                }
+                            }
+                            .foregroundColor(Color("Color"))
+                            
+                            .padding(.vertical)
+                            .frame(width: UIScreen.main.bounds.width - 20)
+                            }
+                        .background(BlurView())
+                        .cornerRadius(12)
+                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                        .padding(.top, 5)
+                            
+
+                            
+                            VStack {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        HStack(alignment: .center) {
+                                            Image("Fat")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 40, height: 40)
+                                            Text("Fat: \(getData.fat_100g, specifier: self.format) grams")
+                                        }
+                                        
+                                        HStack(alignment: .center) {
+                                            Image("Fiber")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 40, height: 40)
+                                            Text("Fiber: \(getData.fiber_100g, specifier: self.format) grams")
+                                        }
+                                        
+                                        HStack(alignment: .center) {
+                                            Image("Protein")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 40, height: 40)
+                                            Text("Protein: \(getData.proteins_100g, specifier: self.format) grams")
+                                        }
+                                        
+                                        HStack(alignment: .center) {
+                                            Image("Salt")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 40, height: 40)
+                                            Text("Salt: \(getData.salt_100g, specifier: self.format) grams")
+                                        }
+                                    }
+                                    
+                                }
+                                .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
+                                .padding(.vertical)
+                                .frame(width: UIScreen.main.bounds.width - 20)
+                            }
+                            .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
+                            .cornerRadius(12)
+                            .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                            .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                            .padding(.top, 5)
+
+                            
+                        VStack {
+                            Text(getData.categories)
+                            .foregroundColor(Color("Color"))
+                        }
+                            
+                            
+                        Spacer(minLength: 50)
+                            
+                        VStack {
+                            
+                            HStack {
+                            Image(systemName: "cube.box")
+                            TextField("Rough Amount Eaten", text: self.$amounteaten) //Input the rough amount eaten of the product
+                            .keyboardType(.numberPad)
+                                .onReceive(Just(amounteaten)) { newValue in //Filteres so only numbers can be inputed
+                                    let filtered = newValue.filter { "0123456789".contains($0) } //It can only contains numbers
+                                    if filtered != newValue {
+                                        self.amounteaten = filtered
+                                    }
+                            }
+                            Text("grams")
+                            }.padding()
+                                .background(RoundedRectangle(cornerRadius: 25).stroke(self.amounteaten != "" ? Color("Color") : self.colorScheme == .light ? Color.colorLight: Color.colorDark,lineWidth: 2)) //Changes the color when the user inputs into  the text field
+                            .frame(width: UIScreen.main.bounds.width - 20)
+                                .onTapGesture {
+                                    self.hideKeyboard()
+                            }
+                        }.padding(10)
+                            
+                            
+                          Spacer(minLength: 32)
+                            VStack {
+                                Button(action: {
+                                    self.addlist() //Sves the data to the CoreData stack
+                                    self.showSelf = false //Returns to the homeview
+                                    self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
+                                    self.userSettings.eatentoday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.energykcal_100g) / 100)
+                                }) {
+                                    Text("Add to list")
+                                    .fontWeight(.light)
+                                    .padding()
+                                    .frame(width: UIScreen.main.bounds.width - 80)
+                                    .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
+                                    .cornerRadius(40)
+                                    .foregroundColor(.white)
+                                    .padding(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 40)
+                                            .stroke(Color("Color"), lineWidth: 5)
+                                    )
+                                }
+                            }.padding(.bottom, 20)
+                        }
                 }
             }
            

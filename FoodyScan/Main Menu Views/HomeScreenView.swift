@@ -48,9 +48,9 @@ struct HomeScreenView: View {
                        self.showMenu.toggle()
                    }
                }) {
-                   Image(systemName: "line.horizontal.3")
+                   GradientImage(image: "line.horizontal.3.decrease", size: 16, width: 60)
                        .imageScale(.large)
-                .foregroundColor(Color("Color"))
+                    .padding(.top, 24)
                }
            ))
        }
@@ -89,7 +89,7 @@ struct MainView : View {
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 50)
                 }
-                .background(Color("Color"))
+                .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
                 .cornerRadius(10)
                 .padding(.top, 25)
             }

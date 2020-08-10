@@ -126,7 +126,7 @@ struct SignUp : View {
                                 .padding(.vertical)
                                 .frame(width: UIScreen.main.bounds.width - 50)
                         }
-                        .background(Color("Color"))
+                        .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
                         .cornerRadius(5.0)
                         .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
                         .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
@@ -146,9 +146,8 @@ struct SignUp : View {
                     
                 }) {
                     
-                    Image(systemName: "chevron.left")
-                        .font(.title)
-                        .foregroundColor(Color("Color"))
+                    GradientImage(image: "chevron.left", size: 20, width: 40)
+                        
                 }
                 .padding()
             }

@@ -15,6 +15,8 @@ struct DailyIntakeParrallax: View {
     @ObservedObject var userSettings = UserSettings()
     
     @State var done = false
+    
+    let colors = Gradient(colors: [.gradientEndDark, .gradientStartDark])
     var body: some View {
         ZStack {
             if self.done == true { //Neccessary in order to store the data to memory also gives feedback to the user
@@ -59,16 +61,20 @@ struct DailyIntakeParrallax: View {
                                 .font(.custom("AvenirNext-Regular", size: 15))
                                 .padding(.horizontal, 20)
                                 .foregroundColor(.gray)
-                            Text("Foody Scan")
+                            GradientText(title: "Foody Scan", size: 12, width: 80)
                                 .font(.custom("AvenirNext-Demibold", size: 15))
                                 .padding(.horizontal, 20)
                         }
                     }
                         .padding(.top, 20)
                     
-                    Text("Please enter your information")
-                        .font(.custom("AvenirNext-Bold", size: 30))
-                        .lineLimit(nil)
+                    LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
+                        .frame(width: 300, height: 80)
+                        .mask(Text("Please enter your information")
+                            .font(.custom("AvenirNext-Bold", size: 28))
+                            .lineLimit(nil)
+                    )
+                        
                         .padding(.horizontal, 20)
                         .padding(.top, 10)
                     Text("We need these to calculate your personal daily intake")
