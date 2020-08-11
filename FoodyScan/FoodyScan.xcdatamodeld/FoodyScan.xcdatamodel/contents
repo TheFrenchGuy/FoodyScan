@@ -5,21 +5,26 @@
         <attribute name="brand_owner_imported" optional="YES" attributeType="String"/>
         <attribute name="brands" optional="YES" attributeType="String"/>
         <attribute name="carbohydrates_100g" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="carbohydratesIn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="categories" optional="YES" attributeType="String"/>
         <attribute name="energyInKcal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="energykcal_100g" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="fat_100g" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fatIn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="fiber_100g" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fiberIn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="image_front_small_url" optional="YES" attributeType="String"/>
         <attribute name="product_name" optional="YES" attributeType="String"/>
         <attribute name="productID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="proteinIn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="proteins_100g" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="salt_100g" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="saltIn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="scanDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="sugarIn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="sugars_100g" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="ListProduct" positionX="-63" positionY="-18" width="128" height="298"/>
+        <element name="ListProduct" positionX="-63" positionY="-18" width="128" height="373"/>
     </elements>
 </model>

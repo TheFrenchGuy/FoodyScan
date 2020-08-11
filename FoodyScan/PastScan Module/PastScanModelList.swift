@@ -31,6 +31,11 @@ public class ListProduct:NSManagedObject, Identifiable {
     @NSManaged var amountEaten: Int16
     @NSManaged var energyInKcal: Double
     @NSManaged var sugarIn: Double
+    @NSManaged var proteinIn: Double
+    @NSManaged var fatIn: Double
+    @NSManaged var fiberIn: Double
+    @NSManaged var saltIn: Double
+    @NSManaged var carbohydratesIn: Double
 }
 
 extension ListProduct

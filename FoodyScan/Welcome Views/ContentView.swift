@@ -25,7 +25,6 @@ import GoogleSignIn
  struct Home : View {
      @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false //Wethever the user is logged in
      @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user is logged in
-    
      var body: some View{
             NavigationView {
                 VStack {
@@ -56,7 +55,7 @@ import GoogleSignIn
                                 VStack {
                                     Text("Welcome to FoodyScan")
                                         .font(.system(size: 28, weight: .heavy))
-                                    Text("The application the keeps track of your intake")
+                                    Text("The application that keeps track of your intake")
                                         .font(.system(size: 15))
                                 }
                                 
@@ -170,8 +169,12 @@ extension Color { //Create an extension color for the view in order to make the 
    static let gradientStart = Color(red: 239.0 / 255, green: 120.0 / 255, blue: 221.0 / 255)
    static let gradientStartDark = Color(red: 95.0 / 255, green: 169.0 / 255, blue: 244.0 / 255)
 
-  static let gradientEnd = Color(red: 239.0 / 255, green: 172.0 / 255, blue: 120.0 / 255)
-  static let gradientEndDark = Color(red: 79.0 / 255, green: 178.0 / 255, blue: 141.0 / 255)
+   static let gradientEnd = Color(red: 239.0 / 255, green: 172.0 / 255, blue: 120.0 / 255)
+   static let gradientEndDark = Color(red: 79.0 / 255, green: 178.0 / 255, blue: 141.0 / 255)
+    
+   static let gradientSecondaryStart = Color(red: 1 / 255, green: 37 / 255, blue: 255 / 255)
+   static let gradientSecondaryEnd = Color(red: 237.0 / 255, green: 0 / 255, blue: 255 / 255)
+
 
 }
 

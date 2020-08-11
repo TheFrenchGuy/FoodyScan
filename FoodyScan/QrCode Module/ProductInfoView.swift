@@ -14,6 +14,7 @@ struct ProductInfoView: View {
     @Environment(\.managedObjectContext) var managedObjectContext //Neccessary in order to store the scanned products into CoreData Stcak
     @ObservedObject var userSettings = UserSettings()
     @ObservedObject var QRviewModel = ScannerViewModel() //Where the QRcode is gotten
+    @ObservedObject var eatenToday = EatenToday()
     @Binding var showSelf:Bool //Whever or not to show the Scanner Views
     @ObservedObject var getData = JSONParserFood() //Where the data is fetched from so can be reference into the main view for user feedback
     @State var amounteaten = "" //Used laster for the calculation of the user
@@ -195,6 +196,7 @@ struct ProductInfoView: View {
                             VStack {
                                 Button(action: {
                                     self.addlist() //Sves the data to the CoreData stack
+                                    self.todayStore()
                                     self.showSelf = false //Returns to the homeview
                                     self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
                                     self.userSettings.eatentoday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.energykcal_100g) / 100)
@@ -243,12 +245,59 @@ struct ProductInfoView: View {
         let amounteaten = Double(self.amounteaten)
         i.sugarIn = ((amounteaten ?? 1.0) / 100 ) * self.getData.sugars_100g
         i.energyInKcal = ((amounteaten ?? 1.0) / 100 ) * Double(self.getData.energykcal_100g)
+        
+        i.proteinIn = ((amounteaten ?? 1.0) / 100 ) * Double(self.getData.proteins_100g)
+        i.fatIn = ((amounteaten ?? 1.0) / 100 ) * Double(self.getData.fat_100g)
+        i.fiberIn = ((amounteaten ?? 1.0) / 100 ) * Double(self.getData.fiber_100g)
+        i.saltIn = ((amounteaten ?? 1.0) / 100 ) * Double(self.getData.salt_100g)
+        i.carbohydratesIn = ((amounteaten ?? 1.0) / 100 ) * Double(self.getData.carbohydrates_100g)
+        
         do {
             try self.managedObjectContext.save()
             print("Product Added to list")
         }catch {
             print("error inserting list")
         }
+    }
+    
+    func todayStore() {
+        let i = eatenToday
+        let timediff = Int(Date().timeIntervalSince(self.eatenToday.startTime))
+        print("\(Int(Date().timeIntervalSince(self.eatenToday.startTime)))")
+        
+        
+        if timediff >= 86400 {
+            i.firstItemDay = true
+            i.sugarToday = 0.0
+            i.proteinToday = 0.0
+            i.fatToday = 0.0
+            i.fiberToday = 0.0
+            i.saltToday = 0.0
+            i.carbohydratesToday = 0.0
+        }
+        if i.firstItemDay{
+            self.eatenToday.startTime = Date()
+            i.proteinToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.proteins_100g) / 100)
+            i.sugarToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.sugars_100g) / 100)
+            i.fatToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.fat_100g) / 100)
+            i.fiberToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.fiber_100g) / 100)
+            i.saltToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.salt_100g) / 100)
+            i.carbohydratesToday  += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.carbohydrates_100g  / 100))
+            i.firstItemDay = false
+            print("no working")
+            
+        }
+        
+        else {
+            i.proteinToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.proteins_100g) / 100)
+            i.sugarToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.sugars_100g) / 100)
+            i.fatToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.fat_100g) / 100)
+            i.fiberToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.fiber_100g) / 100)
+            i.saltToday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.salt_100g) / 100)
+            i.carbohydratesToday  += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.carbohydrates_100g / 100))
+            print("working")
+        }
+        
     }
 }
 

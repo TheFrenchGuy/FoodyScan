@@ -31,6 +31,10 @@
 		6045940224D0CBE8003EF44F /* DoneSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6045940124D0CBE8003EF44F /* DoneSetupView.swift */; };
 		605ADB8324CCD4C800E4A200 /* DailyIntakeParrallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605ADB8224CCD4C800E4A200 /* DailyIntakeParrallax.swift */; };
 		605EB62124CD8E91005EA648 /* FoodyScan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 605EB61F24CD8E91005EA648 /* FoodyScan.xcdatamodeld */; };
+		606E0D4B24E28FBC004B8C98 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E0D4A24E28FBC004B8C98 /* DrawShape.swift */; };
+		606E0D4D24E29185004B8C98 /* EatenToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E0D4C24E29185004B8C98 /* EatenToday.swift */; };
+		606E0D5124E2BF1C004B8C98 /* SignPainter.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 606E0D5024E2BEEC004B8C98 /* SignPainter.ttc */; };
+		606E0D5424E2C0C3004B8C98 /* Dashing Unicorn.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 606E0D5324E2C0C3004B8C98 /* Dashing Unicorn.ttf */; };
 		6075E0BE24CB1FA300712730 /* DailyIntakeCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */; };
 		607E384924CAE0B30073DDFD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E384824CAE0B30073DDFD /* MenuView.swift */; };
 		6088C75224D2C6640067DE48 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6088C75124D2C6640067DE48 /* SDWebImageSwiftUI */; };
@@ -109,6 +113,10 @@
 		6045940124D0CBE8003EF44F /* DoneSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneSetupView.swift; sourceTree = "<group>"; };
 		605ADB8224CCD4C800E4A200 /* DailyIntakeParrallax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeParrallax.swift; sourceTree = "<group>"; };
 		605EB62024CD8E91005EA648 /* FoodyScan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodyScan.xcdatamodel; sourceTree = "<group>"; };
+		606E0D4A24E28FBC004B8C98 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
+		606E0D4C24E29185004B8C98 /* EatenToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatenToday.swift; sourceTree = "<group>"; };
+		606E0D5024E2BEEC004B8C98 /* SignPainter.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = SignPainter.ttc; sourceTree = "<group>"; };
+		606E0D5324E2C0C3004B8C98 /* Dashing Unicorn.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dashing Unicorn.ttf"; sourceTree = "<group>"; };
 		6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeCalculatorView.swift; sourceTree = "<group>"; };
 		607E384824CAE0B30073DDFD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		6097FC8224DB0B59000E3E70 /* DailyIntakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeView.swift; sourceTree = "<group>"; };
@@ -195,6 +203,7 @@
 				60116C0024C99DE500DF9E09 /* LaunchScreen.storyboard */,
 				60116C0324C99DE500DF9E09 /* Info.plist */,
 				605EB61F24CD8E91005EA648 /* FoodyScan.xcdatamodeld */,
+				606E0D4E24E2BEB9004B8C98 /* Font */,
 				60116BFD24C99DE500DF9E09 /* Preview Content */,
 			);
 			path = FoodyScan;
@@ -249,6 +258,31 @@
 			path = "QrCode Module";
 			sourceTree = "<group>";
 		};
+		606E0D4E24E2BEB9004B8C98 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				606E0D5224E2C0A8004B8C98 /* Dashing Unicorn */,
+				606E0D4F24E2BECA004B8C98 /* SignPainter */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		606E0D4F24E2BECA004B8C98 /* SignPainter */ = {
+			isa = PBXGroup;
+			children = (
+				606E0D5024E2BEEC004B8C98 /* SignPainter.ttc */,
+			);
+			path = SignPainter;
+			sourceTree = "<group>";
+		};
+		606E0D5224E2C0A8004B8C98 /* Dashing Unicorn */ = {
+			isa = PBXGroup;
+			children = (
+				606E0D5324E2C0C3004B8C98 /* Dashing Unicorn.ttf */,
+			);
+			path = "Dashing Unicorn";
+			sourceTree = "<group>";
+		};
 		607E384A24CAF34F0073DDFD /* Main Menu Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				6097FC8224DB0B59000E3E70 /* DailyIntakeView.swift */,
+				606E0D4A24E28FBC004B8C98 /* DrawShape.swift */,
+				606E0D4C24E29185004B8C98 /* EatenToday.swift */,
 			);
 			path = "Daily Intake Module";
 			sourceTree = "<group>";
@@ -433,8 +469,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606E0D5124E2BF1C004B8C98 /* SignPainter.ttc in Resources */,
 				60116C0224C99DE500DF9E09 /* LaunchScreen.storyboard in Resources */,
 				60116C2624C99EF700DF9E09 /* GoogleService-Info.plist in Resources */,
+				606E0D5424E2C0C3004B8C98 /* Dashing Unicorn.ttf in Resources */,
 				60116C2A24C9A32F00DF9E09 /* Assets.xcassets in Resources */,
 				60116BFF24C99DE500DF9E09 /* Preview Assets.xcassets in Resources */,
 			);
@@ -615,7 +653,9 @@
 				60A0FC8224E0613900398313 /* NameView.swift in Sources */,
 				60327ED324CE242E003D49F7 /* ScannerViewModel.swift in Sources */,
 				60327EDB24CE2680003D49F7 /* QrCodeScannerView.swift in Sources */,
+				606E0D4B24E28FBC004B8C98 /* DrawShape.swift in Sources */,
 				6075E0BE24CB1FA300712730 /* DailyIntakeCalculatorView.swift in Sources */,
+				606E0D4D24E29185004B8C98 /* EatenToday.swift in Sources */,
 				60327ED524CE24A9003D49F7 /* ScannerView.swift in Sources */,
 				60327ED924CE2606003D49F7 /* CameraPreview.swift in Sources */,
 				605ADB8324CCD4C800E4A200 /* DailyIntakeParrallax.swift in Sources */,

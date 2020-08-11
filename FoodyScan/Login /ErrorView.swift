@@ -49,7 +49,7 @@ struct ErrorView : View {
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 120)
                 }
-                .background(Color("Color"))
+                .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
                 .cornerRadius(10)
                 .padding(.top, 25)
                 

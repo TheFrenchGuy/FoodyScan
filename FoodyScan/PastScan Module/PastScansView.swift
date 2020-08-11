@@ -16,6 +16,7 @@ struct PastScansView: View {
     @Environment(\.managedObjectContext) var managedObjectContext //Necessary in order to fetch and save the coredata product stack
     @FetchRequest(fetchRequest: ListProduct.fetchAllItems()) var products: FetchedResults<ListProduct> //Fetches the coredate product stacks
     @ObservedObject var userSettings = UserSettings()
+    @ObservedObject var eatenToday = EatenToday()
     @State var edit:Bool = false //whever the list is being edited
 
     var dateFormatter: DateFormatter { //Used in order to format the date so it is not too long for the screen
@@ -94,6 +95,7 @@ struct PastScansView: View {
                     }.onDelete(perform: { indexSet in //The only change when the list is being edited you can swipe from the right to delete the item
                             
                             let deleteProduct = self.products[indexSet.first!] //What product to delete
+                            self.delete(deleteProduct)
                             self.managedObjectContext.delete(deleteProduct) //To actually delete the product from the list
                             
                             do {
@@ -179,6 +181,8 @@ struct PastScansView: View {
                     }
                 }
             }.background(Color("BackgroundColor"))
+                
+                
             .navigationBarItems(leading: //Made so the back button is the same color scheme as the app
                 HStack {
                     if self.edit { //If the list is being edited then the user cannot go back to the main screen
@@ -230,6 +234,14 @@ struct PastScansView: View {
         
         managedObjectContext.delete(i) //delte the card selected
         self.userSettings.eatentoday -= Double(i.energyInKcal)
+        self.eatenToday.sugarToday -= Double(i.sugarIn)
+        self.eatenToday.proteinToday -= Double(i.proteinIn)
+        self.eatenToday.fatToday -= Double(i.fatIn)
+        self.eatenToday.fiberToday -= Double(i.fiberIn)
+        self.eatenToday.saltToday -= Double(i.saltIn)
+        self.eatenToday.carbohydratesToday -= Double(i.carbohydratesIn)
+        
+        
         do {
             try self.managedObjectContext.save() //saves it onto the coredata stacks
         } catch {
