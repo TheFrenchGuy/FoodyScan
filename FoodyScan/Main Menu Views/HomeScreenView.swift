@@ -93,7 +93,8 @@ struct MainView : View {
                 .cornerRadius(10)
                 .padding(.top, 25)
             }
-        }.onAppear {
+        }
+        .onAppear {
              
              NotificationCenter.default.addObserver(forName: NSNotification.Name("birthdate"), object: nil, queue: .main) { (_) in
                  

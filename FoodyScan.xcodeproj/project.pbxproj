@@ -35,6 +35,9 @@
 		606E0D4D24E29185004B8C98 /* EatenToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E0D4C24E29185004B8C98 /* EatenToday.swift */; };
 		606E0D5124E2BF1C004B8C98 /* SignPainter.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 606E0D5024E2BEEC004B8C98 /* SignPainter.ttc */; };
 		606E0D5424E2C0C3004B8C98 /* Dashing Unicorn.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 606E0D5324E2C0C3004B8C98 /* Dashing Unicorn.ttf */; };
+		606E0D5824E343BC004B8C98 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E0D5724E343BC004B8C98 /* ColorExtension.swift */; };
+		606E0D5A24E34412004B8C98 /* GradientViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E0D5924E34412004B8C98 /* GradientViews.swift */; };
+		606E0D5C24E34458004B8C98 /* InformationDailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606E0D5B24E34458004B8C98 /* InformationDailyView.swift */; };
 		6075E0BE24CB1FA300712730 /* DailyIntakeCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */; };
 		607E384924CAE0B30073DDFD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E384824CAE0B30073DDFD /* MenuView.swift */; };
 		6088C75224D2C6640067DE48 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6088C75124D2C6640067DE48 /* SDWebImageSwiftUI */; };
@@ -42,6 +45,11 @@
 		60A0FC8024E05F4E00398313 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0FC7F24E05F4D00398313 /* TermsView.swift */; };
 		60A0FC8224E0613900398313 /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0FC8124E0613900398313 /* NameView.swift */; };
 		60A0FC8424E062FF00398313 /* LoginSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0FC8324E062FF00398313 /* LoginSignUpView.swift */; };
+		60A3E22824E4306C000C0A24 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 60A3E22724E4306C000C0A24 /* Lottie */; };
+		60A3E22B24E430D0000C0A24 /* FoodSlideLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A3E22A24E430CF000C0A24 /* FoodSlideLottie.json */; };
+		60A3E22D24E43123000C0A24 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A3E22C24E43123000C0A24 /* LottieView.swift */; };
+		60A3E22F24E445E0000C0A24 /* QrCodeLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A3E22E24E445E0000C0A24 /* QrCodeLottie.json */; };
+		60A3E23124E44D2D000C0A24 /* QrCodeLottieDark.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A3E23024E44D2D000C0A24 /* QrCodeLottieDark.json */; };
 		60B5EC5A24CC407A008EFC70 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5EC5924CC407A008EFC70 /* UserSettings.swift */; };
 		60F5F11624CA31FD00835292 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11524CA31FD00835292 /* Login.swift */; };
 		60F5F11824CA334B00835292 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11724CA334B00835292 /* SignUp.swift */; };
@@ -117,12 +125,19 @@
 		606E0D4C24E29185004B8C98 /* EatenToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatenToday.swift; sourceTree = "<group>"; };
 		606E0D5024E2BEEC004B8C98 /* SignPainter.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = SignPainter.ttc; sourceTree = "<group>"; };
 		606E0D5324E2C0C3004B8C98 /* Dashing Unicorn.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dashing Unicorn.ttf"; sourceTree = "<group>"; };
+		606E0D5724E343BC004B8C98 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		606E0D5924E34412004B8C98 /* GradientViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViews.swift; sourceTree = "<group>"; };
+		606E0D5B24E34458004B8C98 /* InformationDailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationDailyView.swift; sourceTree = "<group>"; };
 		6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeCalculatorView.swift; sourceTree = "<group>"; };
 		607E384824CAE0B30073DDFD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		6097FC8224DB0B59000E3E70 /* DailyIntakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeView.swift; sourceTree = "<group>"; };
 		60A0FC7F24E05F4D00398313 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		60A0FC8124E0613900398313 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
 		60A0FC8324E062FF00398313 /* LoginSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUpView.swift; sourceTree = "<group>"; };
+		60A3E22A24E430CF000C0A24 /* FoodSlideLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FoodSlideLottie.json; sourceTree = "<group>"; };
+		60A3E22C24E43123000C0A24 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		60A3E22E24E445E0000C0A24 /* QrCodeLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QrCodeLottie.json; sourceTree = "<group>"; };
+		60A3E23024E44D2D000C0A24 /* QrCodeLottieDark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QrCodeLottieDark.json; sourceTree = "<group>"; };
 		60B5EC5924CC407A008EFC70 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		60F5F11524CA31FD00835292 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		60F5F11724CA334B00835292 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -142,6 +157,7 @@
 			files = (
 				6088C75224D2C6640067DE48 /* SDWebImageSwiftUI in Frameworks */,
 				E87F11E88F504D4859D4E2DD /* Pods_FoodyScan.framework in Frameworks */,
+				60A3E22824E4306C000C0A24 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +219,7 @@
 				60116C0024C99DE500DF9E09 /* LaunchScreen.storyboard */,
 				60116C0324C99DE500DF9E09 /* Info.plist */,
 				605EB61F24CD8E91005EA648 /* FoodyScan.xcdatamodeld */,
-				606E0D4E24E2BEB9004B8C98 /* Font */,
+				606E0D5624E343A0004B8C98 /* Extensions */,
 				60116BFD24C99DE500DF9E09 /* Preview Content */,
 			);
 			path = FoodyScan;
@@ -283,6 +299,18 @@
 			path = "Dashing Unicorn";
 			sourceTree = "<group>";
 		};
+		606E0D5624E343A0004B8C98 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				60A3E22924E430B6000C0A24 /* Lottie JSON */,
+				60A3E22C24E43123000C0A24 /* LottieView.swift */,
+				606E0D4E24E2BEB9004B8C98 /* Font */,
+				606E0D5724E343BC004B8C98 /* ColorExtension.swift */,
+				606E0D5924E34412004B8C98 /* GradientViews.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		607E384A24CAF34F0073DDFD /* Main Menu Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +330,7 @@
 				6097FC8224DB0B59000E3E70 /* DailyIntakeView.swift */,
 				606E0D4A24E28FBC004B8C98 /* DrawShape.swift */,
 				606E0D4C24E29185004B8C98 /* EatenToday.swift */,
+				606E0D5B24E34458004B8C98 /* InformationDailyView.swift */,
 			);
 			path = "Daily Intake Module";
 			sourceTree = "<group>";
@@ -315,6 +344,16 @@
 				60A0FC8324E062FF00398313 /* LoginSignUpView.swift */,
 			);
 			path = "Welcome Views";
+			sourceTree = "<group>";
+		};
+		60A3E22924E430B6000C0A24 /* Lottie JSON */ = {
+			isa = PBXGroup;
+			children = (
+				60A3E23024E44D2D000C0A24 /* QrCodeLottieDark.json */,
+				60A3E22E24E445E0000C0A24 /* QrCodeLottie.json */,
+				60A3E22A24E430CF000C0A24 /* FoodSlideLottie.json */,
+			);
+			path = "Lottie JSON";
 			sourceTree = "<group>";
 		};
 		60F5F11B24CA34F600835292 /* Login  */ = {
@@ -373,6 +412,7 @@
 			name = FoodyScan;
 			packageProductDependencies = (
 				6088C75124D2C6640067DE48 /* SDWebImageSwiftUI */,
+				60A3E22724E4306C000C0A24 /* Lottie */,
 			);
 			productName = FoodyScan;
 			productReference = 60116BEF24C99DE300DF9E09 /* FoodyScan.app */;
@@ -452,6 +492,7 @@
 			mainGroup = 60116BE624C99DE300DF9E09;
 			packageReferences = (
 				6088C75024D2C6640067DE48 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				60A3E22624E4306C000C0A24 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 60116BF024C99DE300DF9E09 /* Products */;
 			projectDirPath = "";
@@ -469,9 +510,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60A3E23124E44D2D000C0A24 /* QrCodeLottieDark.json in Resources */,
+				60A3E22F24E445E0000C0A24 /* QrCodeLottie.json in Resources */,
 				606E0D5124E2BF1C004B8C98 /* SignPainter.ttc in Resources */,
 				60116C0224C99DE500DF9E09 /* LaunchScreen.storyboard in Resources */,
 				60116C2624C99EF700DF9E09 /* GoogleService-Info.plist in Resources */,
+				60A3E22B24E430D0000C0A24 /* FoodSlideLottie.json in Resources */,
 				606E0D5424E2C0C3004B8C98 /* Dashing Unicorn.ttf in Resources */,
 				60116C2A24C9A32F00DF9E09 /* Assets.xcassets in Resources */,
 				60116BFF24C99DE500DF9E09 /* Preview Assets.xcassets in Resources */,
@@ -645,6 +689,8 @@
 				60327EE124CE2922003D49F7 /* ProductInfoView.swift in Sources */,
 				60116BF324C99DE300DF9E09 /* AppDelegate.swift in Sources */,
 				60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */,
+				606E0D5C24E34458004B8C98 /* InformationDailyView.swift in Sources */,
+				606E0D5824E343BC004B8C98 /* ColorExtension.swift in Sources */,
 				6028C8B824D4D0E600836761 /* PastScansView.swift in Sources */,
 				607E384924CAE0B30073DDFD /* MenuView.swift in Sources */,
 				60A0FC8424E062FF00398313 /* LoginSignUpView.swift in Sources */,
@@ -654,6 +700,7 @@
 				60327ED324CE242E003D49F7 /* ScannerViewModel.swift in Sources */,
 				60327EDB24CE2680003D49F7 /* QrCodeScannerView.swift in Sources */,
 				606E0D4B24E28FBC004B8C98 /* DrawShape.swift in Sources */,
+				60A3E22D24E43123000C0A24 /* LottieView.swift in Sources */,
 				6075E0BE24CB1FA300712730 /* DailyIntakeCalculatorView.swift in Sources */,
 				606E0D4D24E29185004B8C98 /* EatenToday.swift in Sources */,
 				60327ED524CE24A9003D49F7 /* ScannerView.swift in Sources */,
@@ -664,6 +711,7 @@
 				60F5F11624CA31FD00835292 /* Login.swift in Sources */,
 				60116BFA24C99DE300DF9E09 /* ContentView.swift in Sources */,
 				60F5F11D24CA356000835292 /* ErrorView.swift in Sources */,
+				606E0D5A24E34412004B8C98 /* GradientViews.swift in Sources */,
 				60116BF524C99DE300DF9E09 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1011,6 +1059,14 @@
 				minimumVersion = 1.5.0;
 			};
 		};
+		60A3E22624E4306C000C0A24 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.8;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1018,6 +1074,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6088C75024D2C6640067DE48 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		60A3E22724E4306C000C0A24 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60A3E22624E4306C000C0A24 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -66,7 +66,7 @@ struct MenuView: View {
             
             HStack {
                 
-                NavigationLink(destination: Text("Settings View")) {
+                NavigationLink(destination: LottieView(filename: "QrCodeLottie", speed: 0.6)) {
                     Image(systemName: "gear")
                         .foregroundColor(.gray)
                         .imageScale(.large)
