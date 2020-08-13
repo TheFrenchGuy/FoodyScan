@@ -38,7 +38,10 @@ struct InformationDailyView: View {
         ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
             if self.eatenToday.firstItemDay == true {
-                GradientText(title: "No Scans done today", size: 28, width: 290)
+                VStack {
+                    LottieView(filename: "GirlPlayingGuitarLottie", speed: 1, loop: .loop).frame(height: 240)
+                    GradientText(title: "No Scans done today", size: 28, width: 290)
+                }
             }
             else {
                 ZStack(alignment: .topLeading) {
@@ -333,9 +336,9 @@ struct InformationDailyView: View {
             }
         }//.edgesIgnoringSafeArea(.top)
         .onAppear {
-            self.userSettings.eatentoday = UserDefaults.standard.value(forKey: "eatentoday") as? Double ?? 1.0
+            self.userSettings.eatentoday = UserDefaults.standard.value(forKey: "eatentoday") as? Double ?? 0.0
             self.userSettings.dailyintakekcal = UserDefaults.standard.value(forKey: "dailyintakekcal") as? Double ?? 1000.0
-            self.eatenToday.sugarToday = UserDefaults.standard.value(forKey: "sugarToday") as? Double ?? 1.0
+            self.eatenToday.sugarToday = UserDefaults.standard.value(forKey: "sugarToday") as? Double ?? 0.0
         }
         
     }

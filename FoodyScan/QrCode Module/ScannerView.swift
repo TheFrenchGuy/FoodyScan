@@ -7,11 +7,13 @@
 //
 
 import SwiftUI
-
+import CoreHaptics
 struct ScannerView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = ScannerViewModel() //Refers to the scanner view model
     @Binding var showSelf: Bool //Whever the product view is shown
+    
+    @State private var engine: CHHapticEngine?
     var body: some View {
         ZStack { //Used a ZStack as the camera view will be in at the back so will take the entire screen
             
@@ -57,6 +59,7 @@ struct ScannerView: View {
         }
     .navigationBarItems(leading: //Made so the back button is the same color scheme as the app
         Button(action: {
+            self.complexSuccess()
             self.presentationMode.wrappedValue.dismiss()
             self.viewModel.lastQrCode = ""// So that it returns to the previous view
         }) { //UI at the top of the screen
@@ -65,9 +68,41 @@ struct ScannerView: View {
                     .padding(.top, 20)
                 GradientText(title: "Main Menu", size: 16, width: 180)
                     .padding(.top, 10)
-            }
+            }.onAppear(perform: prepareHaptics)
     })
     .navigationBarTitle(Text("")) //No title for the view name
+    }
+    
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            self.engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func complexSuccess() {
+        // make sure that the device supports haptics
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        var events = [CHHapticEvent]()
+
+        // create one intense, sharp tap
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
+        events.append(event)
+
+        // convert those events into a pattern and play it immediately
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
+        }
     }
     
 }

@@ -8,11 +8,10 @@
 
 import SwiftUI
 import Firebase
-import CoreHaptics
 
 struct MenuView: View {
-    @State private var engine: CHHapticEngine?
     @State private var showQrView = false
+    @State var showSetting: Bool = false
     @Environment(\.managedObjectContext) var productenv //Neccesary as sets the view from different hiearchay can also sync up with the coredata stack
     var username = UserDefaults.standard.string(forKey: "UserName") ?? "Error"
     var email =  UserDefaults.standard.string(forKey: "email") ?? "Error" 
@@ -36,8 +35,6 @@ struct MenuView: View {
                         .font(.headline)
                 }
             }
-            .onAppear(perform: prepareHaptics)
-            .onTapGesture(perform: complexSuccess)
             .padding(.top, 30)
             HStack {
                 
@@ -66,7 +63,9 @@ struct MenuView: View {
             
             HStack {
                 
-                NavigationLink(destination: LottieView(filename: "QrCodeLottie", speed: 0.6)) {
+                Button(action: {
+                    self.showSetting = true
+                }) {
                     Image(systemName: "gear")
                         .foregroundColor(.gray)
                         .imageScale(.large)
@@ -74,8 +73,11 @@ struct MenuView: View {
                         .foregroundColor(.gray)
                         .font(.headline)
                 }
+            }.padding(.top, 30)
+            .sheet(isPresented: $showSetting) {
+                SettingsView()
             }
-            .padding(.top, 30)
+            
             Spacer()
         }
         .padding()
@@ -84,42 +86,6 @@ struct MenuView: View {
         .edgesIgnoringSafeArea(.all)
             
     }
-        func prepareHaptics() {
-            guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-                print("Haptic not supported by device")
-                return
-            }
-
-            do {
-                self.engine = try CHHapticEngine()
-                try engine?.start()
-            } catch {
-                print("There was an error creating the engine: \(error.localizedDescription)")
-            }
-        }
-    
-        func complexSuccess() {
-            // make sure that the device supports haptics
-            guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-            var events = [CHHapticEvent]()
-
-            // create one intense, sharp tap
-            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-            let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
-            let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
-            events.append(event)
-
-            // convert those events into a pattern and play it immediately
-            do {
-                let pattern = try CHHapticPattern(events: events, parameters: [])
-                let player = try engine?.makePlayer(with: pattern)
-                try player?.start(atTime: 0)
-            } catch {
-                print("Failed to play pattern: \(error.localizedDescription).")
-            }
-        }
-    
-    
 }
 
 struct MenuView_Previews: PreviewProvider {

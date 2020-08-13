@@ -111,6 +111,9 @@ struct ProductInfoView: View {
                         .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
                         .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
                         .padding(.top, 5)
+                        .onTapGesture {
+                            self.hideKeyboard()
+                        }
                             
 
                             
@@ -160,6 +163,9 @@ struct ProductInfoView: View {
                             .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
                             .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
                             .padding(.top, 5)
+                            .onTapGesture {
+                                self.hideKeyboard()
+                            }
 
                             
                         VStack {
@@ -350,17 +356,17 @@ class JSONParserFood: ObservableObject {
                 DispatchQueue.main.async {
                     self.statusVerbose = fetch.statusVerbose
                     self.product_name = fetch.product.product_name ?? fetch.product.product_name_fr
-                    self.brands = fetch.product.brands//gets the category outlined above
+                    self.brands = fetch.product.brands ?? "Unknown Brand"//gets the category outlined above
                     self.image_front_small_url = fetch.product.image_front_small_url ?? "No image"
-                    self.categories = fetch.product.categories
+                    self.categories = fetch.product.categories ?? "Unknown Category"
                     self.brand_owner_imported = fetch.product.brand_owner_imported ?? "Brand unknown"
-                    self.sugars_100g = fetch.product.nutriments.sugars_100g ?? 1.0
-                    self.energykcal_100g = fetch.product.nutriments.energykcal_100g //?? 1
-                    self.fat_100g = fetch.product.nutriments.fat_100g ?? 1.0
-                    self.fiber_100g = fetch.product.nutriments.fiber_100g ?? 1.0
-                    self.proteins_100g = fetch.product.nutriments.proteins_100g ?? 1.0
-                    self.salt_100g = fetch.product.nutriments.salt_100g ?? 1.0
-                    self.carbohydrates_100g = fetch.product.nutriments.carbohydrates_100g ?? 1.0
+                    self.sugars_100g = fetch.product.nutriments.sugars_100g ?? 0.0
+                    self.energykcal_100g = fetch.product.nutriments.energykcal_100g ?? 0
+                    self.fat_100g = fetch.product.nutriments.fat_100g ?? 0.0
+                    self.fiber_100g = fetch.product.nutriments.fiber_100g ?? 0.0
+                    self.proteins_100g = fetch.product.nutriments.proteins_100g ?? 0.0
+                    self.salt_100g = fetch.product.nutriments.salt_100g ?? 0.0
+                    self.carbohydrates_100g = fetch.product.nutriments.carbohydrates_100g ?? 0.0
                     
                     print(self.image_front_small_url)
                     print("Data has been fetched ") //Confirmation on the device side that the information has been fetched

@@ -66,15 +66,15 @@ class EatenToday: ObservableObject {
     init() {
         self.firstItemDay = UserDefaults.standard.object(forKey: "firstItemDay") as? Bool ?? true
         self.startTime = UserDefaults.standard.object(forKey: "startTime") as? Date ?? Date()
-        self.sugarToday = UserDefaults.standard.object(forKey: "sugarToday") as? Double ?? 1.0
-        self.proteinToday = UserDefaults.standard.object(forKey: "proteinToday") as? Double ?? 1.0
+        self.sugarToday = UserDefaults.standard.object(forKey: "sugarToday") as? Double ?? 0.0
+        self.proteinToday = UserDefaults.standard.object(forKey: "proteinToday") as? Double ?? 0.0
         
-        self.fatToday = UserDefaults.standard.object(forKey: "fatToday") as? Double ?? 1.0
+        self.fatToday = UserDefaults.standard.object(forKey: "fatToday") as? Double ?? 0.0
         
-        self.fiberToday = UserDefaults.standard.object(forKey: "fiberToday") as? Double ?? 1.0
+        self.fiberToday = UserDefaults.standard.object(forKey: "fiberToday") as? Double ?? 0.0
         
-        self.saltToday = UserDefaults.standard.object(forKey: "saltToday") as? Double ?? 1.0
+        self.saltToday = UserDefaults.standard.object(forKey: "saltToday") as? Double ?? 0.0
         
-        self.carbohydratesToday = UserDefaults.standard.object(forKey: "carbohydratesToday") as? Double ?? 1.0
+        self.carbohydratesToday = UserDefaults.standard.object(forKey: "carbohydratesToday") as? Double ?? 0.0
     }
 }

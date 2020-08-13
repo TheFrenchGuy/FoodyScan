@@ -101,10 +101,10 @@ import GoogleSignIn
                                 }
                                 
                                 if self.colorScheme == .light {
-                                    LottieView(filename: "QrCodeLottie", speed: 0.7)
+                                    LottieView(filename: "QrCodeLottie", speed: 0.7, loop: .playOnce)
                                 }
                                 if self.colorScheme == .dark {
-                                    LottieView(filename: "QrCodeLottieDark", speed: 0.7)
+                                    LottieView(filename: "QrCodeLottieDark", speed: 0.7, loop: .playOnce)
                                 }
                                 
                                 Spacer()

@@ -14,6 +14,7 @@ struct LottieView: UIViewRepresentable {
     let animationView = AnimationView()
     var filename : String
     var speed: Double
+    var loop: LottieLoopMode
     
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView()
@@ -22,6 +23,7 @@ struct LottieView: UIViewRepresentable {
         animationView.animation = animation
         animationView.animationSpeed = CGFloat(speed)
         animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = loop
         animationView.play()
         
             animationView

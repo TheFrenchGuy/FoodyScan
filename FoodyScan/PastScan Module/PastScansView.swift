@@ -36,7 +36,7 @@ struct PastScansView: View {
             List {
                 if self.edit { //If the list is being edited
                     Text("Editing")
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 40)
+                    .frame(width: UIScreen.main.bounds.width - 20, height: 40).padding(.leading, -10)
                     .background(LinearGradient(gradient: Gradient(colors: [.gradientStart, .gradientEnd]), startPoint: .leading, endPoint: .trailing))
                         .cornerRadius(12)
                     ForEach(self.products, id: \.self) {
@@ -46,7 +46,7 @@ struct PastScansView: View {
                                 if i.image_front_small_url != "No image" {
                                     AnimatedImage(url: URL(string: i.image_front_small_url))
                                     .resizable()
-                                    .frame(width: 50, height: 50)
+                                    .frame(width: 40, height: 40)
                                     .clipShape(Circle()).shadow(radius: 20)
                                     .padding(.trailing, 10)
                                 } else {
@@ -114,13 +114,13 @@ struct PastScansView: View {
                                 if i.image_front_small_url != "No image" {
                                     AnimatedImage(url: URL(string: i.image_front_small_url))
                                     .resizable()
-                                    .frame(width: 60, height: 60)
+                                    .frame(width: 40, height: 40)
                                     .clipShape(Circle()).shadow(radius: 20)
-                                    .padding(.trailing, 10)
+                                    //.padding(.trailing, 10)
                                 } else {
                                     Image(systemName: "bag.fill")
                                      .resizable()
-                                     .frame(width: 60, height: 70)
+                                     .frame(width: 40, height: 45)
                                     // .clipShape(Circle()).shadow(radius: 20)
                                      .padding()
                                 }
@@ -156,7 +156,7 @@ struct PastScansView: View {
                             }
                             .foregroundColor(.white)
                             .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 20)
+                            .frame(width: UIScreen.main.bounds.width - 20).padding(.leading, -10)
                             
                             
                         }
@@ -164,7 +164,7 @@ struct PastScansView: View {
                         .cornerRadius(10)
                         .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
                         .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-
+                        
                         
                         .contextMenu { //When long pressing on the card of the food item a context menu pops up asking you if you'd like to delete the item
                             Button(action :{
