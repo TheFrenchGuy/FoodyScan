@@ -55,6 +55,8 @@
 		60DA124F24E558FD006E6D3E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA124E24E558FD006E6D3E /* SettingsView.swift */; };
 		60DA125124E55B01006E6D3E /* SettingsLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DA125024E55B00006E6D3E /* SettingsLottie.json */; };
 		60DA125324E5B775006E6D3E /* SettingsDarkLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DA125224E5B775006E6D3E /* SettingsDarkLottie.json */; };
+		60DA125624E5DB9C006E6D3E /* DownArrowLightLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DA125424E5DB9B006E6D3E /* DownArrowLightLottie.json */; };
+		60DA125724E5DB9C006E6D3E /* DownArrowDarkLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DA125524E5DB9C006E6D3E /* DownArrowDarkLottie.json */; };
 		60F5F11624CA31FD00835292 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11524CA31FD00835292 /* Login.swift */; };
 		60F5F11824CA334B00835292 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11724CA334B00835292 /* SignUp.swift */; };
 		60F5F11A24CA33B300835292 /* GoogleLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11924CA33B300835292 /* GoogleLoginView.swift */; };
@@ -148,6 +150,8 @@
 		60DA124E24E558FD006E6D3E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		60DA125024E55B00006E6D3E /* SettingsLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SettingsLottie.json; sourceTree = "<group>"; };
 		60DA125224E5B775006E6D3E /* SettingsDarkLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SettingsDarkLottie.json; sourceTree = "<group>"; };
+		60DA125424E5DB9B006E6D3E /* DownArrowLightLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DownArrowLightLottie.json; sourceTree = "<group>"; };
+		60DA125524E5DB9C006E6D3E /* DownArrowDarkLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DownArrowDarkLottie.json; sourceTree = "<group>"; };
 		60F5F11524CA31FD00835292 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		60F5F11724CA334B00835292 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		60F5F11924CA33B300835292 /* GoogleLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginView.swift; sourceTree = "<group>"; };
@@ -358,6 +362,8 @@
 		60A3E22924E430B6000C0A24 /* Lottie JSON */ = {
 			isa = PBXGroup;
 			children = (
+				60DA125524E5DB9C006E6D3E /* DownArrowDarkLottie.json */,
+				60DA125424E5DB9B006E6D3E /* DownArrowLightLottie.json */,
 				60DA125224E5B775006E6D3E /* SettingsDarkLottie.json */,
 				60DA125024E55B00006E6D3E /* SettingsLottie.json */,
 				60A3E23224E495C5000C0A24 /* GirlPlayingGuitarLottie.json */,
@@ -529,12 +535,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				60A3E23124E44D2D000C0A24 /* QrCodeLottieDark.json in Resources */,
+				60DA125624E5DB9C006E6D3E /* DownArrowLightLottie.json in Resources */,
 				60A3E23324E495C5000C0A24 /* GirlPlayingGuitarLottie.json in Resources */,
 				60A3E22F24E445E0000C0A24 /* QrCodeLottie.json in Resources */,
 				606E0D5124E2BF1C004B8C98 /* SignPainter.ttc in Resources */,
 				60116C0224C99DE500DF9E09 /* LaunchScreen.storyboard in Resources */,
 				60116C2624C99EF700DF9E09 /* GoogleService-Info.plist in Resources */,
 				60A3E22B24E430D0000C0A24 /* FoodSlideLottie.json in Resources */,
+				60DA125724E5DB9C006E6D3E /* DownArrowDarkLottie.json in Resources */,
 				606E0D5424E2C0C3004B8C98 /* Dashing Unicorn.ttf in Resources */,
 				60116C2A24C9A32F00DF9E09 /* Assets.xcassets in Resources */,
 				60DA125124E55B01006E6D3E /* SettingsLottie.json in Resources */,
