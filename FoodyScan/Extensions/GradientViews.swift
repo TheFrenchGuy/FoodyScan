@@ -18,6 +18,7 @@ struct GradientText: View {
     let width: Int //Necessary as if not the text will not be displayed correclty dependent on the lenght of the text
     let colors = Gradient(colors: [.gradientEndDark, .gradientStartDark]) //What gradient color to select
     
+    
     var body: some View {
         LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
             .frame(width: CGFloat(self.width), height: 35)
