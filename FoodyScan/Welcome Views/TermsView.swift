@@ -11,7 +11,7 @@ import SwiftUI
 struct TermsView: View {
     var body: some View {
         ZStack {
-             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+             Color("BackgroundColor").edgesIgnoringSafeArea(.all) //Sets the background of the app so it can be constant throughout the UI
             
             VStack {
                 ScrollView {
@@ -32,7 +32,7 @@ struct TermsView: View {
                     .padding(.bottom, 50)
                      .padding(.top, 50)
                         
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading) { //Details all of the privacy information of the app
                             Text("Your Data & Privacy")
                                 .fontWeight(.heavy)
                                 .font(.system(size: 28))
@@ -88,7 +88,7 @@ struct TermsView: View {
                             Button(action: {
                                 //Should open webpage
                             }) {
-                                Text("View Privacy Policy")
+                                Text("View Privacy Policy") //Will send to either a website or another view to see the privacy policy
                                 .font(.caption)
                                 .foregroundColor(Color("Color"))
                                 .padding(10)
@@ -101,7 +101,7 @@ struct TermsView: View {
                 ZStack {
                     BlurView().edgesIgnoringSafeArea(.all)
                     VStack {
-                        NavigationLink(destination: NameView()) {
+                        NavigationLink(destination: NameView()) { //Sends to the NameView
                             Text("Continue")
                             .foregroundColor(.white)
                             .padding(.vertical)
@@ -109,7 +109,7 @@ struct TermsView: View {
                         }
                         .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing))
                         .cornerRadius(5.0)
-                        .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
+                        .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12) //Creates a newmophistic effect
                         .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
                         .padding(.bottom, 15)
                         
@@ -129,7 +129,7 @@ struct TermsView: View {
                     }
                 .frame(height: 110)
             }
-        .navigationBarTitle("")
+        .navigationBarTitle("") //So that the there is navigation bar shown
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         }

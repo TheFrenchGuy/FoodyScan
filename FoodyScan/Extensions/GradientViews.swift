@@ -9,16 +9,19 @@
 import Foundation
 import SwiftUI
 
+
+
+//Create gradients for both images and text so can create a system wide theme
 struct GradientText: View {
-    let title: String
-    let size: Int
-    let width: Int
-    let colors = Gradient(colors: [.gradientEndDark, .gradientStartDark])
+    let title: String //The text to be displayed
+    let size: Int //The size of the text
+    let width: Int //Necessary as if not the text will not be displayed correclty dependent on the lenght of the text
+    let colors = Gradient(colors: [.gradientEndDark, .gradientStartDark]) //What gradient color to select
     
     var body: some View {
         LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
             .frame(width: CGFloat(self.width), height: 35)
-            .mask(Text("\(self.title)")
+            .mask(Text("\(self.title)") //Mask the Text so it can be the correct color
                 .font(.system(size: CGFloat(self.size), weight: .heavy))
         )
     }
@@ -26,15 +29,15 @@ struct GradientText: View {
 
 
 struct GradientTextInv: View {
-    let title: String
-    let size: Int
-    let width: Int
-    let colors = Gradient(colors: [.gradientEnd, .gradientStart])
+    let title: String //The text to be displayed
+    let size: Int //The size of the text
+    let width: Int //Necessary as if not the text will not be displayed correclty dependent on the lenght of the text
+    let colors = Gradient(colors: [.gradientEnd, .gradientStart]) //What gradient color to select
     
     var body: some View {
         LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
             .frame(width: CGFloat(self.width), height: 35)
-            .mask(Text("\(self.title)")
+            .mask(Text("\(self.title)")//Mask the Text so it can be the correct color
                 .font(.system(size: CGFloat(self.size), weight: .heavy))
         )
     }
@@ -43,12 +46,12 @@ struct GradientImage: View {
     let image: String
     let size: Int
     let width: Int
-    let colors = Gradient(colors: [.gradientEndDark, .gradientStartDark])
+    let colors = Gradient(colors: [.gradientEndDark, .gradientStartDark]) //What gradient color to select
     
     var body: some View {
         LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
             .frame(width: CGFloat(self.width), height: 60)
-            .mask(Image(systemName: self.image)
+            .mask(Image(systemName: self.image) //Mask the Image so it can be the correct color
                 .font(.system(size: CGFloat(self.size), weight: .semibold))
                 .padding(.top, 10)
         )
@@ -60,12 +63,12 @@ struct GradientImageInv: View {
     let image: String
     let size: Int
     let width: Int
-    let colors = Gradient(colors: [.gradientEnd, .gradientStart])
+    let colors = Gradient(colors: [.gradientEnd, .gradientStart]) //What gradient color to select
     
     var body: some View {
         LinearGradient(gradient: colors,startPoint: .leading, endPoint: .trailing)
             .frame(width: CGFloat(self.width), height: 60)
-            .mask(Image(systemName: self.image)
+            .mask(Image(systemName: self.image) //Mask the Image so it can be the correct color
                 .font(.system(size: CGFloat(self.size), weight: .semibold))
                 .padding(.top, 10)
         )

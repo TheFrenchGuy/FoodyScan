@@ -353,7 +353,7 @@ class JSONParserFood: ObservableObject {
                 let fetch = try JSONDecoder().decode(WorldOpenFoodFacts.self, from: data)
                 //Let the fetched data be stored under a variable to more easily pull out the data
                 //self.jsonData = fetch
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { //All have alternative value so that the app won't crash if any are missing
                     self.statusVerbose = fetch.statusVerbose
                     self.product_name = fetch.product.product_name ?? fetch.product.product_name_fr
                     self.brands = fetch.product.brands ?? "Unknown Brand"//gets the category outlined above
@@ -368,7 +368,6 @@ class JSONParserFood: ObservableObject {
                     self.salt_100g = fetch.product.nutriments.salt_100g ?? 0.0
                     self.carbohydrates_100g = fetch.product.nutriments.carbohydrates_100g ?? 0.0
                     
-                    print(self.image_front_small_url)
                     print("Data has been fetched ") //Confirmation on the device side that the information has been fetched
                 }
             }catch{
@@ -402,11 +401,11 @@ struct BlurView: UIViewRepresentable { //So that it gives a blur effect behind o
 
 
 extension String {
-    func capitalizingFirstLetter() -> String {
+    func capitalizingFirstLetter() -> String { //To make the JSON string gotten form the fetch look nicer
         return prefix(1).capitalized + dropFirst()
     }
 
-    mutating func capitalizeFirstLetter() {
+    mutating func capitalizeFirstLetter() { //So that the first letter of the JSON string is capitalised
         self = self.capitalizingFirstLetter()
     }
 }
@@ -414,7 +413,7 @@ extension String {
 
 #if canImport(UIKit)
 extension View {
-    func hideKeyboard() {
+    func hideKeyboard() { //In order to hide the  keyboard when the user has finished typing the number of calories
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

@@ -11,14 +11,14 @@ import SwiftUI
 struct DrawShape : View {
     
     
-    var data: Array<Pie>
+    var data: Array<Pie> //Data gotten from the information Daily view
     var center : CGPoint
     var index: Int
     
     
     var body: some View {
         
-        Path{ path in
+        Path{ path in //Draws a cirlce with varying angles so that it looks like a pie chart
             path.move(to: self.center)
             path.addArc(center: self.center, radius: 180, startAngle: .init(degrees: self.from()), endAngle: .init(degrees: self.to()), clockwise: false)
         }.fill(data[index].color)
@@ -27,7 +27,7 @@ struct DrawShape : View {
     
     //since anglis is continuouse so we need to calculate the angles before and with the current to get exact angle....
     
-    func from()->Double {
+    func from()->Double { //At which point the chart should start
         
         if index  == 0 {
             return 0
@@ -42,7 +42,7 @@ struct DrawShape : View {
         }
     }
     
-    func to()->Double {
+    func to()->Double { //At whihc point the chart should end
         
         //converting percentage to angle ...
         

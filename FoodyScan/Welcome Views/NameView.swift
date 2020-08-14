@@ -13,7 +13,7 @@ struct NameView: View {
     @State var loginpage = false
     var body: some View {
         ZStack {
-             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+             Color("BackgroundColor").edgesIgnoringSafeArea(.all) //So that the background of the app is constant on all of the views
             
             VStack {
             HStack(alignment: .center) {
@@ -35,7 +35,7 @@ struct NameView: View {
                 }
                 VStack {
                 
-                TextField("Enter your name", text: self.$username)
+                TextField("Enter your name", text: self.$username) //Textfield to enter user usersname
                 .autocapitalization(.none)
                 .padding()
                 .background(Color("BackgroundColor"))
@@ -48,9 +48,9 @@ struct NameView: View {
                 
                 VStack(alignment: .center) {
                     NavigationLink(destination: LoginSignUpView(), isActive: $loginpage) {EmptyView()}
-                    if self.username == "" {
+                    if self.username == "" { //Cannot tap on the continue button if there is no username inputed
                         HStack {
-                            Text("Enter a username 🔥 ")
+                            Text("Enter a username")
                             .foregroundColor(.white)
                             .padding(.vertical)
                             }
@@ -62,7 +62,7 @@ struct NameView: View {
                         .padding(.bottom, 25)
                     } else {
                         Button(action: {
-                            self.saveUserName()
+                            self.saveUserName() //causes the username to be save
                             self.loginpage.toggle()
                         }) {
                             HStack {
@@ -78,22 +78,22 @@ struct NameView: View {
                             .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
                             .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
                             .padding(.bottom, 25)
-                        }.disabled(self.username == "")
+                        }.disabled(self.username == "") //Incase of it is blocked when there is no username saveed
                     }
                 }.onTapGesture {
                     if self.username != "" {
-                        self.saveUserName()
+                        self.saveUserName()// When he taps on the continue button it will also save the username
                     }
                 }
             }
         }
-        .navigationBarTitle("")
+        .navigationBarTitle("") //So that it doesnt show the navigation bar and also doesnt let the user go back
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
     }
     
     func saveUserName() {
-        UserDefaults.standard.set(self.username, forKey: "UserName")
+        UserDefaults.standard.set(self.username, forKey: "UserName") //Stores the username to usersettings for persistant storage
         print("username saved")
     }
 }

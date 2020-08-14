@@ -14,12 +14,8 @@ struct DailyIntakeView: View {
     }
 }
 
-//Pie Data
-//let leftpercentage = ((UserSettings().dailyintakekcal - UserSettings().eatentoday) / UserSettings().dailyintakekcal) * 100
-//let eatenpercentage = (UserSettings().eatentoday / UserSettings().dailyintakekcal) * 100
 
-
-struct Pie: Identifiable {
+struct Pie: Identifiable { //Structure of the data to be inputted so can be used for the  view
     var id: Int
     var percent: CGFloat
     var name: String
@@ -28,15 +24,15 @@ struct Pie: Identifiable {
 
 
 struct PieView: View {
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var userSettings = UserSettings()
-    @ObservedObject var eatenToday = EatenToday()
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme //Fetches the colorscheme of the app
+    @ObservedObject var userSettings = UserSettings() //Fetches the userSettings stored onto device storage
+    @ObservedObject var eatenToday = EatenToday() //What the user has eaten today
+    @Environment(\.presentationMode) var presentationMode //So that the user can go back to the main screen
    
     var body: some View {
         InformationDailyView()
               .onAppear {
-                    let timediff = Int(Date().timeIntervalSince(self.eatenToday.startTime))
+                    let timediff = Int(Date().timeIntervalSince(self.eatenToday.startTime)) //If the app has been launched for more than a day since the first scan the the variables are whipped
                     if timediff >= 86400 {
                         self.eatenToday.firstItemDay = true
                         self.eatenToday.sugarToday = 0.0

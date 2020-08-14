@@ -9,38 +9,38 @@
 import SwiftUI
 
 struct InformationDailyView: View {
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var userSettings = UserSettings()
-    @ObservedObject var eatenToday = EatenToday()
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme //The colorscheme of the user device
+    @ObservedObject var userSettings = UserSettings() //UserSettins Model
+    @ObservedObject var eatenToday = EatenToday() //EatenTooday model
+    @Environment(\.presentationMode) var presentationMode //So the user can go back to the main screen
     
-    let lefttoeat = UserSettings().dailyintakekcal - UserSettings().eatentoday
-    let lefteatpercentage = ((UserSettings().dailyintakekcal - UserSettings().eatentoday) / UserSettings().dailyintakekcal) * 100
+    let lefttoeat = UserSettings().dailyintakekcal - UserSettings().eatentoday //How much calories are left form the user daily intkae
+    let lefteatpercentage = ((UserSettings().dailyintakekcal - UserSettings().eatentoday) / UserSettings().dailyintakekcal) * 100 //What percentage that makes up
     let eatencalpercentage = (UserSettings().eatentoday / UserSettings().dailyintakekcal) * 100
-       
+       //What percentage of his dialy intake he has eaten
     var CaloriePieData:Array<Pie> { return  [
            Pie(id: 0, percent: CGFloat(eatencalpercentage), name: "Eaten", color: LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing)),
            Pie(id: 1, percent: CGFloat(lefteatpercentage), name: "Left", color: LinearGradient(gradient: Gradient(colors: [.gradientStart, .gradientEnd]), startPoint: .topLeading, endPoint: .bottomTrailing))
-           ]}
+           ]} //So can be used to draw the pie charts throughout the app
     
-    let leftsugar = 45 - EatenToday().sugarToday
-    let leftsugarpercentage = ((45 - EatenToday().sugarToday) / 45) * 100
-    let eatensugarpercentage = (EatenToday().sugarToday / 45) * 100
+    let leftsugar = 45 - EatenToday().sugarToday //How much sugar the user should eaten for the remaining of the day
+    let leftsugarpercentage = ((45 - EatenToday().sugarToday) / 45) * 100 //What percentage that makes up
+    let eatensugarpercentage = (EatenToday().sugarToday / 45) * 100 //What percentage has he eaten so far
     
     var SugarPieData:Array<Pie> { return [
             Pie(id: 0, percent: CGFloat(eatensugarpercentage), name: "Sugar In", color: LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing)),
                       Pie(id: 1, percent: CGFloat(leftsugarpercentage), name: "Daily sugar left", color: LinearGradient(gradient: Gradient(colors: [.gradientSecondaryStart, .gradientSecondaryEnd]), startPoint: .topLeading, endPoint: .bottomTrailing))
-        ]}
+        ]} //So can eb used to draw the pie charts throughout the app
     
     
     
     var body: some View {
         ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
-            if self.eatenToday.firstItemDay == true {
+            if self.eatenToday.firstItemDay == true { //If there is no scan for the day then don't show the Information View
                 VStack {
                     LottieView(filename: "GirlPlayingGuitarLottie", speed: 1, loop: .loop).frame(height: 240)
-                    GradientText(title: "No Scans done today", size: 28, width: 290)
+                    GradientText(title: "No Scans done today", size: 28, width: 290) //Feedback to the user
                 }
             }
             else {
@@ -52,11 +52,11 @@ struct InformationDailyView: View {
                                 .padding(.bottom , 20)
                             
                             Text("Below you will find information about what you have consumed today")
-                                .font(Font.custom("Dashing Unicorn", size: 20))
+                                .font(Font.custom("Dashing Unicorn", size: 20)) //Imported a custom font can be seen in the extension folder
                                 .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
-                                .lineLimit(nil)
+                                .lineLimit(nil) //So can wrap arround the screen
                             
-                            ScrollView(.horizontal, showsIndicators: false) {
+                            ScrollView(.horizontal, showsIndicators: false) { //So that on all iphone device the view looks great and so more information can be seen
                                // GeometryReader { geometry in
                                     HStack {
                                         GeometryReader { geometry in
@@ -336,14 +336,14 @@ struct InformationDailyView: View {
             }
         }//.edgesIgnoringSafeArea(.top)
         .onAppear {
-            self.userSettings.eatentoday = UserDefaults.standard.value(forKey: "eatentoday") as? Double ?? 0.0
+            self.userSettings.eatentoday = UserDefaults.standard.value(forKey: "eatentoday") as? Double ?? 0.0 //Looks for changes to these variables
             self.userSettings.dailyintakekcal = UserDefaults.standard.value(forKey: "dailyintakekcal") as? Double ?? 1000.0
             self.eatenToday.sugarToday = UserDefaults.standard.value(forKey: "sugarToday") as? Double ?? 0.0
         }
         
     }
 
-    func getWidth(width: CGFloat, value: CGFloat)->CGFloat{
+    func getWidth(width: CGFloat, value: CGFloat)->CGFloat{ //To get the width of the charts
            let temp = value / 200
            return temp * width
        }

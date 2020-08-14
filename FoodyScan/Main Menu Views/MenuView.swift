@@ -21,7 +21,7 @@ struct MenuView: View {
                 Text("Welcome")
                     .foregroundColor(.gray)
                     .font(.title)
-                GradientText(title: username, size: 20, width: 70)
+                GradientText(title: username, size: 20, width: 120)
                     .padding(.top, 12)
             }.padding(.top , 150)
             HStack {
@@ -64,7 +64,7 @@ struct MenuView: View {
             HStack {
                 
                 Button(action: {
-                    self.showSetting = true
+                    self.showSetting = true //When the button is pressed it will trigger the settings sheet ot be presented
                 }) {
                     Image(systemName: "gear")
                         .foregroundColor(.gray)
@@ -75,11 +75,11 @@ struct MenuView: View {
                 }
             }.padding(.top, 30)
             .sheet(isPresented: $showSetting) {
-                SettingsView()
+                SettingsView() //If the show setting is true then the SettingsView is shown
                 
             }
             
-            Spacer()
+            Spacer() // So it goes down to the end of the screen looks better
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)

@@ -28,7 +28,7 @@ import GoogleSignIn
                         .navigationBarBackButtonHidden(true) //Where the user will be able to continue with the setup of the account
                 }
             } else {
-                NavigationLink(destination: Home(), isActive: .constant(true)) {
+                NavigationLink(destination: Home(), isActive: .constant(true)) { //Sends to welcome screens
                     EmptyView()
                 }.navigationBarTitle("")
                 .navigationBarHidden(true)
@@ -40,7 +40,7 @@ import GoogleSignIn
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .onAppear {
-         
+         //Looks for if the value has changes so it can change the view
              NotificationCenter.default.addObserver(forName: NSNotification.Name("status"), object: nil, queue: .main) { (_) in
                  
                  self.status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false

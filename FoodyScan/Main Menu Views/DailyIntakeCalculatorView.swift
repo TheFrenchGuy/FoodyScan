@@ -18,7 +18,7 @@ struct DailyIntakeCalculatorView: View {
     @State var status = UserDefaults.standard.value(forKey: "birthdate") as? Date ?? Date()
     
    
-    var dateFormatter: DateFormatter {
+    var dateFormatter: DateFormatter { //To make the date shorted as if not it will display a really strong string
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         return formatter

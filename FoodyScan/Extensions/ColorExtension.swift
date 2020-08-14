@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-
+//Where all of the UIColor will be stored so can be used app wise
 extension Color { //Create an extension color for the view in order to make the neumorphic design stand out more
    static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
    static let colorLight = Color.black.opacity(0.7)

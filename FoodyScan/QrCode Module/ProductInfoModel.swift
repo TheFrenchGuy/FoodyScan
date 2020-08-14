@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Structure of the JSON fetch from world.openfoodfacts
 
 struct WorldOpenFoodFacts: Decodable{
     let status: Int //Whever the product is found in the database

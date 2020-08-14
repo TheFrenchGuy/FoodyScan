@@ -11,7 +11,7 @@ import SwiftUI
 
 
 class EatenToday: ObservableObject {
-    
+    //Used to store to device storage the what the user has eaten on the day
     @Published var firstItemDay: Bool {
         didSet {
             UserDefaults.standard.set(firstItemDay, forKey: "firstItemDay")
@@ -63,7 +63,7 @@ class EatenToday: ObservableObject {
     
     
     
-    init() {
+    init() { //Used to provide defautl values so the app doesn't crash when no values are recored
         self.firstItemDay = UserDefaults.standard.object(forKey: "firstItemDay") as? Bool ?? true
         self.startTime = UserDefaults.standard.object(forKey: "startTime") as? Date ?? Date()
         self.sugarToday = UserDefaults.standard.object(forKey: "sugarToday") as? Double ?? 0.0

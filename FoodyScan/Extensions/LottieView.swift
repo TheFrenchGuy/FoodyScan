@@ -10,21 +10,22 @@ import SwiftUI
 import Lottie
 
 
-struct LottieView: UIViewRepresentable {
+struct LottieView: UIViewRepresentable { //To allow the JSON file to be read and to display the animaton
+    //Allows link to SwiftUI from UIKit
     let animationView = AnimationView()
-    var filename : String
-    var speed: Double
-    var loop: LottieLoopMode
+    var filename : String //The name of the file to be  loaded
+    var speed: Double //The speed at which the animation should be played
+    var loop: LottieLoopMode //Whever the animation should loop
     
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView()
         
-        let animation = Animation.named(filename)
-        animationView.animation = animation
-        animationView.animationSpeed = CGFloat(speed)
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = loop
-        animationView.play()
+        let animation = Animation.named(filename) //Loads the animation
+        animationView.animation = animation //Sets the animation
+        animationView.animationSpeed = CGFloat(speed) //Speed
+        animationView.contentMode = .scaleAspectFit //Aspect Ratio
+        animationView.loopMode = loop //Whever to loop
+        animationView.play() //Plays the animation
         
             animationView
             .translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +39,7 @@ struct LottieView: UIViewRepresentable {
                 .constraint(equalTo: view.widthAnchor),
         ])
         
-        return view
+        return view //Necessary in order to conform to UIVieewRepresentable
         
     }
     

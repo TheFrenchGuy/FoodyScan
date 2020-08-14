@@ -52,6 +52,9 @@
 		60A3E23124E44D2D000C0A24 /* QrCodeLottieDark.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A3E23024E44D2D000C0A24 /* QrCodeLottieDark.json */; };
 		60A3E23324E495C5000C0A24 /* GirlPlayingGuitarLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A3E23224E495C5000C0A24 /* GirlPlayingGuitarLottie.json */; };
 		60B5EC5A24CC407A008EFC70 /* UserSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5EC5924CC407A008EFC70 /* UserSettingsModel.swift */; };
+		60BAE84F24E686E9006AAB40 /* SettingsBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAE84E24E686E9006AAB40 /* SettingsBlockView.swift */; };
+		60BAE85124E6877F006AAB40 /* ResetIntakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAE85024E6877F006AAB40 /* ResetIntakeView.swift */; };
+		60BAE85324E68846006AAB40 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAE85224E68846006AAB40 /* LogoutView.swift */; };
 		60DA124F24E558FD006E6D3E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA124E24E558FD006E6D3E /* SettingsView.swift */; };
 		60DA125124E55B01006E6D3E /* SettingsLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DA125024E55B00006E6D3E /* SettingsLottie.json */; };
 		60DA125324E5B775006E6D3E /* SettingsDarkLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DA125224E5B775006E6D3E /* SettingsDarkLottie.json */; };
@@ -147,6 +150,9 @@
 		60A3E23024E44D2D000C0A24 /* QrCodeLottieDark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QrCodeLottieDark.json; sourceTree = "<group>"; };
 		60A3E23224E495C5000C0A24 /* GirlPlayingGuitarLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GirlPlayingGuitarLottie.json; sourceTree = "<group>"; };
 		60B5EC5924CC407A008EFC70 /* UserSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsModel.swift; sourceTree = "<group>"; };
+		60BAE84E24E686E9006AAB40 /* SettingsBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBlockView.swift; sourceTree = "<group>"; };
+		60BAE85024E6877F006AAB40 /* ResetIntakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetIntakeView.swift; sourceTree = "<group>"; };
+		60BAE85224E68846006AAB40 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		60DA124E24E558FD006E6D3E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		60DA125024E55B00006E6D3E /* SettingsLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SettingsLottie.json; sourceTree = "<group>"; };
 		60DA125224E5B775006E6D3E /* SettingsDarkLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SettingsDarkLottie.json; sourceTree = "<group>"; };
@@ -378,6 +384,9 @@
 			isa = PBXGroup;
 			children = (
 				60DA124E24E558FD006E6D3E /* SettingsView.swift */,
+				60BAE84E24E686E9006AAB40 /* SettingsBlockView.swift */,
+				60BAE85024E6877F006AAB40 /* ResetIntakeView.swift */,
+				60BAE85224E68846006AAB40 /* LogoutView.swift */,
 			);
 			path = "Settings Module";
 			sourceTree = "<group>";
@@ -676,6 +685,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				605EB62124CD8E91005EA648 /* FoodyScan.xcdatamodeld in Sources */,
+				60BAE85324E68846006AAB40 /* LogoutView.swift in Sources */,
 				60B5EC5A24CC407A008EFC70 /* UserSettingsModel.swift in Sources */,
 				6028C8B624D4CDEA00836761 /* PastScanModelList.swift in Sources */,
 				60F5F11824CA334B00835292 /* SignUp.swift in Sources */,
@@ -687,6 +697,7 @@
 				60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */,
 				606E0D5C24E34458004B8C98 /* InformationDailyView.swift in Sources */,
 				606E0D5824E343BC004B8C98 /* ColorExtension.swift in Sources */,
+				60BAE84F24E686E9006AAB40 /* SettingsBlockView.swift in Sources */,
 				6028C8B824D4D0E600836761 /* PastScansView.swift in Sources */,
 				607E384924CAE0B30073DDFD /* MenuView.swift in Sources */,
 				60A0FC8424E062FF00398313 /* LoginSignUpView.swift in Sources */,
@@ -708,6 +719,7 @@
 				60116BFA24C99DE300DF9E09 /* ContentView.swift in Sources */,
 				60F5F11D24CA356000835292 /* ErrorView.swift in Sources */,
 				606E0D5A24E34412004B8C98 /* GradientViews.swift in Sources */,
+				60BAE85124E6877F006AAB40 /* ResetIntakeView.swift in Sources */,
 				60116BF524C99DE300DF9E09 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
