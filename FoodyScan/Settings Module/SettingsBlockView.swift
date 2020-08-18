@@ -46,7 +46,7 @@ struct SettingsBlockView : View{
                         }
                     }.frame(width: UIScreen.main.bounds.width) //So uses the full width of the screen and also is centered on the view
                     VStack {
-                        Text("Below you will find personalistion settings")
+                        Text("Foody Scans")
                             .font(Font.custom("Dashing Unicorn", size: 20))
                             .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark) //Changes the font color depending on the colorscheme
                             .lineLimit(nil)

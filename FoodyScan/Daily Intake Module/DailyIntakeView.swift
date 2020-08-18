@@ -20,6 +20,8 @@ struct Pie: Identifiable { //Structure of the data to be inputted so can be used
     var percent: CGFloat
     var name: String
     var color: LinearGradient
+    var nameOver: String
+    
 }
 
 
@@ -37,6 +39,12 @@ struct PieView: View {
                         self.eatenToday.firstItemDay = true
                         self.eatenToday.sugarToday = 0.0
                         self.eatenToday.proteinToday = 0.0
+                        self.userSettings.eatentoday = 0.0
+                        self.eatenToday.carbohydratesToday = 0.0
+                        self.eatenToday.fatToday = 0.0
+                        self.eatenToday.fiberToday = 0.0
+                        self.eatenToday.saltToday = 0.0
+                        
                     }
                 
                 

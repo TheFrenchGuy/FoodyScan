@@ -48,7 +48,7 @@ struct MainView : View {
                     HStack(alignment: .top) {
                         Text("Understand how your daily intake is calculated")
                             .font(.caption)
-                        NavigationLink(destination: Text("Understand")) { //Links to how the calculations are done
+                        NavigationLink(destination: CalculatorHelpView()) { //Links to how the calculations are done
                             GradientText(title: "Here", size: 12, width: 40) //Click on this which stands out to the user
                         }
                     }

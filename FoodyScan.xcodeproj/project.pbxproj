@@ -42,6 +42,7 @@
 		607E384924CAE0B30073DDFD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E384824CAE0B30073DDFD /* MenuView.swift */; };
 		6088C75224D2C6640067DE48 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6088C75124D2C6640067DE48 /* SDWebImageSwiftUI */; };
 		6097FC8324DB0B59000E3E70 /* DailyIntakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097FC8224DB0B59000E3E70 /* DailyIntakeView.swift */; };
+		609F09C824EBD1FA0018EE17 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F09C724EBD1FA0018EE17 /* CardView.swift */; };
 		60A0FC8024E05F4E00398313 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0FC7F24E05F4D00398313 /* TermsView.swift */; };
 		60A0FC8224E0613900398313 /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0FC8124E0613900398313 /* NameView.swift */; };
 		60A0FC8424E062FF00398313 /* LoginSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0FC8324E062FF00398313 /* LoginSignUpView.swift */; };
@@ -57,6 +58,7 @@
 		60BAE85324E68846006AAB40 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAE85224E68846006AAB40 /* LogoutView.swift */; };
 		60BAE85524E6B9EC006AAB40 /* FoodBowlLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60BAE85424E6B9EC006AAB40 /* FoodBowlLottie.json */; };
 		60BAE85724E6EFF9006AAB40 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAE85624E6EFF9006AAB40 /* MainView.swift */; };
+		60BAE85924E72B4C006AAB40 /* CalculatorHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAE85824E72B4C006AAB40 /* CalculatorHelpView.swift */; };
 		60DA124F24E558FD006E6D3E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DA124E24E558FD006E6D3E /* SettingsView.swift */; };
 		60DA125124E55B01006E6D3E /* SettingsLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DA125024E55B00006E6D3E /* SettingsLottie.json */; };
 		60DA125324E5B775006E6D3E /* SettingsDarkLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60DA125224E5B775006E6D3E /* SettingsDarkLottie.json */; };
@@ -143,6 +145,7 @@
 		6075E0BD24CB1FA300712730 /* DailyIntakeCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeCalculatorView.swift; sourceTree = "<group>"; };
 		607E384824CAE0B30073DDFD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		6097FC8224DB0B59000E3E70 /* DailyIntakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeView.swift; sourceTree = "<group>"; };
+		609F09C724EBD1FA0018EE17 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		60A0FC7F24E05F4D00398313 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		60A0FC8124E0613900398313 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
 		60A0FC8324E062FF00398313 /* LoginSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUpView.swift; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 		60BAE85224E68846006AAB40 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		60BAE85424E6B9EC006AAB40 /* FoodBowlLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FoodBowlLottie.json; sourceTree = "<group>"; };
 		60BAE85624E6EFF9006AAB40 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		60BAE85824E72B4C006AAB40 /* CalculatorHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorHelpView.swift; sourceTree = "<group>"; };
 		60DA124E24E558FD006E6D3E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		60DA125024E55B00006E6D3E /* SettingsLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SettingsLottie.json; sourceTree = "<group>"; };
 		60DA125224E5B775006E6D3E /* SettingsDarkLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SettingsDarkLottie.json; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 				605ADB8224CCD4C800E4A200 /* DailyIntakeParrallax.swift */,
 				6045940124D0CBE8003EF44F /* DoneSetupView.swift */,
 				60BAE85624E6EFF9006AAB40 /* MainView.swift */,
+				60BAE85824E72B4C006AAB40 /* CalculatorHelpView.swift */,
 			);
 			path = "Main Menu Views";
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				606E0D4A24E28FBC004B8C98 /* DrawShape.swift */,
 				606E0D4C24E29185004B8C98 /* EatenTodayModel.swift */,
 				606E0D5B24E34458004B8C98 /* InformationDailyView.swift */,
+				609F09C724EBD1FA0018EE17 /* CardView.swift */,
 			);
 			path = "Daily Intake Module";
 			sourceTree = "<group>";
@@ -705,6 +711,7 @@
 				60116C2824C9A0BC00DF9E09 /* HomeScreenView.swift in Sources */,
 				606E0D5C24E34458004B8C98 /* InformationDailyView.swift in Sources */,
 				606E0D5824E343BC004B8C98 /* ColorExtension.swift in Sources */,
+				609F09C824EBD1FA0018EE17 /* CardView.swift in Sources */,
 				60BAE84F24E686E9006AAB40 /* SettingsBlockView.swift in Sources */,
 				6028C8B824D4D0E600836761 /* PastScansView.swift in Sources */,
 				607E384924CAE0B30073DDFD /* MenuView.swift in Sources */,
@@ -728,6 +735,7 @@
 				60F5F11D24CA356000835292 /* ErrorView.swift in Sources */,
 				606E0D5A24E34412004B8C98 /* GradientViews.swift in Sources */,
 				60BAE85124E6877F006AAB40 /* ResetIntakeView.swift in Sources */,
+				60BAE85924E72B4C006AAB40 /* CalculatorHelpView.swift in Sources */,
 				60116BF524C99DE300DF9E09 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

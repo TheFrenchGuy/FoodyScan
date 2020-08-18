@@ -274,6 +274,7 @@ struct ProductInfoView: View {
         
         if timediff >= 86400 {
             i.firstItemDay = true
+            self.userSettings.eatentoday = 0.0
             i.sugarToday = 0.0
             i.proteinToday = 0.0
             i.fatToday = 0.0
@@ -342,8 +343,8 @@ class JSONParserFood: ObservableObject {
     init(){
         let QRcode:String? = self.QRviewModel.lastQrCode //Redecleration to make the variable option refer to later documentation
         let session = URLSession(configuration: .default)
-        print(QRcode as Any)
-        print(session.dataTask(with: URL(string: "https://world.openfoodfacts.org/api/v0/product/\(QRcode ?? "NotScanned")")!))
+        //print(QRcode as Any)
+        //print(session.dataTask(with: URL(string: "https ://world.openfoodfacts.org/api/v0/product/\(QRcode ?? "NotScanned")")!))
         session.dataTask(with: URL(string: "https://world.openfoodfacts.org/api/v0/product/\(QRcode ?? "NotScanned")")!) { (data, res, err) in
             
             //"NotScanned" neccessary when the user first init the scan as the view will be loaded without data which cause app to crash
