@@ -43,6 +43,8 @@
 		6088C75224D2C6640067DE48 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6088C75124D2C6640067DE48 /* SDWebImageSwiftUI */; };
 		6097FC8324DB0B59000E3E70 /* DailyIntakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097FC8224DB0B59000E3E70 /* DailyIntakeView.swift */; };
 		609F09C824EBD1FA0018EE17 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F09C724EBD1FA0018EE17 /* CardView.swift */; };
+		609F09CA24EBD6670018EE17 /* ProductNotFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609F09C924EBD6670018EE17 /* ProductNotFound.swift */; };
+		609F09CE24EBDB9B0018EE17 /* ErrorLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 609F09CD24EBDB9B0018EE17 /* ErrorLottie.json */; };
 		60A0FC8024E05F4E00398313 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0FC7F24E05F4D00398313 /* TermsView.swift */; };
 		60A0FC8224E0613900398313 /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0FC8124E0613900398313 /* NameView.swift */; };
 		60A0FC8424E062FF00398313 /* LoginSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0FC8324E062FF00398313 /* LoginSignUpView.swift */; };
@@ -146,6 +148,8 @@
 		607E384824CAE0B30073DDFD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		6097FC8224DB0B59000E3E70 /* DailyIntakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeView.swift; sourceTree = "<group>"; };
 		609F09C724EBD1FA0018EE17 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		609F09C924EBD6670018EE17 /* ProductNotFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNotFound.swift; sourceTree = "<group>"; };
+		609F09CD24EBDB9B0018EE17 /* ErrorLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ErrorLottie.json; sourceTree = "<group>"; };
 		60A0FC7F24E05F4D00398313 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		60A0FC8124E0613900398313 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
 		60A0FC8324E062FF00398313 /* LoginSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUpView.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 				60327EDA24CE2680003D49F7 /* QrCodeScannerView.swift */,
 				60327EE024CE2922003D49F7 /* ProductInfoView.swift */,
 				604593FF24D0C053003EF44F /* ProductInfoModel.swift */,
+				609F09C924EBD6670018EE17 /* ProductNotFound.swift */,
 			);
 			path = "QrCode Module";
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 		60A3E22924E430B6000C0A24 /* Lottie JSON */ = {
 			isa = PBXGroup;
 			children = (
+				609F09CD24EBDB9B0018EE17 /* ErrorLottie.json */,
 				60BAE85424E6B9EC006AAB40 /* FoodBowlLottie.json */,
 				60DA125524E5DB9C006E6D3E /* DownArrowDarkLottie.json */,
 				60DA125424E5DB9B006E6D3E /* DownArrowLightLottie.json */,
@@ -558,6 +564,7 @@
 				60A3E23124E44D2D000C0A24 /* QrCodeLottieDark.json in Resources */,
 				60DA125624E5DB9C006E6D3E /* DownArrowLightLottie.json in Resources */,
 				60A3E23324E495C5000C0A24 /* GirlPlayingGuitarLottie.json in Resources */,
+				609F09CE24EBDB9B0018EE17 /* ErrorLottie.json in Resources */,
 				60BAE85524E6B9EC006AAB40 /* FoodBowlLottie.json in Resources */,
 				60A3E22F24E445E0000C0A24 /* QrCodeLottie.json in Resources */,
 				606E0D5124E2BF1C004B8C98 /* SignPainter.ttc in Resources */,
@@ -718,6 +725,7 @@
 				60A0FC8424E062FF00398313 /* LoginSignUpView.swift in Sources */,
 				60327ED724CE25CE003D49F7 /* QrCodeCameraDelegate.swift in Sources */,
 				60A0FC8024E05F4E00398313 /* TermsView.swift in Sources */,
+				609F09CA24EBD6670018EE17 /* ProductNotFound.swift in Sources */,
 				60A0FC8224E0613900398313 /* NameView.swift in Sources */,
 				60327ED324CE242E003D49F7 /* ScannerViewModel.swift in Sources */,
 				60327EDB24CE2680003D49F7 /* QrCodeScannerView.swift in Sources */,
