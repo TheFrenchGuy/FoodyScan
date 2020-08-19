@@ -188,7 +188,7 @@ struct SettingsBlockView : View{
                                 Text("About FoodyScan")
                                     .foregroundColor(.black)
                                 
-                                NavigationLink(destination: Text("About me page")) { //Sends to an about me page about Foody Scan
+                                NavigationLink(destination: AboutMeView()) { //Sends to an about me page about Foody Scan
                                     Image(systemName: "chevron.right")
                                         .frame(width:  UIScreen.main.bounds.width - 226 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
                                         .foregroundColor(.black)

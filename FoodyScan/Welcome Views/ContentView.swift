@@ -9,6 +9,7 @@
 import SwiftUI
 import Firebase
 import GoogleSignIn
+import UserNotifications
  
  struct ContentView: View {
     @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false //Wethever the user is logged in

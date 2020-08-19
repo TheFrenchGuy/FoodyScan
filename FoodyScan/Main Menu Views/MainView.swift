@@ -11,6 +11,7 @@ import Firebase
 import GoogleSignIn
 import CoreHaptics
 import SDWebImageSwiftUI
+import UserNotifications
 
 struct MainView : View {
     @Environment(\.colorScheme) var colorScheme
@@ -19,6 +20,7 @@ struct MainView : View {
     @ObservedObject var userSettings = UserSettings()
     @Binding var showMenu: Bool
     @ObservedObject var eatenToday = EatenToday()
+    @State var notificationhelper = UserDefaults.standard.value(forKey: "notificationhelper") as? Bool ?? false
 
     var dateFormatter: DateFormatter { //Used in order to format the date so it is not too long for the screen
         let formatter = DateFormatter()
@@ -26,8 +28,14 @@ struct MainView : View {
         return formatter
     }
     var body: some View {
-        ZStack {
-            Color("BackgroundColor").edgesIgnoringSafeArea(.all) //Sets the background color so it is the same color in all of the views
+        
+            registerUserNotification()
+            dailyLunchNotification()
+            dailyEveningNotification()
+        
+            return ZStack {
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)//Sets the background color so it is the same color in all of the views
+            
             ScrollView {
                 VStack(alignment: .center){
                     LottieView(filename: "FoodBowlLottie", speed: 1, loop: .loop) //Lottie animation at the top of the screen  check the LottieView for information
@@ -218,15 +226,22 @@ struct MainView : View {
                     
                     Divider().frame(width: UIScreen.main.bounds.width - 30).padding(.bottom, 70) //Padding so that it gives more space to scroll down and looks cleaner
                     
-                    
-                    
                     Spacer()
                     
                 }
+                
+            }
+            if self.products.count <= 1  {
+                ShapeView().offset(x: 80, y : 389)
             }
         }
         .onAppear { //Fetches the variables needed so the dialy intake can be upadated as soon as the user sign in or reset his daily intake
-             
+             NotificationCenter.default.addObserver(forName: NSNotification.Name("notificationhelper"), object: nil, queue: .main) { (_) in
+                             
+             self.notificationhelper = UserDefaults.standard.value(forKey: "notificationhelper") as? Bool ?? false
+             }
+            
+            
              NotificationCenter.default.addObserver(forName: NSNotification.Name("birthdate"), object: nil, queue: .main) { (_) in
                  
                 self.userSettings.birthdate = UserDefaults.standard.value(forKey: "birthdate") as? Date ?? Date()
@@ -284,7 +299,54 @@ struct MainView : View {
         }
     }
     
+    func registerUserNotification() {
+        
+        if self.notificationhelper {
+            UNUserNotificationCenter.current()
+                .requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        print("All Set!")
+                    } else if let error = error {
+                        print(error.localizedDescription)
+                        print("Failed")
+                    }
+            }
+            
+            UserDefaults.standard.set(false, forKey: "notificationhelper")
+        }
+    }
     
+    func dailyLunchNotification() {
+                let eatencalpercentage = Int((UserSettings().eatentoday / UserSettings().dailyintakekcal) * 100)
+                let content = UNMutableNotificationContent()
+                content.title = "Daily Morning Notification"
+        content.body = "You had \(eatencalpercentage)% of your calorie daily intake"
+                content.sound = UNNotificationSound.default
+
+               var dateInfo = DateComponents()
+               dateInfo.hour = 12
+               dateInfo.minute = 0
+               let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
+            //   let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                let request = UNNotificationRequest(identifier: "Lunch", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request)
+    }
+    
+    func dailyEveningNotification() {
+                let eatencalpercentage = Int((UserSettings().eatentoday / UserSettings().dailyintakekcal) * 100)
+                let content = UNMutableNotificationContent()
+                content.title = "Daily Evening Notification"
+        content.body = "You had \(eatencalpercentage)% of your calorie daily intake"
+                content.sound = UNNotificationSound.default
+
+                var dateInfo = DateComponents()
+                dateInfo.hour = 18
+                dateInfo.minute = 0
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
+              // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                let request = UNNotificationRequest(identifier: "Dinner", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request)
+    }
 }
 
 struct MainView_Previews: PreviewProvider {

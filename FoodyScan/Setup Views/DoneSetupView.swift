@@ -9,10 +9,12 @@
 import SwiftUI
 
 struct DoneSetupView: View { //Just to go give feedback to the user that the data he has finished setting up his account, Also allows the app to store to refresh the variables and to store the daily intake calculator into the  device memory
-    
+    @Environment(\.colorScheme) var colorScheme
+
     @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user has setup the account links back to the sign up screen
     @State var scale: CGFloat = 1 //Necessary for the animation on lauch of the screen
-    @ObservedObject var userSettings = UserSettings() // Where all of the user variables are stored 
+    @ObservedObject var userSettings = UserSettings() // Where all of the user variables are stored
+    @State var notificationhelper = UserDefaults.standard.value(forKey: "notificationhelper") as? Bool ?? false
     var body: some View {
         ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
@@ -21,32 +23,46 @@ struct DoneSetupView: View { //Just to go give feedback to the user that the dat
                 
             }
             else {
-                VStack {
-                
-                    Text("Finished Setup")
-                        .font(.system(size: 46))
-                        .foregroundColor(Color("Color"))
-                        .padding(.top, 120)
-                    Button(action: {
-                        UserDefaults.standard.set(true, forKey: "setup") // This means that the user is logging in the first time so he must complete the daily intake calculator
-                        NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil) //Put a backend notification to inform app the data has been written
-                        
-                        self.userSettings.dailyintakekcal = self.CaloriesIntake(birthdate: self.userSettings.birthdate, gender: self.userSettings.gender, weight: self.userSettings.weight, height: self.userSettings.height, Activitylevel: self.userSettings.activitylevel) //So once the user clicks to finish setup his daily intake calculator can be calculated
-                    }) {
-                        ZStack {
-                        
-                         Circle()
-                         .fill(Color("Color"))
-                         .frame(width: UIScreen.main.bounds.width - 200)
-                         .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
-                         .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-
-                         
-                         Image(systemName: "checkmark")
-                             .foregroundColor(Color("BackgroundColor"))
-                             .font(.system(size: 54))
-                         }
+                ZStack {
+                    ZStack(alignment: .top) {
+                        ShapeView().offset(x: -80, y : -389).shadow(radius: 12)
                     }
+                    VStack {
+                    
+                        Text("Finished Setup")
+                            .font(.system(size: 32))
+                            .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
+                            .padding(.top, 120)
+                        Button(action: {
+                            
+                            UserDefaults.standard.set(true, forKey: "notificationhelper")
+                            NotificationCenter.default.post(name: NSNotification.Name("notificationhelper"), object: nil) //Put a backend notification to inform app the data has been written
+                            UserDefaults.standard.set(true, forKey: "setup") // This means that the user is logging in the first time so he must complete the daily intake calculator
+                            NotificationCenter.default.post(name: NSNotification.Name("setup"), object: nil) //Put a backend notification to inform app the data has been written
+                            
+                            self.userSettings.dailyintakekcal = self.CaloriesIntake(birthdate: self.userSettings.birthdate, gender: self.userSettings.gender, weight: self.userSettings.weight, height: self.userSettings.height, Activitylevel: self.userSettings.activitylevel) //So once the user clicks to finish setup his daily intake calculator can be calculated
+                            
+                            
+                        }) {
+                            ZStack {
+                                LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    .mask(Circle())
+                                    .frame(width: UIScreen.main.bounds.width - 200)
+                                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+
+                                LottieView(filename: self.colorScheme == .light ? "AcceptedLottie" : "AcceptedDarkLottie", speed: 1, loop: .playOnce)
+                                    .frame(width: UIScreen.main.bounds.width - 170)
+//                             Image(systemName: "checkmark")
+//                                 .foregroundColor(Color("BackgroundColor"))
+//                                 .font(.system(size: 54))
+                             }
+                        }
+                        
+                        
+                         
+                    }
+                    ShapeView().offset(x: 80, y : 389).shadow(radius: 12)
                 }
             }
         }

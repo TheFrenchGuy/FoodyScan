@@ -55,6 +55,7 @@ struct InformationDailyView: View {
     var body: some View {
         ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+            
             if self.eatenToday.firstItemDay == true { //If there is no scan for the day then don't show the Information View
                 VStack {
                     LottieView(filename: "GirlPlayingGuitarLottie", speed: 1, loop: .loop).frame(height: 240)
@@ -65,6 +66,7 @@ struct InformationDailyView: View {
                 ZStack(alignment: .topLeading) {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(alignment: .leading) {
+                            ShapeView().offset(x: -60, y : -210).shadow(radius: 12)
                             GradientText(title: "Today's Stats", size: 28, width: 190)
                                 .font(.system(size: 32, weight: .black))
                                 .padding(.bottom , 20)
