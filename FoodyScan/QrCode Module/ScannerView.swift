@@ -60,6 +60,8 @@ struct ScannerView: View {
     .navigationBarItems(leading: //Made so the back button is the same color scheme as the app
         Button(action: {
             self.complexSuccess()
+            self.goHome() //Allows the user if the app is launched from shortcute to go back to main screen
+            self.showSelf = false
             self.presentationMode.wrappedValue.dismiss()
             self.viewModel.lastQrCode = ""// So that it returns to the previous view
         }) { //UI at the top of the screen
@@ -103,6 +105,11 @@ struct ScannerView: View {
         } catch {
             print("Failed to play pattern: \(error.localizedDescription).")
         }
+    }
+    
+    func goHome() { //Return the user to the main screen of the app launch
+        UserDefaults.standard.set(false, forKey: "showScan") //Sets the status to be true and stored in memory so next app launch the user wont have to login
+        NotificationCenter.default.post(name: NSNotification.Name("showScan"), object: nil)
     }
     
 }

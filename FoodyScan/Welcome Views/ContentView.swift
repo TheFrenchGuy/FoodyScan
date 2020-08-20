@@ -14,14 +14,19 @@ import UserNotifications
  struct ContentView: View {
     @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false //Wethever the user is logged in
     @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user is logged in
+    @State var showScan = UserDefaults.standard.value(forKey: "showScan") as? Bool ?? false //In order to show if the user chooses from the shortcut menu to launch the scanner directly
     var body: some View {
         NavigationView() {
             if self.status{
                 if self.setup { //So if already logged in the past then it will go straight to the main menu
+                    if self.showScan { //Can only be accessed if the app is lauchned from the shortcut menu 
+                        ScannerView(showSelf: $showScan)
+                    } else { //Rest of the cases
                     HomeScreenView()
                         .navigationBarTitle("")
                         .navigationBarHidden(true)
                         .navigationBarBackButtonHidden(true)
+                    }
                 } else { //if it has not logged in before goes to the Daily Intake
                     DailyIntakeParrallax()
                         .navigationBarTitle("")
@@ -29,7 +34,7 @@ import UserNotifications
                         .navigationBarBackButtonHidden(true) //Where the user will be able to continue with the setup of the account
                 }
             } else {
-                NavigationLink(destination: Home(), isActive: .constant(true)) { //Sends to welcome screens
+                NavigationLink(destination: Home(), isActive: $showScan) { //Sends to welcome screens
                     EmptyView()
                 }.navigationBarTitle("")
                 .navigationBarHidden(true)
@@ -50,6 +55,11 @@ import UserNotifications
                                 
                 self.setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false
                 }
+                
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("showScan"), object: nil, queue: .main) { (_) in
+                            
+            self.showScan = UserDefaults.standard.value(forKey: "showScan") as? Bool ?? false
+            }
             }
         }
      }

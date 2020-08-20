@@ -20,7 +20,7 @@ struct MainView : View {
     @ObservedObject var userSettings = UserSettings()
     @Binding var showMenu: Bool
     @ObservedObject var eatenToday = EatenToday()
-    @State var notificationhelper = UserDefaults.standard.value(forKey: "notificationhelper") as? Bool ?? false
+    @State var notificationhelper = UserDefaults.standard.value(forKey: "notificationhelper") as? Bool ?? false //Neccesary in order to show notification at the right time at 12pm and 6pm everyday
 
     var dateFormatter: DateFormatter { //Used in order to format the date so it is not too long for the screen
         let formatter = DateFormatter()
@@ -29,9 +29,9 @@ struct MainView : View {
     }
     var body: some View {
         
-            registerUserNotification()
-            dailyLunchNotification()
-            dailyEveningNotification()
+            registerUserNotification() //Ask the user for notification permission
+            dailyLunchNotification() //12pm notification about the user intake
+            dailyEveningNotification() //6pm notification about the user intake
         
             return ZStack {
             Color("BackgroundColor").edgesIgnoringSafeArea(.all)//Sets the background color so it is the same color in all of the views
@@ -236,9 +236,12 @@ struct MainView : View {
             }
         }
         .onAppear { //Fetches the variables needed so the dialy intake can be upadated as soon as the user sign in or reset his daily intake
+            
+            
+            
              NotificationCenter.default.addObserver(forName: NSNotification.Name("notificationhelper"), object: nil, queue: .main) { (_) in
                              
-             self.notificationhelper = UserDefaults.standard.value(forKey: "notificationhelper") as? Bool ?? false
+             self.notificationhelper = UserDefaults.standard.value(forKey: "notificationhelper") as? Bool ?? false //In order to fetch if the state has changed to display the notificatin helper alert
              }
             
             
@@ -317,29 +320,29 @@ struct MainView : View {
     }
     
     func dailyLunchNotification() {
-                let eatencalpercentage = Int((UserSettings().eatentoday / UserSettings().dailyintakekcal) * 100)
-                let content = UNMutableNotificationContent()
-                content.title = "Daily Morning Notification"
-        content.body = "You had \(eatencalpercentage)% of your calorie daily intake"
-                content.sound = UNNotificationSound.default
+                let eatencalpercentage = Int((UserSettings().eatentoday / UserSettings().dailyintakekcal) * 100) //The percentage of the user daily intake he has eaten
+                let content = UNMutableNotificationContent() //What kind of notification it is
+                content.title = "Daily Morning Notification" //Title
+        content.body = "You had \(eatencalpercentage)% of your calorie daily intake" //Main message
+                content.sound = UNNotificationSound.default //The sound of the notification
 
-               var dateInfo = DateComponents()
+               var dateInfo = DateComponents() //When should the notifaction be displayed
                dateInfo.hour = 12
                dateInfo.minute = 0
-               let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
-            //   let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                let request = UNNotificationRequest(identifier: "Lunch", content: content, trigger: trigger)
-                UNUserNotificationCenter.current().add(request)
+               let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true) //So when the system clock matches that time a notification is displayed
+            //   let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false) //Degub only
+                let request = UNNotificationRequest(identifier: "Lunch", content: content, trigger: trigger) //Sets the notification name to the system
+                UNUserNotificationCenter.current().add(request) //Adds the request to the system to display that notification
     }
     
-    func dailyEveningNotification() {
+    func dailyEveningNotification() { //Documentation is the same as above
                 let eatencalpercentage = Int((UserSettings().eatentoday / UserSettings().dailyintakekcal) * 100)
                 let content = UNMutableNotificationContent()
                 content.title = "Daily Evening Notification"
         content.body = "You had \(eatencalpercentage)% of your calorie daily intake"
                 content.sound = UNNotificationSound.default
 
-                var dateInfo = DateComponents()
+                var dateInfo = DateComponents() //Notification being displayed at 6pm local time 
                 dateInfo.hour = 18
                 dateInfo.minute = 0
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)

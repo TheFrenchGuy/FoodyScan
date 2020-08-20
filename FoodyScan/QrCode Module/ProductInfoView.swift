@@ -20,7 +20,7 @@ struct ProductInfoView: View {
     @ObservedObject var getData = JSONParserFood() //Where the data is fetched from so can be reference into the main view for user feedback
     @State var amounteaten = "" //Used laster for the calculation of the user
     @State var scanDate = Date()
-    
+    @State var showScan = UserDefaults.standard.value(forKey: "showScan") as? Bool ?? false //Whever the scanner view should be shown after being triggered from a shortcut
     //Variables used to make the UI Nicer
     @State var color = Color.black.opacity(0.5) //So when you time the amounteaten it changes color
     var format = "%g" //So that it doesnt not show any zeros after the decimal point
@@ -207,6 +207,7 @@ struct ProductInfoView: View {
                                         self.addlist() //Sves the data to the CoreData stack
                                         self.todayStore()
                                         self.showSelf = false //Returns to the homeview
+                                        self.goHome()
                                         self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
                                         self.userSettings.eatentoday += ((Double(self.amounteaten ) ?? 1.0) * Double(self.getData.energykcal_100g) / 100)
                                     }) {
@@ -311,6 +312,11 @@ struct ProductInfoView: View {
             print("working")
         }
         
+    }
+    
+    func goHome() { //So the user can go back to the main screen when he has finsihed to scan his product
+        UserDefaults.standard.set(false, forKey: "showScan") //Sets the status to be true and stored in memory so next app launch the user wont have to login
+        NotificationCenter.default.post(name: NSNotification.Name("showScan"), object: nil)
     }
 }
 

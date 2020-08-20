@@ -33,6 +33,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+        if connectionOptions.shortcutItem != nil { //So when the user uses the shortcut menu and the app is not loaded it will load the Scanner View
+           let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+           let contentView = ContentView(showScan: true).environment(\.managedObjectContext, context)
+           UserDefaults.standard.set(true, forKey: "showScan") //Sets the status to be true and stored in memory so next app launch the user wont have to login
+           NotificationCenter.default.post(name: NSNotification.Name("showScan"), object: nil)
+           window?.rootViewController = UIHostingController(rootView: contentView) //Maybe try to reference a sheet
+           window!.makeKeyAndVisible() //Render the view visible 
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -66,6 +75,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) { //So when the user uses the shortcute list and the app is loaded and in the background then it loads the scanner view
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let contentView = ContentView(showScan: true).environment(\.managedObjectContext, context)
+        UserDefaults.standard.set(true, forKey: "showScan") //Sets the status to be true and stored in memory so next app launch the user wont have to login
+        NotificationCenter.default.post(name: NSNotification.Name("showScan"), object: nil)
+        window?.rootViewController = UIHostingController(rootView: contentView) //Maybe try to reference a sheet
+        window!.makeKeyAndVisible() //Render the view visible
 
+    }
 }
 
