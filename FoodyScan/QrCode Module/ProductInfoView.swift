@@ -229,9 +229,39 @@ struct ProductInfoView: View {
                     }
                     }
                 }
-                if self.getData.statusVerbose == "product not found" {
+                else if self.getData.statusVerbose == "product not found" {
                     ProductNotFound(showSelf: $showSelf) //Sends to a seperate view if the product is not found
                 }
+                else { //So when the JSON request is running the user is greeted with a loading screen
+                    VStack {
+                        
+                        GradientText(title: "Loading", size: 32, width: Int(UIScreen.main.bounds.width - 250))
+                        LottieView(filename: "fruitloaderlottie", speed: 1, loop: .loop).frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.3)
+                        
+                        if self.getData.error {
+                            Spacer()
+                            
+                            Button(action: {
+                                self.showSelf = false //Returns to the homeview
+                                self.goHome()
+                                self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
+                            }) {
+                                Text("Error")
+                                .fontWeight(.light)
+                                .padding()
+                                .frame(width: UIScreen.main.bounds.width - 80)
+                                .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
+                                .cornerRadius(40)
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .stroke(Color("Color"), lineWidth: 5)
+                                )
+                            }
+                        }
+                    }
+            }
         }
 //        .onTapGesture {
 //                self.hideKeyboard()
@@ -346,6 +376,7 @@ class JSONParserFood: ObservableObject {
     @Published var salt_100g = 0.0
     @Published var carbohydrates_100g = 0.0
     @Published var statusVerbose = ""
+    @Published var error:Bool = false
     
     //var url1 = "737628064502"  Debug purpouse to test information returned
     //var url2 = "5032439100179" Both of these are item codes with information used for debug only

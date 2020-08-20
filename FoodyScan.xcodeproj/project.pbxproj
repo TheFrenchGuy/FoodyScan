@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		391DD06181FB4E68FECC33FA /* libPods-FoodyScan-FoodyScanUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D142308261C699CCF10256D /* libPods-FoodyScan-FoodyScanUITests.a */; };
-		526E87AC0A07CC2B475D381B /* libPods-FoodyScanTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDFC8CF1D6070791C919A7DC /* libPods-FoodyScanTests.a */; };
 		60116BF324C99DE300DF9E09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF224C99DE300DF9E09 /* AppDelegate.swift */; };
 		60116BF524C99DE300DF9E09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF424C99DE300DF9E09 /* SceneDelegate.swift */; };
 		60116BFA24C99DE300DF9E09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60116BF924C99DE300DF9E09 /* ContentView.swift */; };
@@ -59,6 +57,7 @@
 		60A3E23124E44D2D000C0A24 /* QrCodeLottieDark.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A3E23024E44D2D000C0A24 /* QrCodeLottieDark.json */; };
 		60A3E23324E495C5000C0A24 /* GirlPlayingGuitarLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A3E23224E495C5000C0A24 /* GirlPlayingGuitarLottie.json */; };
 		60B5EC5A24CC407A008EFC70 /* UserSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5EC5924CC407A008EFC70 /* UserSettingsModel.swift */; };
+		60B6879B24EF14B600321C45 /* fruitloaderlottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 60B6879A24EF14B600321C45 /* fruitloaderlottie.json */; };
 		60BAE84F24E686E9006AAB40 /* SettingsBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAE84E24E686E9006AAB40 /* SettingsBlockView.swift */; };
 		60BAE85124E6877F006AAB40 /* ResetIntakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAE85024E6877F006AAB40 /* ResetIntakeView.swift */; };
 		60BAE85324E68846006AAB40 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAE85224E68846006AAB40 /* LogoutView.swift */; };
@@ -74,7 +73,9 @@
 		60F5F11824CA334B00835292 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11724CA334B00835292 /* SignUp.swift */; };
 		60F5F11A24CA33B300835292 /* GoogleLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11924CA33B300835292 /* GoogleLoginView.swift */; };
 		60F5F11D24CA356000835292 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5F11C24CA356000835292 /* ErrorView.swift */; };
-		D400DB33BD24B38F48109EEF /* libPods-FoodyScan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A26A062E141636AD8E083A /* libPods-FoodyScan.a */; };
+		647680371D09E81D7A8B50DF /* Pods_FoodyScan_FoodyScanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF42E79CAB34E84A18AA4E9 /* Pods_FoodyScan_FoodyScanUITests.framework */; };
+		848AC21A518DABF0F734E0B0 /* Pods_FoodyScanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEFA6C24B0FB8BC7F515B53D /* Pods_FoodyScanTests.framework */; };
+		8A7E7EE0F94EDF995AE9FA12 /* Pods_FoodyScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660BD3FB8BD61E9C5FCCCB44 /* Pods_FoodyScan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,8 +110,7 @@
 /* Begin PBXFileReference section */
 		060728A70B162DEC778F29DD /* Pods-FoodyScan-FoodyScanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan-FoodyScanUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		09C8190BD6E24BA136DFE24E /* Pods-FoodyScan-FoodyScanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan-FoodyScanUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests.release.xcconfig"; sourceTree = "<group>"; };
-		2D142308261C699CCF10256D /* libPods-FoodyScan-FoodyScanUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodyScan-FoodyScanUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		55A26A062E141636AD8E083A /* libPods-FoodyScan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodyScan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AF42E79CAB34E84A18AA4E9 /* Pods_FoodyScan_FoodyScanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodyScan_FoodyScanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5681C2F323F2153B14DD313F /* Pods-FoodyScanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScanTests.release.xcconfig"; path = "Target Support Files/Pods-FoodyScanTests/Pods-FoodyScanTests.release.xcconfig"; sourceTree = "<group>"; };
 		60116BEF24C99DE300DF9E09 /* FoodyScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodyScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60116BF224C99DE300DF9E09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +166,7 @@
 		60A3E23024E44D2D000C0A24 /* QrCodeLottieDark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QrCodeLottieDark.json; sourceTree = "<group>"; };
 		60A3E23224E495C5000C0A24 /* GirlPlayingGuitarLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GirlPlayingGuitarLottie.json; sourceTree = "<group>"; };
 		60B5EC5924CC407A008EFC70 /* UserSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsModel.swift; sourceTree = "<group>"; };
+		60B6879A24EF14B600321C45 /* fruitloaderlottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fruitloaderlottie.json; sourceTree = "<group>"; };
 		60BAE84E24E686E9006AAB40 /* SettingsBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBlockView.swift; sourceTree = "<group>"; };
 		60BAE85024E6877F006AAB40 /* ResetIntakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetIntakeView.swift; sourceTree = "<group>"; };
 		60BAE85224E68846006AAB40 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
@@ -181,10 +182,11 @@
 		60F5F11724CA334B00835292 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		60F5F11924CA33B300835292 /* GoogleLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginView.swift; sourceTree = "<group>"; };
 		60F5F11C24CA356000835292 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		660BD3FB8BD61E9C5FCCCB44 /* Pods_FoodyScan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodyScan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A58E9D8EC05A3DD002A3AC7 /* Pods-FoodyScanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScanTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodyScanTests/Pods-FoodyScanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7FFD4961E699F2F33C97446 /* Pods-FoodyScan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan.debug.xcconfig"; path = "Target Support Files/Pods-FoodyScan/Pods-FoodyScan.debug.xcconfig"; sourceTree = "<group>"; };
 		D69A2FEFD4978B6FD065F588 /* Pods-FoodyScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodyScan.release.xcconfig"; path = "Target Support Files/Pods-FoodyScan/Pods-FoodyScan.release.xcconfig"; sourceTree = "<group>"; };
-		DDFC8CF1D6070791C919A7DC /* libPods-FoodyScanTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodyScanTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEFA6C24B0FB8BC7F515B53D /* Pods_FoodyScanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodyScanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +196,7 @@
 			files = (
 				6088C75224D2C6640067DE48 /* SDWebImageSwiftUI in Frameworks */,
 				60A3E22824E4306C000C0A24 /* Lottie in Frameworks */,
-				D400DB33BD24B38F48109EEF /* libPods-FoodyScan.a in Frameworks */,
+				8A7E7EE0F94EDF995AE9FA12 /* Pods_FoodyScan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				526E87AC0A07CC2B475D381B /* libPods-FoodyScanTests.a in Frameworks */,
+				848AC21A518DABF0F734E0B0 /* Pods_FoodyScanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				391DD06181FB4E68FECC33FA /* libPods-FoodyScan-FoodyScanUITests.a in Frameworks */,
+				647680371D09E81D7A8B50DF /* Pods_FoodyScan_FoodyScanUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +401,7 @@
 		60A3E22924E430B6000C0A24 /* Lottie JSON */ = {
 			isa = PBXGroup;
 			children = (
+				60B6879A24EF14B600321C45 /* fruitloaderlottie.json */,
 				607A4F1D24ED16EE00C6E66F /* AcceptedDarkLottie.json */,
 				607A4F1B24ED14BB00C6E66F /* AcceptedLottie.json */,
 				609F09CD24EBDB9B0018EE17 /* ErrorLottie.json */,
@@ -454,9 +457,9 @@
 		EAB9A4D931B9A46358FB2CA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				55A26A062E141636AD8E083A /* libPods-FoodyScan.a */,
-				2D142308261C699CCF10256D /* libPods-FoodyScan-FoodyScanUITests.a */,
-				DDFC8CF1D6070791C919A7DC /* libPods-FoodyScanTests.a */,
+				660BD3FB8BD61E9C5FCCCB44 /* Pods_FoodyScan.framework */,
+				2AF42E79CAB34E84A18AA4E9 /* Pods_FoodyScan_FoodyScanUITests.framework */,
+				FEFA6C24B0FB8BC7F515B53D /* Pods_FoodyScanTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				60116BED24C99DE300DF9E09 /* Resources */,
 				79BB833701AD3A40C970FC77 /* [CP] Copy Pods Resources */,
 				605EB61D24CD8D7B005EA648 /* CopyFiles */,
+				090CF489F922B15E81A849AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -516,6 +520,7 @@
 				60116C1024C99DE600DF9E09 /* Frameworks */,
 				60116C1124C99DE600DF9E09 /* Resources */,
 				98DD817133C54F842FA6EEC9 /* [CP] Copy Pods Resources */,
+				810C46E3BC4C69FE6CD6DFEC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -597,6 +602,7 @@
 				60DA125124E55B01006E6D3E /* SettingsLottie.json in Resources */,
 				60116BFF24C99DE500DF9E09 /* Preview Assets.xcassets in Resources */,
 				60DA125324E5B775006E6D3E /* SettingsDarkLottie.json in Resources */,
+				60B6879B24EF14B600321C45 /* fruitloaderlottie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +623,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		090CF489F922B15E81A849AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		127B97DCF8BF042266ADA0CC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -698,6 +721,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodyScan/Pods-FoodyScan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		810C46E3BC4C69FE6CD6DFEC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodyScan-FoodyScanUITests/Pods-FoodyScan-FoodyScanUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		98DD817133C54F842FA6EEC9 /* [CP] Copy Pods Resources */ = {

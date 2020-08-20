@@ -3,8 +3,8 @@
 
 target 'FoodyScan' do
   # Comment the next line if you don't want to use dynamic frameworks
-  #use_frameworks!
-  use_modular_headers!
+  use_frameworks!
+  #use_modular_headers!
 
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
