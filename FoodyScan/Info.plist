@@ -37,7 +37,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>&quot;Neccessary in order to scan barcode&quot;</string>
+	<string>"Neccessary in order to scan barcode"</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Dashing Unicorn.ttf</string>

@@ -15,7 +15,11 @@ import UserNotifications
     @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false //Wethever the user is logged in
     @State var setup = UserDefaults.standard.value(forKey: "setup") as? Bool ?? false //Wethever the user is logged in
     @State var showScan = UserDefaults.standard.value(forKey: "showScan") as? Bool ?? false //In order to show if the user chooses from the shortcut menu to launch the scanner directly
+    
+    @ObservedObject var userSettings = UserSettings() //Fetches the userSettings stored onto device storage
+    @ObservedObject var eatenToday = EatenToday() //What the user has eaten today
     var body: some View {
+        
         NavigationView() {
             if self.status{
                 if self.setup { //So if already logged in the past then it will go straight to the main menu
@@ -26,6 +30,19 @@ import UserNotifications
                         .navigationBarTitle("")
                         .navigationBarHidden(true)
                         .navigationBarBackButtonHidden(true)
+                        .onAppear {
+                                    let timediff = Int(Date().timeIntervalSince(self.eatenToday.startTime)) //If the app has been launched for more than a day since the first scan the the variables are whipped
+                                    if timediff >= 86400 {
+                                        self.eatenToday.firstItemDay = true
+                                        self.eatenToday.sugarToday = 0.0
+                                        self.eatenToday.proteinToday = 0.0
+                                        self.userSettings.eatentoday = 0.0
+                                        self.eatenToday.carbohydratesToday = 0.0
+                                        self.eatenToday.fatToday = 0.0
+                                        self.eatenToday.fiberToday = 0.0
+                                        self.eatenToday.saltToday = 0.0
+                                    }
+                                }
                     }
                 } else { //if it has not logged in before goes to the Daily Intake
                     DailyIntakeParrallax()
@@ -34,7 +51,7 @@ import UserNotifications
                         .navigationBarBackButtonHidden(true) //Where the user will be able to continue with the setup of the account
                 }
             } else {
-                NavigationLink(destination: Home(), isActive: $showScan) { //Sends to welcome screens
+                NavigationLink(destination: Home(), isActive: .constant(true)) { //Sends to welcome screens
                     EmptyView()
                 }.navigationBarTitle("")
                 .navigationBarHidden(true)
