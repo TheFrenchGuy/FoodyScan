@@ -23,9 +23,13 @@ struct DoneSetupView: View { //Just to go give feedback to the user that the dat
                 
             }
             else {
+                GeometryReader { bounds in
                 ZStack {
-                    ZStack(alignment: .top) {
-                        ShapeView().offset(x: -80, y : -389).shadow(radius: 12)
+                    
+                    if UIDevice.current.userInterfaceIdiom == .phone {
+                        ZStack(alignment: .top) {
+                            ShapeView().offset(x: -80, y : -389).shadow(radius: 12)
+                        }
                     }
                     VStack {
                     
@@ -47,12 +51,12 @@ struct DoneSetupView: View { //Just to go give feedback to the user that the dat
                             ZStack {
                                 LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing)
                                     .mask(Circle())
-                                    .frame(width: UIScreen.main.bounds.width - 200)
+                                    .frame(width: bounds.size.width - 200)
                                     .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
                                     .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
 
                                 LottieView(filename: self.colorScheme == .light ? "AcceptedLottie" : "AcceptedDarkLottie", speed: 1, loop: .playOnce)
-                                    .frame(width: UIScreen.main.bounds.width - 170)
+                                    .frame(width: bounds.size.width - 170)
 //                             Image(systemName: "checkmark")
 //                                 .foregroundColor(Color("BackgroundColor"))
 //                                 .font(.system(size: 54))
@@ -62,7 +66,11 @@ struct DoneSetupView: View { //Just to go give feedback to the user that the dat
                         
                          
                     }
-                    ShapeView().offset(x: 80, y : 389).shadow(radius: 12)
+                    
+                    if UIDevice.current.userInterfaceIdiom == .phone {
+                        ShapeView().offset(x: 80, y : 389).shadow(radius: 12)
+                    }
+                }
                 }
             }
         }

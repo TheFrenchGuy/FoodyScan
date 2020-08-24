@@ -41,9 +41,13 @@ struct CalculatorHelpView: View {
                         Text("For male:")
                             .bold()
                             //.padding(.leading, 10)
-                        GradientText(title: "BMR = 10 x Weight + 6.25 x Height - 5 x Age + 5", size: 16, width: Int(UIScreen.main.bounds.width))
+                        ScrollView(.horizontal) {
+                        GradientText(title: "BMR = 10 x Weight + 6.25 x Height - 5 x Age + 5", size: 16, width: Int(UIScreen.main.bounds.width + 50))
+                            .fixedSize(horizontal: false, vertical: true)
                             .padding(.top)
                             .padding(.leading, 10)
+                        }
+                            
                         
                         
                     }.padding(.leading, 10)
@@ -51,9 +55,14 @@ struct CalculatorHelpView: View {
                     VStack(alignment: .leading) {
                         Text("For female:")
                             .bold()
-                        GradientText(title:" BMR = 10 x Weight + 6.25 x Height - 5 x Age - 161", size: 16, width: Int(UIScreen.main.bounds.width))
+                        
+                        ScrollView(.horizontal) {
+                            GradientText(title:" BMR = 10 x Weight + 6.25 x Height - 5 x Age - 161", size: 16, width: Int(UIScreen.main.bounds.width + 60))
+                            .fixedSize(horizontal: false, vertical: true)
                             .padding(.top)
                             .padding(.leading, 10)
+                            
+                        }
                             //.padding(.leading, UIScreen.main.bounds.width - 365)
                         Text("The BMR value estimated by the above formulas is further on multiplied by an approximate factor/coefficient for each activity level.")
                             .fixedSize(horizontal: false, vertical: true)

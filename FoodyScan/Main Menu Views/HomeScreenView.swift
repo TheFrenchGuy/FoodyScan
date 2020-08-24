@@ -31,14 +31,22 @@ struct HomeScreenView: View {
            GeometryReader { geometry in
             Color("BackgroundColor").edgesIgnoringSafeArea(.all) //Neccessary in order to fix a bug where the color scheme would slightly show in the background
                ZStack(alignment: .leading) {
+                
                 MainView(showMenu: self.$showMenu) //Shows the main View
                        .frame(width: geometry.size.width, height: geometry.size.height)
                        .offset(x: self.showMenu ? geometry.size.width / 2 : 0)
                        .disabled(self.showMenu ? true : false)
                    if self.showMenu {
+                    
+                    if UIDevice.current.userInterfaceIdiom == .phone {
                        MenuView() //It will shows the side menu view
                            .frame(width: geometry.size.width/2)
                            .transition(.move(edge: .leading))
+                    } else {
+                        MenuView() //It will shows the side menu view
+                        .frame(width: geometry.size.width/3)
+                        .transition(.move(edge: .leading))
+                    }
                    }
                }
                .gesture(drag)

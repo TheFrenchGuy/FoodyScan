@@ -13,11 +13,11 @@ struct SettingsView: View {
      @State var showSettings:Int = 1 //So the view can toggle between 3 stats (needed as the view wont be dismissed this is a known bug so i have to display a drag down animation when the view in the back ground changes)
     var body: some View {
         
-        
+        GeometryReader { bounds in
         NavigationView {
             ZStack {
                 if self.showSettings == 1{
-                    SettingsBlockView(showSettings: $showSettings) //The view the user see when he taps on the settings icon/text in the menu
+                    SettingsBlockView(showSettings: self.$showSettings) //The view the user see when he taps on the settings icon/text in the menu
                 }
                 if self.showSettings == 2{
                     ResetIntakeView() //When the user select to reset his daily intake a drag down animation information the user that he needs to drag down to reset his daily intake
@@ -26,8 +26,12 @@ struct SettingsView: View {
                 if self.showSettings == 3{
                     LogoutView() //When the user select to log out of the application , to make the view disappeer he needs to drag down the view in the background would already have been loaded.
                 }
+                Spacer()
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }.frame(width: bounds.size.width, height: bounds.size.height)
+         .navigationViewStyle(StackNavigationViewStyle())
+            
+        }
     }
     
     

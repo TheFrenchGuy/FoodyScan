@@ -29,9 +29,16 @@ struct DailyIntakeCalculatorView: View {
             Color("BackgroundColor").edgesIgnoringSafeArea(.all) //Used to change background color
         
             VStack(alignment: .leading) {
+                HStack() {
+                    Text("Please select your gender")
+                        .lineLimit(1)
+                        .font(.system(size: 14))
+                        .padding(.leading, 20)
+                }.frame(width: UIScreen.main.bounds.width, alignment: .leading)
                 GenderPicker()
                     .padding(.vertical, 20)
                 
+                VStack {
                 DatePicker(selection: $userSettings.birthdate, in: ...Date(), displayedComponents: .date) {
                                Text("Select your birthdate") //Allows the user to select their birthdate
                            }.labelsHidden()
@@ -40,6 +47,7 @@ struct DailyIntakeCalculatorView: View {
                            Text("Date of birth: \(userSettings.birthdate, formatter: dateFormatter)") //Feedback to the user
                             .padding(.horizontal, 60)
                             .lineLimit(1)
+                }.frame(width: UIScreen.main.bounds.width)
                 HeightWeightView()
                 
                 DropDownActivity(filledout: self.$filledout) //Passes if var to check if the form is filled out
@@ -86,17 +94,11 @@ struct GenderPicker: View {
     @ObservedObject var userSettings = UserSettings() //Where all of the user info are stored
     var body: some View {
         VStack {
-            HStack() {
-                Text("Please select your gender")
-                    .lineLimit(1)
-                    .font(.system(size: 14))
-                    .padding(.trailing, 180)
-            }
             Picker(selection: $userSettings.gender, label: Text("Gender")) {
                 ForEach(userSettings.genders, id: \.self) { gender in
                     Text(gender) //Allows the user to choose between 3 genders
                 }
-            }
+            }.frame(width: UIScreen.main.bounds.width - 20 )
                 
             .pickerStyle(SegmentedPickerStyle()) //So that the picker is all horizontal
             .padding()
@@ -237,6 +239,6 @@ struct DropDownActivity: View {
 
         .animation(.spring())
         .padding(.horizontal, 60)
-        }
+        }.frame(width: UIScreen.main.bounds.width)
     }
 }

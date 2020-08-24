@@ -34,282 +34,290 @@ struct ProductNotFound: View {
     @State var scanDate = Date()
     
     var body: some View {
-        ScrollView {
+        
+        GeometryReader { bounds in
+        //ScrollView(.vertical) { 
             VStack {
                 if self.manualEntry == false {
-                    Text("Product Not Found")
-                        .foregroundColor(.offRed)
-                        .fontWeight(.black)
-                        .padding(.top, 40)
+                    VStack {
+                        Text("Product Not Found")
+                            .foregroundColor(.offRed)
+                            .fontWeight(.black)
+                            .padding(.top, 40)
+                            
+                            
+                        LottieView(filename: "ErrorLottie", speed: 1, loop: .repeat(2))
+                            .frame(width: bounds.size.width * 0.7, height: bounds.size.height * 0.3)
+                            .padding(.bottom, 40)
                         
-                    LottieView(filename: "ErrorLottie", speed: 1, loop: .repeat(2))
-                        .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.3)
-                        .padding(.bottom, 40)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        withAnimation(.linear) {
-                            self.manualEntry = true
+                        Spacer()
+                        
+                        Button(action: {
+                            withAnimation(.linear) {
+                                self.manualEntry = true
+                            }
+                        }) {
+                            Text("Enter product manually")
+                            .foregroundColor(.white)
+                            .padding(.vertical)
+                            .frame(width: bounds.size.width - 50)
+                            .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                            .cornerRadius(5.0)
+                            .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12) //Creates a newmophistic effect
+                            .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
+                            .padding(.bottom, 15)
                         }
-                    }) {
-                        Text("Enter product manually")
-                        .foregroundColor(.white)
-                        .padding(.vertical)
-                        .frame(width: UIScreen.main.bounds.width - 50)
-                        .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                        .cornerRadius(5.0)
-                        .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12) //Creates a newmophistic effect
-                        .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
-                        .padding(.bottom, 15)
-                    }
+                    }.frame(width: bounds.size.width, alignment: .center)
                 }
                 if self.manualEntry {
-                    VStack {
-                        HStack(alignment: .top, spacing: 10) {
-                            Image(systemName: "bag.fill")
-                             .resizable()
-                             .frame(width: 60, height: 70)
-                            // .clipShape(Circle()).shadow(radius: 20)
-                             .padding()
+                    ScrollView {
+                        VStack {
+                            HStack(alignment: .top, spacing: 10) {
+                                Image(systemName: "bag.fill")
+                                 .resizable()
+                                 .frame(width: 60, height: 70)
+                                // .clipShape(Circle()).shadow(radius: 20)
+                                 .padding()
+                                
+                                VStack(alignment: .leading, spacing: 10) {
+                                    TextField("Product Brand", text: self.$brand)
+                                    TextField("Product Name", text: self.$product)
+                                    Text("Product Added Manually")
+                                        .bold()
+                                }
+                            }
+                            .foregroundColor(self.colorScheme == .light ? Color.colorDark: Color.colorLight) //Inverted the colors as it looked better that way on the green background
+                            .padding(.vertical)
+                            .frame(width: bounds.size.width - 20)
+                        }.background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(12)
+                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                        .padding(.top, 25)
+                        
+                        Spacer(minLength: 50)
+                        
+                        VStack {
                             
-                            VStack(alignment: .leading, spacing: 10) {
-                                TextField("Product Brand", text: $brand)
-                                TextField("Product Name", text: $product)
-                                Text("Product Added Manually")
-                                    .bold()
-                            }
-                        }
-                        .foregroundColor(self.colorScheme == .light ? Color.colorDark: Color.colorLight) //Inverted the colors as it looked better that way on the green background
-                        .padding(.vertical)
-                        .frame(width: UIScreen.main.bounds.width - 20)
-                    }.background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
-                    .cornerRadius(12)
-                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
-                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                    .padding(.top, 25)
-                    
-                    Spacer(minLength: 50)
-                    
-                    VStack {
-                        
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("For 100g: ")
-                                    .bold()
-                                HStack(alignment: .center) {
-                                    Image("Sugar")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40, height: 40)
-                                    Text("Sugar").bold()
-                                    TextField("...", text: $sugar)
-                                    .keyboardType(.numberPad)
-                                        .onReceive(Just(sugar)) { newValue in //Filteres so only numbers can be inputed
-                                            let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
-                                            if filtered != newValue {
-                                                self.sugar = filtered
-                                            }
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("For 100g: ")
+                                        .bold()
+                                    HStack(alignment: .center) {
+                                        Image("Sugar")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40, height: 40)
+                                        Text("Sugar").bold()
+                                        TextField("...", text: self.$sugar)
+                                        .keyboardType(.numberPad)
+                                            .onReceive(Just(self.sugar)) { newValue in //Filteres so only numbers can be inputed
+                                                let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
+                                                if filtered != newValue {
+                                                    self.sugar = filtered
+                                                }
+                                        }
+                                        .frame(width: 30)
+                                        .padding(.leading, bounds.size.width - 186)
+                                        Text("g")
                                     }
-                                    .frame(width: 30)
-                                    .padding(.leading, UIScreen.main.bounds.width - 186)
-                                    Text("g")
-                                }
-                                
-                                HStack {
-                                    Image("Energy")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 40, height: 40)
-                                    Text("kcal").bold()
-                                    TextField("...", text: $energy)
-                                    .keyboardType(.numberPad)
-                                        .onReceive(Just(energy)) { newValue in //Filteres so only numbers can be inputed
-                                            let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
-                                            if filtered != newValue {
-                                                self.energy = filtered
-                                            }
-                                    }
-                                    .frame(width: 30)
-                                    .padding(.leading, UIScreen.main.bounds.width - 172)
-                                    Text("g")
-                                }
-                                
-                                HStack {
-                                    Image("Carbohydrates")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 40, height: 40)
-                                    Text("Carb").bold()
-                                   TextField("...", text: $carb)
-                                    .keyboardType(.numberPad)
-                                        .onReceive(Just(carb)) { newValue in //Filteres so only numbers can be inputed
-                                            let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
-                                            if filtered != newValue {
-                                                self.carb = filtered
-                                            }
-                                    }
-                                    .frame(width: 30)
-                                    .padding(.leading, UIScreen.main.bounds.width - 178)
-                                    Text("g")
-                                }
-                             
-                            }
-                        }
-                        .foregroundColor(Color("Color"))
-                        
-                        .padding(.vertical)
-                        .frame(width: UIScreen.main.bounds.width - 20)
-                        }
-                    .background(BlurView())
-                    .cornerRadius(12)
-                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
-                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                    .padding(.top, 5)
-                    
-                    VStack {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                HStack(alignment: .center) {
-                                    Image("Fat")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40, height: 40)
-                                    Text("Fat").bold()
-                                    TextField("...", text: $fat)
-                                    .keyboardType(.numberPad)
-                                        .onReceive(Just(fat)) { newValue in //Filteres so only numbers can be inputed
-                                            let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
-                                            if filtered != newValue {
-                                                self.fat = filtered
-                                            }
-                                    }
-                                    .frame(width: 30)
-                                    .padding(.leading, UIScreen.main.bounds.width - 165)
-                                    Text("g")
-                                }
-                                
-                                
-                                HStack(alignment: .center) {
-                                    Image("Fiber")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40, height: 40)
-                                    Text("Fiber").bold()
-                                    TextField("...", text: $fiber)
-                                    .keyboardType(.numberPad)
-                                        .onReceive(Just(fiber)) { newValue in //Filteres so only numbers can be inputed
-                                            let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
-                                            if filtered != newValue {
-                                                self.fiber = filtered
-                                            }
-                                    }
-                                    .frame(width: 30)
-                                    .padding(.leading, UIScreen.main.bounds.width - 180)
-                                    Text("g")
-                                }
-                                
-                                HStack(alignment: .center) {
-                                    Image("Protein")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40, height: 40)
-                                    Text("Protein").bold()
-                                    TextField("...", text: $protein)
-                                    .keyboardType(.numberPad)
-                                        .onReceive(Just(protein)) { newValue in //Filteres so only numbers can be inputed
-                                            let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
-                                            if filtered != newValue {
-                                                self.protein = filtered
-                                            }
-                                    }
-                                    .frame(width: 30)
-                                    .padding(.leading, UIScreen.main.bounds.width - 196)
-                                    Text("g")
-                                }
-                                
-                                HStack(alignment: .center) {
                                     
-                                    Image("Salt")
+                                    HStack {
+                                        Image("Energy")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 40, height: 40)
-                                    Text("Salt").bold()
-                                    TextField("...", text: $salt)
-                                    .keyboardType(.numberPad)
-                                        .onReceive(Just(salt)) { newValue in //Filteres so only numbers can be inputed
-                                            let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
-                                            if filtered != newValue {
-                                                self.salt = filtered
-                                            }
+                                        Text("kcal").bold()
+                                        TextField("...", text: self.$energy)
+                                        .keyboardType(.numberPad)
+                                            .onReceive(Just(self.energy)) { newValue in //Filteres so only numbers can be inputed
+                                                let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
+                                                if filtered != newValue {
+                                                    self.energy = filtered
+                                                }
+                                        }
+                                        .frame(width: 30)
+                                        .padding(.leading, bounds.size.width - 172)
+                                        Text("g")
                                     }
-                                    .frame(width: 30)
-                                    .padding(.leading, UIScreen.main.bounds.width - 170)
-                                    Text("g")
+                                    
+                                    HStack {
+                                        Image("Carbohydrates")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 40, height: 40)
+                                        Text("Carb").bold()
+                                        TextField("...", text: self.$carb)
+                                        .keyboardType(.numberPad)
+                                        .onReceive(Just(self.carb)) { newValue in //Filteres so only numbers can be inputed
+                                                let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
+                                                if filtered != newValue {
+                                                    self.carb = filtered
+                                                }
+                                        }
+                                        .frame(width: 30)
+                                        .padding(.leading, bounds.size.width - 178)
+                                        Text("g")
+                                    }
+                                 
                                 }
                             }
+                            .foregroundColor(Color("Color"))
                             
+                            .padding(.vertical)
+                            .frame(width: bounds.size.width - 20)
+                            }
+                        .background(BlurView())
+                        .cornerRadius(12)
+                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                        .padding(.top, 5)
+                        
+                        VStack {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    HStack(alignment: .center) {
+                                        Image("Fat")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40, height: 40)
+                                        Text("Fat").bold()
+                                        TextField("...", text: self.$fat)
+                                        .keyboardType(.numberPad)
+                                            .onReceive(Just(self.fat)) { newValue in //Filteres so only numbers can be inputed
+                                                let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
+                                                if filtered != newValue {
+                                                    self.fat = filtered
+                                                }
+                                        }
+                                        .frame(width: 30)
+                                        .padding(.leading, bounds.size.width - 165)
+                                        Text("g")
+                                    }
+                                    
+                                    
+                                    HStack(alignment: .center) {
+                                        Image("Fiber")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40, height: 40)
+                                        Text("Fiber").bold()
+                                        TextField("...", text: self.$fiber)
+                                        .keyboardType(.numberPad)
+                                            .onReceive(Just(self.fiber)) { newValue in //Filteres so only numbers can be inputed
+                                                let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
+                                                if filtered != newValue {
+                                                    self.fiber = filtered
+                                                }
+                                        }
+                                        .frame(width: 30)
+                                        .padding(.leading, bounds.size.width - 180)
+                                        Text("g")
+                                    }
+                                    
+                                    HStack(alignment: .center) {
+                                        Image("Protein")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40, height: 40)
+                                        Text("Protein").bold()
+                                        TextField("...", text: self.$protein)
+                                        .keyboardType(.numberPad)
+                                            .onReceive(Just(self.protein)) { newValue in //Filteres so only numbers can be inputed
+                                                let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
+                                                if filtered != newValue {
+                                                    self.protein = filtered
+                                                }
+                                        }
+                                        .frame(width: 30)
+                                        .padding(.leading, bounds.size.width - 196)
+                                        Text("g")
+                                    }
+                                    
+                                    HStack(alignment: .center) {
+                                        
+                                        Image("Salt")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40, height: 40)
+                                        Text("Salt").bold()
+                                        TextField("...", text: self.$salt)
+                                        .keyboardType(.numberPad)
+                                            .onReceive(Just(self.salt)) { newValue in //Filteres so only numbers can be inputed
+                                                let filtered = newValue.filter { "0123456789.".contains($0) } //It can only contains numbers
+                                                if filtered != newValue {
+                                                    self.salt = filtered
+                                                }
+                                        }
+                                        .frame(width: 30)
+                                        .padding(.leading, bounds.size.width - 170)
+                                        Text("g")
+                                    }
+                                }
+                                
+                            }
+                            .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
+                            .padding(.vertical)
+                            .frame(width: bounds.size.width - 20)
                         }
-                        .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
-                        .padding(.vertical)
-                        .frame(width: UIScreen.main.bounds.width - 20)
+                        .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(12)
+                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                        .padding(.top, 5)
+                        
+                       Spacer(minLength: 50)
+                           
+                       VStack {
+                           
+                           HStack {
+                           Image(systemName: "cube.box")
+                           TextField("Rough Amount Eaten", text: self.$amounteaten) //Input the rough amount eaten of the product
+                           .keyboardType(.numberPad)
+                            .onReceive(Just(self.amounteaten)) { newValue in //Filteres so only numbers can be inputed
+                                   let filtered = newValue.filter { "0123456789".contains($0) } //It can only contains numbers
+                                   if filtered != newValue {
+                                       self.amounteaten = filtered
+                                   }
+                           }
+                           Text("grams")
+                           }.padding()
+                               .background(RoundedRectangle(cornerRadius: 25).stroke(self.amounteaten != "" ? Color("Color") : self.colorScheme == .light ? Color.colorLight: Color.colorDark,lineWidth: 2)) //Changes the color when the user inputs into  the text field
+                           .frame(width: bounds.size.width - 20)
+                               .onTapGesture {
+                                   self.hideKeyboard()
+                           }
+                       }.padding(10)
+                    
+                        Spacer(minLength: 32)
+                        
+                        VStack {
+                            Button(action: {
+                                self.addlist() //Sves the data to the CoreData stack
+                                self.todayStore()
+                                self.showSelf = false //Returns to the homeview
+                                self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
+                                self.userSettings.eatentoday += ((Double(self.amounteaten ) ?? 1.0) * (Double(self.energy) ?? 0.0) / 100)
+                            }) {
+                                Text("Add to list")
+                                .fontWeight(.light)
+                                .padding()
+                                .frame(width: bounds.size.width - 80)
+                                .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
+                                .cornerRadius(40)
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .stroke(Color("Color"), lineWidth: 5)
+                                )
+                            }
+                        }.padding(.bottom, 20)
                     }
-                    .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
-                    .cornerRadius(12)
-                    .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
-                    .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                    .padding(.top, 5)
-                    
-                   Spacer(minLength: 50)
-                       
-                   VStack {
-                       
-                       HStack {
-                       Image(systemName: "cube.box")
-                       TextField("Rough Amount Eaten", text: self.$amounteaten) //Input the rough amount eaten of the product
-                       .keyboardType(.numberPad)
-                           .onReceive(Just(amounteaten)) { newValue in //Filteres so only numbers can be inputed
-                               let filtered = newValue.filter { "0123456789".contains($0) } //It can only contains numbers
-                               if filtered != newValue {
-                                   self.amounteaten = filtered
-                               }
-                       }
-                       Text("grams")
-                       }.padding()
-                           .background(RoundedRectangle(cornerRadius: 25).stroke(self.amounteaten != "" ? Color("Color") : self.colorScheme == .light ? Color.colorLight: Color.colorDark,lineWidth: 2)) //Changes the color when the user inputs into  the text field
-                       .frame(width: UIScreen.main.bounds.width - 20)
-                           .onTapGesture {
-                               self.hideKeyboard()
-                       }
-                   }.padding(10)
-                
-                    Spacer(minLength: 32)
-                    
-                    VStack {
-                        Button(action: {
-                            self.addlist() //Sves the data to the CoreData stack
-                            self.todayStore()
-                            self.showSelf = false //Returns to the homeview
-                            self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
-                            self.userSettings.eatentoday += ((Double(self.amounteaten ) ?? 1.0) * (Double(self.energy) ?? 0.0) / 100)
-                        }) {
-                            Text("Add to list")
-                            .fontWeight(.light)
-                            .padding()
-                            .frame(width: UIScreen.main.bounds.width - 80)
-                            .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
-                            .cornerRadius(40)
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 40)
-                                    .stroke(Color("Color"), lineWidth: 5)
-                            )
-                        }
-                    }.padding(.bottom, 20)
                 }
                 
             }
+        //}
         }
     }
     

@@ -27,11 +27,13 @@ struct ProductInfoView: View {
     
     
     var body: some View {
+        GeometryReader { bounds in
         ZStack {
                Color("BackgroundColor").edgesIgnoringSafeArea(.all)
                 if self.getData.statusVerbose == "product found" {
-                    ZStack(alignment: .topLeading) {
-                        ScrollView {
+                    GeometryReader { bounds in
+                        ZStack(alignment: .topLeading) {
+                            ScrollView(.vertical) {
                             
                             VStack {
                             
@@ -51,17 +53,17 @@ struct ProductInfoView: View {
                                             .padding()
                                         }
                                         VStack(alignment: .leading, spacing: 10) {
-                                            Text("\(getData.brands)")
+                                            Text("\(self.getData.brands)")
                                                 .bold()
-                                            Text("\(getData.product_name)")
+                                            Text("\(self.getData.product_name)")
                                                 .bold()
-                                            Text(getData.statusVerbose.capitalizingFirstLetter())
+                                            Text(self.getData.statusVerbose.capitalizingFirstLetter())
                                                
                                         }
                                     }
                                     .foregroundColor(self.colorScheme == .light ? Color.colorDark: Color.colorLight) //Inverted the colors as it looked better that way on the green background
                                     .padding(.vertical)
-                                    .frame(width: UIScreen.main.bounds.width - 20)
+                                        .frame(width: bounds.size.width - 20)
                                 
                                 
                                 }
@@ -83,7 +85,7 @@ struct ProductInfoView: View {
                                                 .resizable()
                                                 .scaledToFit()
                                                 .frame(width: 40, height: 40)
-                                            Text("Sugar: \(getData.sugars_100g, specifier: self.format) grams")
+                                            Text("Sugar: \(self.getData.sugars_100g, specifier: self.format) grams")
                                         }
                                         
                                         HStack {
@@ -91,7 +93,7 @@ struct ProductInfoView: View {
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 40, height: 40)
-                                            Text("Energy: \(getData.energykcal_100g) Kcal")
+                                            Text("Energy: \(self.getData.energykcal_100g) Kcal")
                                         }
                                         
                                         HStack {
@@ -99,7 +101,7 @@ struct ProductInfoView: View {
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 40, height: 40)
-                                        Text("Carb: \(getData.carbohydrates_100g, specifier: self.format) grams")
+                                            Text("Carb: \(self.getData.carbohydrates_100g, specifier: self.format) grams")
                                         }
                                      
                                     }
@@ -107,7 +109,7 @@ struct ProductInfoView: View {
                                 .foregroundColor(Color("Color"))
                                 
                                 .padding(.vertical)
-                                .frame(width: UIScreen.main.bounds.width - 20)
+                                .frame(width: bounds.size.width - 20)
                                 }
                             .background(BlurView())
                             .cornerRadius(12)
@@ -128,7 +130,7 @@ struct ProductInfoView: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 40, height: 40)
-                                                Text("Fat: \(getData.fat_100g, specifier: self.format) grams")
+                                                Text("Fat: \(self.getData.fat_100g, specifier: self.format) grams")
                                             }
                                             
                                             HStack(alignment: .center) {
@@ -136,7 +138,7 @@ struct ProductInfoView: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 40, height: 40)
-                                                Text("Fiber: \(getData.fiber_100g, specifier: self.format) grams")
+                                                Text("Fiber: \(self.getData.fiber_100g, specifier: self.format) grams")
                                             }
                                             
                                             HStack(alignment: .center) {
@@ -144,7 +146,7 @@ struct ProductInfoView: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 40, height: 40)
-                                                Text("Protein: \(getData.proteins_100g, specifier: self.format) grams")
+                                                Text("Protein: \(self.getData.proteins_100g, specifier: self.format) grams")
                                             }
                                             
                                             HStack(alignment: .center) {
@@ -152,14 +154,14 @@ struct ProductInfoView: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(width: 40, height: 40)
-                                                Text("Salt: \(getData.salt_100g, specifier: self.format) grams")
+                                                Text("Salt: \(self.getData.salt_100g, specifier: self.format) grams")
                                             }
                                         }
                                         
                                     }
                                     .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
                                     .padding(.vertical)
-                                    .frame(width: UIScreen.main.bounds.width - 20)
+                                    .frame(width: bounds.size.width - 20)
                                 }
                                 .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
                                 .cornerRadius(12)
@@ -172,7 +174,7 @@ struct ProductInfoView: View {
 
                                 
                             VStack {
-                                Text(getData.categories)
+                                Text(self.getData.categories)
                                 .foregroundColor(Color("Color"))
                             }
                                 
@@ -185,7 +187,7 @@ struct ProductInfoView: View {
                                 Image(systemName: "cube.box")
                                 TextField("Rough Amount Eaten", text: self.$amounteaten) //Input the rough amount eaten of the product
                                 .keyboardType(.numberPad)
-                                    .onReceive(Just(amounteaten)) { newValue in //Filteres so only numbers can be inputed
+                                    .onReceive(Just(self.amounteaten)) { newValue in //Filteres so only numbers can be inputed
                                         let filtered = newValue.filter { "0123456789".contains($0) } //It can only contains numbers
                                         if filtered != newValue {
                                             self.amounteaten = filtered
@@ -194,7 +196,7 @@ struct ProductInfoView: View {
                                 Text("grams")
                                 }.padding()
                                     .background(RoundedRectangle(cornerRadius: 25).stroke(self.amounteaten != "" ? Color("Color") : self.colorScheme == .light ? Color.colorLight: Color.colorDark,lineWidth: 2)) //Changes the color when the user inputs into  the text field
-                                .frame(width: UIScreen.main.bounds.width - 20)
+                                .frame(width: bounds.size.width - 20)
                                     .onTapGesture {
                                         self.hideKeyboard()
                                 }
@@ -214,7 +216,7 @@ struct ProductInfoView: View {
                                         Text("Add to list")
                                         .fontWeight(.light)
                                         .padding()
-                                        .frame(width: UIScreen.main.bounds.width - 80)
+                                        .frame(width: bounds.size.width - 80)
                                         .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
                                         .cornerRadius(40)
                                         .foregroundColor(.white)
@@ -226,42 +228,42 @@ struct ProductInfoView: View {
                                     }
                                 }.padding(.bottom, 20)
                             }
+                        }
                     }
                     }
                 }
                 else if self.getData.statusVerbose == "product not found" {
-                    ProductNotFound(showSelf: $showSelf) //Sends to a seperate view if the product is not found
+                    ProductNotFound(showSelf: self.$showSelf) //Sends to a seperate view if the product is not found
                 }
                 else { //So when the JSON request is running the user is greeted with a loading screen
                     VStack {
                         
-                        GradientText(title: "Loading", size: 32, width: Int(UIScreen.main.bounds.width - 250))
-                        LottieView(filename: "fruitloaderlottie", speed: 1, loop: .loop).frame(width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.3)
+                        GradientText(title: "Loading", size: 32, width: 130).frame(width: bounds.size.width, alignment: .center).padding()
+                        LottieView(filename: "fruitloaderlottie", speed: 1, loop: .loop).frame(width: bounds.size.width * 0.5, height: bounds.size.height * 0.3)
                         
                         if self.getData.error {
                             Spacer()
                             
                             Button(action: {
-                                self.showSelf = false //Returns to the homeview
-                                self.goHome()
-                                self.QRviewModel.lastQrCode = "" //Clears the QRCode so can start again
+                                self.getData.statusVerbose = "product not found"//Clears the QRCode so can start again
                             }) {
-                                Text("Error")
+                                Text("Error, enter Manually")
                                 .fontWeight(.light)
                                 .padding()
-                                .frame(width: UIScreen.main.bounds.width - 80)
+                                .frame(width: bounds.size.width - 80)
                                 .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
-                                .cornerRadius(40)
+                                .cornerRadius(5)
                                 .foregroundColor(.white)
                                 .padding(10)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 40)
+                                    RoundedRectangle(cornerRadius: 5)
                                         .stroke(Color("Color"), lineWidth: 5)
                                 )
                             }
                         }
                     }
             }
+        }
         }
 //        .onTapGesture {
 //                self.hideKeyboard()
@@ -390,6 +392,9 @@ class JSONParserFood: ObservableObject {
         //print(session.dataTask(with: URL(string: "https ://world.openfoodfacts.org/api/v0/product/\(QRcode ?? "NotScanned")")!))
         session.dataTask(with: URL(string: "https://world.openfoodfacts.org/api/v0/product/\(QRcode ?? "NotScanned")")!) { (data, res, err) in
             
+            if err != nil {
+                self.error = true
+            }
             //"NotScanned" neccessary when the user first init the scan as the view will be loaded without data which cause app to crash
             //State from which URL the data should be fetched, with then end changing based on the product scan.
             guard let data = data else {return}
@@ -417,7 +422,7 @@ class JSONParserFood: ObservableObject {
             }catch{
                 print(error)//In case the information is missing the error is printed for debug
             }
-                        
+        
         }.resume() //Needed to initiation the data Task.
     }
 }

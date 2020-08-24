@@ -23,329 +23,338 @@ struct SettingsBlockView : View{
        
        @State var edituser: Bool = false
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            Color("BackgroundColor").edgesIgnoringSafeArea(.all) //Sets the background of the view (constant on all the views of the app)
-            Text("Settings") //(Reminded to the user the view that just has loaded)
+        GeometryReader { bounds in
+            ZStack(alignment: .topLeading) {
+                Color("BackgroundColor").edgesIgnoringSafeArea(.all) //Sets the background of the view (constant on all the views of the app)
+                
+                Text("Settings") //(Reminded to the user the view that just has loaded)
                 .font(.title)
                 .bold()
-                .padding(20)
-            
-            ScrollView { //Used so on smaller iphone screen it is easily readable
+                .padding(.leading, 20)
                 
-                VStack(alignment: .leading) {
-                    VStack {
-                        if self.colorScheme == .light { //Depending on the usert selected theme it will display the animation but with the color reversed
-                        LottieView(filename: "SettingsLottie", speed: 1, loop: .loop)
-                            .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45) //Used to restrict the animation size
-                            .padding(20)
-                        }
-                        if self.colorScheme == .dark { //Depending on the usert selected theme it will display the animation but with the color reversed
-                            LottieView(filename: "SettingsDarkLottie", speed: 1, loop: .loop)
-                            .frame(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.width * 0.45) //Used to restrict the animation size
-                            .padding(20)
-                        }
-                    }.frame(width: UIScreen.main.bounds.width) //So uses the full width of the screen and also is centered on the view
-                    VStack {
-                        Text("Foody Scans")
-                            .font(Font.custom("Dashing Unicorn", size: 20))
-                            .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark) //Changes the font color depending on the colorscheme
-                            .lineLimit(nil)
-                    }.padding(.leading, 10)
+                ScrollView(.vertical, showsIndicators: false) { //Used so on smaller iphone screen it is easily readable
                     
-                    VStack {
-                        VStack(alignment: .leading) {
-                            
-                            if self.edituser == false { //whever the user is editing his username
-                                HStack {
-                                    Image("IDcard")
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                                    Text("Edit username")
-                                        .foregroundColor(.white)
-                                        //.padding(5)
-                                    Image(systemName: "chevron.right")
-                                        .frame(width:  UIScreen.main.bounds.width - 198 ,alignment: .trailing)
-                                        .foregroundColor(.white)
-                                }.padding(.leading, 10)
-                                 .padding(.top, 5)
-                                    .onTapGesture {
-                                        withAnimation(.linear) { //Provides an animation so it looks smoother when transitioning
-                                            self.edituser = true
-                                        }
-                                }
-                            } else { //When the user is editing his username
-                                VStack {
-                                    HStack { //First HStack is the same as the top code
+                    VStack(alignment: .leading) {
+                        
+                        
+                        VStack {
+                            if self.colorScheme == .light { //Depending on the usert selected theme it will display the animation but with the color reversed
+                            LottieView(filename: "SettingsLottie", speed: 1, loop: .loop)
+                                .frame(width: bounds.size.width * 0.45, height: bounds.size.width * 0.45) //Used to restrict the animation size
+                                .padding(20)
+                            }
+                            if self.colorScheme == .dark { //Depending on the usert selected theme it will display the animation but with the color reversed
+                                LottieView(filename: "SettingsDarkLottie", speed: 1, loop: .loop)
+                                .frame(width: bounds.size.width * 0.45, height: bounds.size.width * 0.45) //Used to restrict the animation size
+                                .padding(20)
+                            }
+                        }.frame(width: bounds.size.width) //So uses the full width of the screen and also is centered on the view
+                        VStack {
+                            Text("Foody Scans")
+                                .font(Font.custom("Dashing Unicorn", size: 20))
+                                .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark) //Changes the font color depending on the colorscheme
+                                .lineLimit(nil)
+                        }.padding(.leading, 10)
+                        
+                        VStack {
+                            VStack(alignment: .leading) {
+                                
+                                if self.edituser == false { //whever the user is editing his username
+                                    HStack {
                                         Image("IDcard")
                                             .resizable()
                                             .frame(width: 30, height: 30)
                                         Text("Edit username")
                                             .foregroundColor(.white)
                                             //.padding(5)
-                                        Image(systemName: "chevron.down")
-                                            .frame(width:  UIScreen.main.bounds.width - 198 ,alignment: .trailing)
+                                        Image(systemName: "chevron.right")
+                                            .frame(width:  bounds.size.width - 198 ,alignment: .trailing)
                                             .foregroundColor(.white)
-                                        
-                                        
-                                    }.padding(.trailing, 2)
+                                    }.padding(.leading, 10)
                                      .padding(.top, 5)
-                                    .onTapGesture {
-                                        withAnimation(.linear) {
-                                            self.edituser = false
-                                        }
+                                        .onTapGesture {
+                                            withAnimation(.linear) { //Provides an animation so it looks smoother when transitioning
+                                                self.edituser = true
+                                            }
                                     }
-                                    HStack { //Displays an other HStack underneath in white so the user can enter the new username
-                                        TextField("Enter new username", text: self.$newusername)
-                                        
-                                        Button(action: {
+                                } else { //When the user is editing his username
+                                    VStack {
+                                        HStack { //First HStack is the same as the top code
+                                            Image("IDcard")
+                                                .resizable()
+                                                .frame(width: 30, height: 30)
+                                            Text("Edit username")
+                                                .foregroundColor(.white)
+                                                //.padding(5)
+                                            Image(systemName: "chevron.down")
+                                                .frame(width: bounds.size.width - 198 ,alignment: .trailing)
+                                                .foregroundColor(.white)
+                                            
+                                            
+                                        }.padding(.trailing, 2)
+                                         .padding(.top, 5)
+                                        .onTapGesture {
+                                            withAnimation(.linear) {
                                                 self.edituser = false
-                                                if self.newusername != "" { //Only saves the new username if the text field is not empty
-                                                    self.complexSuccess()// Haptics so gives user feedback
-                                                    self.saveUserName()
-                                                }
-                                        }) {
-                                            if self.newusername != "" { //Only show the save option if some kind of text are inputted
-                                            Image(systemName: "square.and.arrow.down")
-                                                //.padding(.vertical)
-                                                .frame(width:  UIScreen.main.bounds.width - 220 ,alignment: .trailing)
-                                                .foregroundColor(self.colorScheme == .light ? Color.black: Color.white)
-                                                .onAppear(perform: prepareHaptics)
                                             }
                                         }
+                                        HStack { //Displays an other HStack underneath in white so the user can enter the new username
+                                            TextField("Enter new username", text: self.$newusername)
+                                            
+                                            Button(action: {
+                                                    self.edituser = false
+                                                    if self.newusername != "" { //Only saves the new username if the text field is not empty
+                                                        self.complexSuccess()// Haptics so gives user feedback
+                                                        self.saveUserName()
+                                                    }
+                                            }) {
+                                                if self.newusername != "" { //Only show the save option if some kind of text are inputted
+                                                Image(systemName: "square.and.arrow.down")
+                                                    //.padding(.vertical)
+                                                    .frame(width: bounds.size.width - 220 ,alignment: .trailing)
+                                                    .foregroundColor(self.colorScheme == .light ? Color.black: Color.white)
+                                                    .onAppear(perform: self.prepareHaptics)
+                                                }
+                                            }
 
-                                    }.frame(width: UIScreen.main.bounds.width - 50) //So it allows the newly drawn hstack to be the same size as the rest of the list
-                                    .padding()
-                                    .background(self.colorScheme == .light ? Color.white: Color.black) //Will change the color based on the colorscheme
-                                    .cornerRadius(10)
-                                    
+                                        }.frame(width: bounds.size.width - 50) //So it allows the newly drawn hstack to be the same size as the rest of the list
+                                        .padding()
+                                        .background(self.colorScheme == .light ? Color.white: Color.black) //Will change the color based on the colorscheme
+                                        .cornerRadius(10)
+                                        
+                                    }
                                 }
-                            }
-                            Divider()
+                                Divider()
+                                    HStack {
+                                        Image("Scale")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                        Text("Reset your daily intake")
+                                            .foregroundColor(.white)
+                                            //.padding(5)
+                                        
+                                        Button(action: {
+                                            withAnimation(.linear) {
+                                                self.showSettings = 2 //While cause the settings view to be redraw and used the ResetIntakeView() instead
+                                                self.resetIntake() //Triggers in the background the daily intake parrallax view to be loaded.
+                                            }
+                                            
+                                            
+                                        }) {
+                                            Image(systemName: "chevron.right")
+                                                .frame(width: bounds.size.width - 260  ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
+                                                .foregroundColor(.white)
+                                        }
+                                    }.padding(.leading, 10)
+                                    .padding(.top, 5)
+                                Divider()
                                 HStack {
-                                    Image("Scale")
+                                    Image("Logout")
                                         .resizable()
                                         .frame(width: 30, height: 30)
-                                    Text("Reset your daily intake")
+                                    Text("Log out")
                                         .foregroundColor(.white)
-                                        //.padding(5)
+                                        .padding(5)
                                     
                                     Button(action: {
-                                        withAnimation(.linear) {
-                                            self.showSettings = 2 //While cause the settings view to be redraw and used the ResetIntakeView() instead
-                                            self.resetIntake() //Triggers in the background the daily intake parrallax view to be loaded.
-                                        }
+                                        try! Auth.auth().signOut() //Causes the user to be logged out of the application
+                                        GIDSignIn.sharedInstance()?.signOut() // If the user has logged in with Google then it will also be logged out
+                                        UserDefaults.standard.set(false, forKey: "status") //Refers to the content view when launching the app so it will be redericted to the welcome screen
+                                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                                         
-                                        
+                                        self.showSettings = 3 //While cause the settings view to be redraw and used the LogoutView() instead
                                     }) {
                                         Image(systemName: "chevron.right")
-                                            .frame(width:  UIScreen.main.bounds.width - 260  ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
+                                        .frame(width: bounds.size.width - 155 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
                                             .foregroundColor(.white)
                                     }
                                 }.padding(.leading, 10)
-                                .padding(.top, 5)
-                            Divider()
-                            HStack {
-                                Image("Logout")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                Text("Log out")
-                                    .foregroundColor(.white)
-                                    .padding(5)
+                                .padding(.bottom, 5)
+                            }.frame(width: bounds.size.width - 20)
+                            .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
+                            .cornerRadius(10)
+                            .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
+                            .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
+                            
+                            Text("Reset your daily intake if you have lost weight or entered a field incorrectly during setup") //Information for the user
+                                .lineLimit(2)
+                                .font(.caption)
+                                .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
                                 
-                                Button(action: {
-                                    try! Auth.auth().signOut() //Causes the user to be logged out of the application
-                                    GIDSignIn.sharedInstance()?.signOut() // If the user has logged in with Google then it will also be logged out
-                                    UserDefaults.standard.set(false, forKey: "status") //Refers to the content view when launching the app so it will be redericted to the welcome screen
-                                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                                .frame(width: bounds.size.width - 20)
+                                .fixedSize(horizontal: false, vertical: true)
+                                //.padding(.bottom, 10)
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Image("Info")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                    Text("About FoodyScan")
+                                        .foregroundColor(.black)
                                     
-                                    self.showSettings = 3 //While cause the settings view to be redraw and used the LogoutView() instead
-                                }) {
+                                    NavigationLink(destination: AboutMeView()) { //Sends to an about me page about Foody Scan
+                                        Image(systemName: "chevron.right")
+                                            .frame(width:  bounds.size.width - 226 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
+                                            .foregroundColor(.black)
+                                    }
+                                }.padding(.leading, 10)
+                                 .padding(.top, 5)
+                                Divider()
+                                HStack {
+                                    Image("Rating")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                    Text("Rate FoodyScan")
+                                        .foregroundColor(.black)
+                                        //.padding(5)
+                                    
+                                    NavigationLink(destination: Text("Ratings")) { //Sends to the app store to rate the  application
+                                        Image(systemName: "chevron.right")
+                                            .frame(width:  bounds.size.width - 215  ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
+                                            .foregroundColor(.black)
+                                    }
+                                }.padding(.leading, 10)
+                                .padding(.top, 5)
+
+                                Divider()
+
+                                HStack {
+                                    Image("News")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                    Text("What's new")
+                                        .foregroundColor(.black)
+                                      //  .padding(5)
+                                    
+                                    NavigationLink(destination: Text("What's new")) { //Sends to the app update log updated manually after all of the updates
                                     Image(systemName: "chevron.right")
-                                    .frame(width:  UIScreen.main.bounds.width - 155 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
-                                        .foregroundColor(.white)
+                                        .frame(width:  bounds.size.width - 179,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
+                                            .foregroundColor(.black)
+                                    }
+                                }.padding(.leading, 10)
+                                .padding(.bottom, 5)
+                                
+                                Divider()
+
+                                HStack {
+                                    Image("Twitter")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                    Text("Follow me on Twitter")
+                                        .foregroundColor(.black)
+                                      //  .padding(5)
+                                    
+                                    Button(action: {
+                                        if let url = URL(string: "https://twitter.com/TheFrenchGuyFr") { //Switches to the either safari where my twitter profile will be loaded or if twitter is installed it will open the twitter app
+                                            UIApplication.shared.open(url)
+                                        }
+                                    }) {
+                                        Image(systemName: "chevron.right")
+                                        .frame(width:  bounds.size.width - 248 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
+                                        .foregroundColor(.black)
+                                    }
+                                }.padding(.leading, 10)
+                                .padding(.bottom, 5)
+                            }.frame(width: bounds.size.width - 20)
+                            .background(LinearGradient(gradient: Gradient(colors: [.gradientStart, .gradientEnd]), startPoint: .leading, endPoint: .trailing)) //Background of the "list"
+                            .cornerRadius(10)
+                            .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                            .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                            .padding(.bottom, 20)
+                            
+                            
+                            VStack {
+                                HStack {
+                                    Text("Request a new feature")
+                                    Button(action: {
+                                        self.showEmailAlert = true //Triggers an alert to be shown on the screen
+                                    }) {
+                                    Image(systemName: "chevron.right")
+                                    .frame(width:  bounds.size.width - 220 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
+                                        .foregroundColor(.black)
+                                    }.padding(.bottom, 5)
+                                        .alert(isPresented: self.$showEmailAlert) {
+                                            Alert(title: Text("FoodyScan Feedback"), message: Text("Please send an email to noedelacroix@protonmail.com"),primaryButton: .default(Text("Copy Email Address"), action: {
+                                                UIPasteboard.general.string = "noedelacroix@protonmail.com"
+                                            }), secondaryButton: .default(Text("Okay"))) //Copies to clipboard my email address so user can send feedback
+                                    }
                                 }
-                            }.padding(.leading, 10)
-                            .padding(.bottom, 5)
-                        }.frame(width: UIScreen.main.bounds.width - 20)
-                        .background(LinearGradient(gradient: Gradient(colors: [.gradientStartDark, .gradientEndDark]), startPoint: .leading, endPoint: .trailing))
-                        .cornerRadius(10)
-                        .shadow(color: Color("LightShadow"), radius: 12, x: -12, y: -12)
-                        .shadow(color: Color("DarkShadow"), radius: 12, x: 12, y: 12)
+                                
+                                Divider()
+                                
+                                HStack {
+                                    Text("Donation")
+                                    
+                                    Image(systemName: "chevron.right") //Will send to a in app purchase page later
+                                    .frame(width:  bounds.size.width - 120 ,alignment: .trailing)
+                                        .foregroundColor(.black)
+                                }.padding(.bottom, 5)
+                                
+                                Divider()
                         
-                        Text("Reset your daily intake if you have lost weight or entered a field incorrectly during setup") //Information for the user
+                                HStack {
+                                    Image(systemName: "exclamationmark.triangle.fill")
+                                    Text("Report a problem")
+                                    
+                                    Button(action :{
+                                        self.showReportAlert = true //Triggers  an alert to be shown on the screen
+                                    }) {
+                                    Image(systemName: "chevron.right")
+                                    .frame(width:  bounds.size.width - 210 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
+                                        .foregroundColor(.black)
+                                    }.alert(isPresented: self.$showReportAlert) {
+                                            Alert(title: Text("Report Problem"), message: Text("Please send an email to noedelacroix@protonmail.com"),primaryButton: .default(Text("Copy Email Address"), action: {
+                                                UIPasteboard.general.string = "noedelacroix@protonmail.com"
+                                            }), secondaryButton: .default(Text("Okay"))) //Copies to clipboard my email address so user can send feedback
+                                    }
+                                }
+                                
+                                
+                            }.frame(width: bounds.size.width - 20)
+                                .padding(.vertical, 10)
+                            .background(Color("BackgroundColor"))
+                            .cornerRadius(5.0)
+                            .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8) //To give the neumophirstic look to the user
+                            .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                            
+                            Text("If you enjoy FoodyScan please consider rating it on the App Store and maybe making a donation (it would help)") //Information to the user
                             .lineLimit(2)
                             .font(.caption)
                             .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
                             
-                            .frame(width: UIScreen.main.bounds.width - 20)
+                            .frame(width: bounds.size.width - 20)
                             .fixedSize(horizontal: false, vertical: true)
-                            //.padding(.bottom, 10)
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Image("Info")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                Text("About FoodyScan")
-                                    .foregroundColor(.black)
-                                
-                                NavigationLink(destination: AboutMeView()) { //Sends to an about me page about Foody Scan
-                                    Image(systemName: "chevron.right")
-                                        .frame(width:  UIScreen.main.bounds.width - 226 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
-                                        .foregroundColor(.black)
-                                }
-                            }.padding(.leading, 10)
-                             .padding(.top, 5)
-                            Divider()
-                            HStack {
-                                Image("Rating")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                Text("Rate FoodyScan")
-                                    .foregroundColor(.black)
-                                    //.padding(5)
-                                
-                                NavigationLink(destination: Text("Ratings")) { //Sends to the app store to rate the  application
-                                    Image(systemName: "chevron.right")
-                                        .frame(width:  UIScreen.main.bounds.width - 215  ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
-                                        .foregroundColor(.black)
-                                }
-                            }.padding(.leading, 10)
-                            .padding(.top, 5)
-
-                            Divider()
-
-                            HStack {
-                                Image("News")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                Text("What's new")
-                                    .foregroundColor(.black)
-                                  //  .padding(5)
-                                
-                                NavigationLink(destination: Text("What's new")) { //Sends to the app update log updated manually after all of the updates
-                                Image(systemName: "chevron.right")
-                                    .frame(width:  UIScreen.main.bounds.width - 178 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
-                                        .foregroundColor(.black)
-                                }
-                            }.padding(.leading, 10)
-                            .padding(.bottom, 5)
+                            .padding(.bottom, 20)
                             
-                            Divider()
-
-                            HStack {
-                                Image("Twitter")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                Text("Follow me on Twitter")
-                                    .foregroundColor(.black)
-                                  //  .padding(5)
+                            Button(action: {
+                                 self.presentation.wrappedValue.dismiss() //Later will allow all of the stored variables to be cleared
+                            
                                 
-                                Button(action: {
-                                    if let url = URL(string: "https://twitter.com/TheFrenchGuyFr") { //Switches to the either safari where my twitter profile will be loaded or if twitter is installed it will open the twitter app
-                                        UIApplication.shared.open(url)
-                                    }
-                                }) {
-                                    Image(systemName: "chevron.right")
-                                    .frame(width:  UIScreen.main.bounds.width - 245 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
-                                    .foregroundColor(.black)
-                                }
-                            }.padding(.leading, 10)
-                            .padding(.bottom, 5)
-                        }.frame(width: UIScreen.main.bounds.width - 20)
-                        .background(LinearGradient(gradient: Gradient(colors: [.gradientStart, .gradientEnd]), startPoint: .leading, endPoint: .trailing)) //Background of the "list"
-                        .cornerRadius(10)
-                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
-                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                        .padding(.bottom, 20)
-                        
-                        
-                        VStack {
+                            }){
                             HStack {
-                                Text("Request a new feature")
-                                Button(action: {
-                                    self.showEmailAlert = true //Triggers an alert to be shown on the screen
-                                }) {
-                                Image(systemName: "chevron.right")
-                                .frame(width:  UIScreen.main.bounds.width - 220 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
-                                    .foregroundColor(.black)
-                                }.padding(.bottom, 5)
-                                    .alert(isPresented: $showEmailAlert) {
-                                        Alert(title: Text("FoodyScan Feedback"), message: Text("Please send an email to noedelacroix@protonmail.com"),primaryButton: .default(Text("Copy Email Address"), action: {
-                                            UIPasteboard.general.string = "noedelacroix@protonmail.com"
-                                        }), secondaryButton: .default(Text("Okay"))) //Copies to clipboard my email address so user can send feedback
-                                }
+                                Text("Dismiss")
+                            }.frame(width: bounds.size.width - 20)
+                                .padding(.vertical, 10)
+                                .foregroundColor(.offRed)
+                            .background(Color("BackgroundColor"))
+                            .cornerRadius(5.0)
+                            .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
+                            .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
+                                .padding(.bottom, 80)
                             }
-                            
-                            Divider()
-                            
-                            HStack {
-                                Text("Donation")
-                                
-                                Image(systemName: "chevron.right") //Will send to a in app purchase page later
-                                .frame(width:  UIScreen.main.bounds.width - 120 ,alignment: .trailing)
-                                    .foregroundColor(.black)
-                            }.padding(.bottom, 5)
-                            
-                            Divider()
-                    
-                            HStack {
-                                Image(systemName: "exclamationmark.triangle.fill")
-                                Text("Report a problem")
-                                
-                                Button(action :{
-                                    self.showReportAlert = true //Triggers  an alert to be shown on the screen
-                                }) {
-                                Image(systemName: "chevron.right")
-                                .frame(width:  UIScreen.main.bounds.width - 210 ,alignment: .trailing) //So they are all of the same size and end distance from the screen on all iphone screens
-                                    .foregroundColor(.black)
-                                }.alert(isPresented: $showReportAlert) {
-                                        Alert(title: Text("Report Problem"), message: Text("Please send an email to noedelacroix@protonmail.com"),primaryButton: .default(Text("Copy Email Address"), action: {
-                                            UIPasteboard.general.string = "noedelacroix@protonmail.com"
-                                        }), secondaryButton: .default(Text("Okay"))) //Copies to clipboard my email address so user can send feedback
-                                }
-                            }
-                            
-                            
-                        }.frame(width: UIScreen.main.bounds.width - 20)
-                            .padding(.vertical, 10)
-                        .background(Color("BackgroundColor"))
-                        .cornerRadius(5.0)
-                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8) //To give the neumophirstic look to the user
-                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                        
-                        Text("If you enjoy FoodyScan please consider rating it on the App Store and maybe making a donation (it would help)") //Information to the user
-                        .lineLimit(2)
-                        .font(.caption)
-                        .foregroundColor(self.colorScheme == .light ? Color.colorLight: Color.colorDark)
-                        
-                        .frame(width: UIScreen.main.bounds.width - 20)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(.bottom, 20)
-                        
-                        Button(action: {
-                             self.presentation.wrappedValue.dismiss() //Later will allow all of the stored variables to be cleared
-                        }){
-                        HStack {
-                            Text("Reset User Data")
-                        }.frame(width: UIScreen.main.bounds.width - 20)
-                            .padding(.vertical, 10)
-                        .background(Color("BackgroundColor"))
-                        .cornerRadius(5.0)
-                        .shadow(color: Color("LightShadow"), radius: 8, x: -8, y: -8)
-                        .shadow(color: Color("DarkShadow"), radius: 8, x: 8, y: 8)
-                            .padding(.bottom, 80)
-                        }
-                    }.frame(width: UIScreen.main.bounds.width)
+                        }.frame(width: bounds.size.width)
+                        .padding(.bottom, 80)
+                    }
                 }
-            }
-            
-            
-        }.onAppear {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name("UserName"),object: nil, queue: .main) { (_) in
-                self.username = UserDefaults.standard.value(forKey: "UserName") as? String ?? "User"
-                } //Fetches for changed in the username of the user
-            }
-        .frame(height: UIScreen.main.bounds.height) //Sets the view to be the full width of the device
+                
+                
+            }.onAppear {
+                NotificationCenter.default.addObserver(forName: NSNotification.Name("UserName"),object: nil, queue: .main) { (_) in
+                    self.username = UserDefaults.standard.value(forKey: "UserName") as? String ?? "User"
+                    } //Fetches for changed in the username of the user
+                }
+            .frame(height: UIScreen.main.bounds.height)
+        } //Sets the view to be the full width of the device
     }
     
     func saveUserName() {
