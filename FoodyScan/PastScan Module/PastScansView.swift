@@ -310,10 +310,9 @@ struct PastScansView: View {
         
     }
     func delete(_ i:ListProduct) { //In order the delete the product card from the list
-        let timediff = Int(Date().timeIntervalSince(self.eatenToday.startTime))
+        let timediff = Int(Date().timeIntervalSince(i.scanDate))
         
-        if timediff >= 86400 {
-            managedObjectContext.delete(i) //delte the card selected
+        if timediff <= 86400 { //So if it less than a day since the app has been started then the data is being deleted
             self.userSettings.eatentoday -= Double(i.energyInKcal)
             self.eatenToday.sugarToday -= Double(i.sugarIn)
             self.eatenToday.proteinToday -= Double(i.proteinIn)
@@ -321,6 +320,7 @@ struct PastScansView: View {
             self.eatenToday.fiberToday -= Double(i.fiberIn)
             self.eatenToday.saltToday -= Double(i.saltIn)
             self.eatenToday.carbohydratesToday -= Double(i.carbohydratesIn)
+            managedObjectContext.delete(i) //delte the card selected
         } else {managedObjectContext.delete(i)}
         
         do {
