@@ -390,6 +390,12 @@ class JSONParserFood: ObservableObject {
         let session = URLSession(configuration: .default)
         print(QRcode as Any)
         //print(session.dataTask(with: URL(string: "https ://world.openfoodfacts.org/api/v0/product/\(QRcode ?? "NotScanned")")!))
+        
+        if QRcode == "Not Scanned" {
+            self.statusVerbose = "product not found"
+            
+        
+        } else if QRcode != "first scan" { //So that means if the field is empty because of the first scan it will not start the fetch request
         session.dataTask(with: URL(string: "https://world.openfoodfacts.org/api/v0/product/\(QRcode ?? "NotScanned")")!) { (data, res, err) in
             
             if err != nil {
@@ -424,6 +430,7 @@ class JSONParserFood: ObservableObject {
             }
         
         }.resume() //Needed to initiation the data Task.
+        }
     }
 }
 

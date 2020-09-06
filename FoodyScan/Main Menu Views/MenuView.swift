@@ -10,7 +10,7 @@ import SwiftUI
 import Firebase
 
 struct MenuView: View {
-    @State private var showQrView = false
+    @State private var showQrView: Bool = false
     @State var showSetting: Bool = false
     @Environment(\.managedObjectContext) var productenv //Neccesary as sets the view from different hiearchay can also sync up with the coredata stack
     var username = UserDefaults.standard.string(forKey: "UserName") ?? "Error"
